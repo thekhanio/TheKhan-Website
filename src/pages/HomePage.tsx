@@ -74,7 +74,7 @@ export default function HomePage() {
     <main className="min-h-screen antialiased relative">
       <Helmet>
         <title>TheKhan | Custom Websites, AI Systems, Software &amp; Marketing</title>
-        <meta name="description" content="A founder, an engineer, and a strategist — building custom websites, AI systems, software, and marketing for growing businesses. Real code. Real team. No templates." />
+        <meta name="description" content="Custom websites, software, AI systems, and marketing — built by a real team from real code. No templates, no platforms, no lock-in." />
         <link rel="canonical" href="https://thekhan.io/" />
         <meta property="og:title" content="TheKhan | Custom Websites, AI Systems, Software & Marketing" />
         <meta property="og:description" content="A founder, an engineer, and a strategist — building custom websites, AI systems, software, and marketing for growing businesses. Real code. Real team. No templates." />
@@ -198,11 +198,11 @@ export default function HomePage() {
             className={`text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.15] mb-5 md:mb-7 tracking-[0.08em] md:tracking-[0.12em] text-center md:whitespace-nowrap md:-translate-x-[65px] transition-all duration-700 delay-150 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            <span className="text-gradient">BUILD.<br className="md:hidden" /> MANAGE.<br className="md:hidden" /> GROW.</span>
+            <span className="text-gradient">What happens when<br className="md:hidden" /> they Google<br className="md:hidden" /> your business?</span>
           </h1>
 
           <p className={`text-sm md:text-lg text-[#a3a3a3] mb-8 md:mb-10 max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Your outsourced digital team — without the hiring, the managing, or the overhead.
+            We build custom websites, software, and marketing that make sure they find you first. No templates. No freelancers. A real team.
           </p>
 
           <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -260,7 +260,7 @@ export default function HomePage() {
 
           <ScrollReveal direction="up" delay={0.3}>
             <p className="text-center text-lg md:text-xl text-white mt-16 max-w-xl mx-auto leading-relaxed">
-              One team that builds your software, runs your systems, and grows your business — so you don&apos;t have to.
+              One team that builds it, runs it, and grows it — so you can focus on what you actually do.
             </p>
           </ScrollReveal>
         </div>
@@ -748,7 +748,7 @@ export default function HomePage() {
               <div className="p-8 md:p-12">
                 <div className="space-y-6 text-[#d4d4d4] text-lg leading-relaxed">
                   <p>
-                    I&apos;m Omair. I build your website, coordinate your software, run your marketing, and I&apos;m your single point of contact. No account managers. No handoffs. When you call, I pick up.
+                    I&apos;m Omair. I ran a home services operation — scaled it to 90 properties, went in the field myself, and spent my own money learning what works online. Now I build websites, run marketing, and I&apos;m your single point of contact. No account managers. No handoffs. When you call, I pick up.
                   </p>
                   <p className="text-white font-medium">
                     But I&apos;m not doing this alone.
@@ -786,10 +786,10 @@ export default function HomePage() {
               <div className="p-8 md:p-12">
                 <div className="space-y-6 text-[#d4d4d4] text-lg leading-relaxed">
                   <p>
-                    Most agencies are running the same playbook from 2017. Same tools. Same strategy. Same monthly PDF. The industry moved on — they didn&apos;t. Our team builds with AI every day and ships new tools the moment they drop. You&apos;re not getting last year&apos;s strategy. You&apos;re getting what works right now, backed by a real engineer and a real strategist who make it stick.
+                    Most companies in this space are running the same playbook from 2017. Same tools. Same strategy. Same monthly PDF nobody reads. We build with AI every day and ship new tools the moment they drop. You&apos;re not getting last year&apos;s strategy — you&apos;re getting what works right now, backed by a real engineer and a real strategist.
                   </p>
                   <p>
-                    We take on a few clients per quarter. That&apos;s by design — the work falls apart if we&apos;re stretched across 30 accounts. If we&apos;re at capacity, we&apos;ll tell you upfront.
+                    We take on a handful of clients at a time. That&apos;s not a sales tactic — the work falls apart if we&apos;re stretched across 30 accounts. If we&apos;re at capacity, we&apos;ll tell you upfront.
                   </p>
                 </div>
               </div>
@@ -807,7 +807,7 @@ export default function HomePage() {
               Start a conversation.
             </h2>
             <p className="text-[#d4d4d4] text-lg">
-              No pitch. No commitment. Just a conversation to see if it&apos;s the right fit.
+              Fill out the form. We&apos;ll get back to you within 24 hours with honest feedback on where you stand and what we&apos;d do differently. We take on 5-6 clients at a time — if we&apos;re full, we&apos;ll tell you.
             </p>
           </div>
 
@@ -912,17 +912,17 @@ const painPoints = [
   {
     icon: <IconAlertTriangle className="w-6 h-6 text-[#2563eb]" />,
     title: "They Googled you. You weren't there.",
-    desc: "Someone searched for exactly what you do in your city. Your site didn't show up. Or it did — but it loaded slow, looked dated, and they hit back. Either way, your competitor got the call.",
+    desc: "A homeowner in your city just searched for exactly what you do. Your competitor showed up first. Their site loaded fast, looked professional, and had a phone number right at the top. They got the call. You didn't even know it happened.",
   },
   {
     icon: <IconPlugOff className="w-6 h-6 text-[#2563eb]" />,
-    title: "Your business runs on duct tape",
-    desc: "Leads in your inbox. Invoices in a spreadsheet. Follow-ups in your head. Nothing's connected. Nothing's automated. You're losing deals to the gaps between your tools.",
+    title: "Your business runs on duct tape.",
+    desc: "A lead came in last Tuesday. It sat in your inbox for three days because you forgot. By the time you followed up, they'd already hired someone else. Your invoices are in one app, your schedule is in another, and your follow-ups live in your head. Every gap costs you money.",
   },
   {
     icon: <IconClock className="w-6 h-6 text-[#2563eb]" />,
     title: "You are the marketing department.",
-    desc: "You posted on social media three weeks ago. You're not sure if your ads are working. You don't have a strategy — you have a list of things you never get to. Your competitors hired a team for this months ago.",
+    desc: "It's 10 PM and you're trying to figure out what to post on Instagram. Your last Google ad spent $400 and you can't tell if it brought in a single call. Meanwhile, your competitor has someone handling all of this — and it shows.",
   },
 ];
 
@@ -930,23 +930,23 @@ const serviceCards = [
   {
     icon: <IconHammer className="w-7 h-7 text-[#2563eb]" />,
     title: "Build",
-    desc: "Custom websites, software, AI systems, and the tools your business runs on — built from real code, not templates. Code will always outperform a template. Faster load times, higher rankings, full ownership.",
+    desc: "Your customers judge your business by what they see online. We build websites and software from real code — not templates — so your site loads faster, ranks higher, and actually converts visitors into calls. You own every line of code.",
     features: [
-      "Custom websites — code outperforms templates every time",
-      "Custom software & application development",
-      "AI chatbots & AI receptionists",
-      "CRM, automation & business systems",
+      "Custom websites that load fast and rank high",
+      "Custom software and business applications",
+      "AI chatbots and AI receptionists",
+      "CRM, automation, and business systems",
     ],
     price: "One-time projects — scoped to your needs.",
   },
   {
     icon: <IconSettings className="w-7 h-7 text-[#2563eb]" />,
     title: "Manage",
-    desc: "Your site, your software, your systems — we keep it all running after launch so nothing falls through the cracks.",
+    desc: "After launch day, most people disappear. We don't. Your site stays updated, your systems stay connected, and when something breaks at 9 PM on a Tuesday, there's a real person who picks up.",
     features: [
-      "Updates & maintenance — nothing gets stale",
+      "Updates and maintenance — nothing gets stale",
       "Security monitoring — threats caught early",
-      "Hosting & uptime — your site stays up",
+      "Hosting and uptime — your site stays live",
       "Same-day issue resolution",
     ],
     price: "Ongoing — included with partnerships.",
@@ -954,12 +954,12 @@ const serviceCards = [
   {
     icon: <IconTrendingUp className="w-7 h-7 text-[#2563eb]" />,
     title: "Grow",
-    desc: "We don't just launch your presence — we make sure the right people find you.",
+    desc: "A website without traffic is a billboard in the desert. We put your business in front of the right people — on Google, on social media, and in AI search results — so your phone rings instead of collecting dust.",
     features: [
-      "Google Business Profile — get found locally",
-      "SEO, GEO & AI search optimization",
-      "Google Ads & paid media management",
-      "Social media management — strategy, posting & engagement",
+      "Google Business Profile — show up when they search",
+      "SEO, AI search, and voice search optimization",
+      "Google Ads and paid media management",
+      "Social media — strategy, posting, and engagement",
     ],
     price: "Ongoing — built into every partnership.",
   },
@@ -969,19 +969,19 @@ const processSteps = [
   {
     title: "Discovery",
     timeline: "Day 1",
-    desc: "We learn your business, your goals, and what's not working.",
+    desc: "A quick call. We learn your business, your goals, and what's not working. No pitch — just questions.",
     deliverable: "Clear picture of where you are and where we're headed",
   },
   {
     title: "Proposal",
     timeline: "Within 48 hours",
-    desc: "Clear scope, timeline, and price. No surprises.",
+    desc: "Exact scope, timeline, and price. No surprises, no hidden fees. You know what you're getting before we start.",
     deliverable: "Approved plan and start date",
   },
   {
     title: "Build",
     timeline: "1-6 weeks",
-    desc: "You see progress along the way. We test everything before going live.",
+    desc: "You see progress along the way. We test everything before it goes live. You're never in the dark.",
     deliverable: "Working product, tested and ready",
   },
 ];
@@ -990,42 +990,42 @@ const spotlightServices = [
   {
     icon: <IconWorldWww className="w-6 h-6" />,
     title: "Custom Websites",
-    desc: "Code will always outperform a template. Hand-coded means faster load times, higher search rankings, and a site you actually own — not one locked inside someone else's platform.",
+    desc: "Hand-coded means faster load times, higher search rankings, and a site you actually own. Code will always outperform a template.",
   },
   {
     icon: <IconHammer className="w-6 h-6" />,
     title: "Custom Software",
-    desc: "Web apps, internal tools, automations, APIs — our engineer builds custom software tailored to how your business operates. Not off-the-shelf. Built for you.",
+    desc: "Web apps, internal tools, automations, APIs — built around how your business actually works. Not off-the-shelf. Built for you.",
   },
   {
     icon: <IconRobot className="w-6 h-6" />,
     title: "AI Chatbots & Receptionists",
-    desc: "Custom AI that answers calls, books appointments, and handles customer questions 24/7 — even after hours.",
+    desc: "Custom AI that answers calls, books appointments, and handles customer questions 24/7 — even when you're on a job site.",
   },
   {
     icon: <IconDatabase className="w-6 h-6" />,
     title: "CRM & Business Systems",
-    desc: "A custom dashboard that connects your tools — leads, invoices, follow-ups, scheduling — so everything lives in one place.",
+    desc: "Leads, invoices, follow-ups, scheduling — connected in one place instead of scattered across five apps you barely check.",
   },
   {
     icon: <IconSearch className="w-6 h-6" />,
     title: "SEO & AI Search",
-    desc: "Rank on Google, get cited by ChatGPT and Perplexity, and show up in voice search. We cover traditional search and AI search.",
+    desc: "Show up on Google, get cited by ChatGPT and Perplexity, and appear in voice search. We cover traditional and AI search.",
   },
   {
     icon: <IconTargetArrow className="w-6 h-6" />,
     title: "Google Ads & Paid Media",
-    desc: "We manage your Google Ads end to end — budget, copy, targeting, and weekly optimization. You see where every dollar goes.",
+    desc: "We manage your Google Ads end to end — budget, copy, targeting, and optimization. You see where every dollar goes.",
   },
   {
     icon: <IconSocial className="w-6 h-6" />,
     title: "Social Media",
-    desc: "We handle your Instagram, Facebook, and LinkedIn — strategy, content, posting, and engagement. Consistent presence without you having to think about it.",
+    desc: "Strategy, content, posting, and engagement across Instagram, Facebook, and LinkedIn. Consistent presence without you lifting a finger.",
   },
   {
     icon: <IconPalette className="w-6 h-6" />,
     title: "Branding & Design",
-    desc: "Your brand, everywhere — logo, business cards, flyers, brochures. Consistent and professional across every touchpoint.",
+    desc: "Logo, business cards, flyers, brochures — your brand looking sharp and consistent across every touchpoint.",
   },
 ];
 
@@ -1041,19 +1041,19 @@ const teamPillars = [
     icon: <IconHammer className="w-7 h-7 text-[#06b6d4]" />,
     label: "Build",
     title: "The Engineer",
-    desc: "Every site is built in-house from real code — not drag-and-drop templates. Our lead engineer oversees every build and steps in on the complex projects: AI systems, CRM, advanced automations. He's deep in the AI and dev space, testing and shipping new tools daily. When something breaks, there's a real developer behind it.",
+    desc: "Every site, every app, every system — built in-house from real code. Our lead engineer oversees every build and handles the complex work: AI systems, custom software, advanced automations. When something breaks, there's a real developer who fixes it. Not a support ticket.",
   },
   {
     icon: <IconSettings className="w-7 h-7 text-[#06b6d4]" />,
     label: "Manage",
     title: "The Strategist",
-    desc: "Our tech strategist has spent 5+ years building systems, processes, and infrastructure for companies. He keeps your tools connected, your operations running, and your business organized long after launch day. The part most agencies forget — he owns it.",
+    desc: "5+ years building systems and infrastructure for companies. He keeps your tools connected, your operations running, and your business organized long after launch day. The part most people forget about — he owns it.",
   },
   {
     icon: <IconTrendingUp className="w-7 h-7 text-[#06b6d4]" />,
     label: "Grow",
     title: "The Founder",
-    desc: "I run your marketing. SEO, Google Ads, social media, Google Business Profile — the strategy that puts your business in front of the right people. I didn't learn this in a classroom. I learned it spending my own money, testing what works, and cutting what doesn't.",
+    desc: "I run your marketing — SEO, Google Ads, social media, Google Business Profile. I didn't learn this in a classroom. I ran a home services operation, scaled to 90 properties, and spent my own money figuring out what actually works. Now I do the digital side for businesses like yours.",
   },
 ];
 
@@ -1061,28 +1061,27 @@ const notThis = [
   "A big agency where you're account #47",
   "A freelancer who disappears after launch",
   "A platform that locks you into their ecosystem",
-  "A consultant who gives advice but doesn't build",
+  "A template that looks like everyone else's site",
 ];
 
 const thisInstead = [
-  "The founder on every project — start to finish",
-  "A real engineer and strategist behind every build",
-  "Hand-coded — code always outperforms templates in speed, rankings, and conversions",
-  "You own everything — code, domain, data, accounts",
+  "We're not a 50-person agency, but that means the founder is on every project — not a junior dev you've never met",
+  "A real engineer and strategist behind every build — not outsourced overseas",
+  "Hand-coded from scratch — code will always outperform a template",
+  "You own everything. Code, domain, data, accounts. Walk away anytime.",
 ];
 
 const goodFit = [
-  "Established business ready to level up online",
-  "Want one team handling everything — not five freelancers",
-  "Need custom software or systems built around your operations",
-  "Tired of managing your own tech and marketing",
-  "Ready to take your online presence seriously",
+  "You're doing $300K+ and know your online presence should be better than it is",
+  "You want one team handling everything — not five freelancers you have to manage",
+  "You need custom software or systems built around how your business actually works",
+  "You're tired of paying for tools and marketing that aren't delivering results",
+  "You're ready to invest in something built to last — not a quick fix",
 ];
 
 const notAFit = [
-  "Need the cheapest option available",
-  "Want to stay hands-on and manage everything yourself",
-  "Want a quick fix, not something built to last",
-  "Not sure you need digital help right now",
-  "Need results in the first week",
+  "If you want the cheapest option, we're not it — we build things that last, and that costs more than a template",
+  "You want to manage everything yourself and just need someone to push buttons",
+  "You need results by Friday — real marketing takes time to compound",
+  "You're not ready to invest in your online presence yet",
 ];
