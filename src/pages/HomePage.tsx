@@ -157,8 +157,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen antialiased relative">
       <SEO
-        title="TheKhan — Custom Websites & Marketing for Home Service Businesses | Deerfield, IL"
-        description="I custom-build websites that rank — then run the marketing that brings in real jobs. One operator, no agency. A handful of clients per year. Based in Deerfield, IL."
+        title="Custom Websites & Marketing for Home Services | TheKhan"
+        description="Custom websites that rank + marketing that makes your phone ring. One operator, a handful of clients a year. Deerfield, IL."
         canonical="https://thekhan.io/"
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
         schema={HOME_SCHEMA}

@@ -52,7 +52,7 @@ const faqs = [
 ];
 
 const PAGE_TITLE = "Custom Web Design — Deerfield, IL | One Payment, You Own It";
-const PAGE_DESC = "I build custom websites from scratch in 1–6 weeks. One-time payment, no retainer, no platform lock-in. You walk away with every file. Based in Deerfield, IL.";
+const PAGE_DESC = "Custom websites built from scratch in 1–6 weeks. One-time payment, no retainer, no lock-in. You walk away with every file. Deerfield, IL.";
 const PAGE_URL = "https://thekhan.io/websites";
 const OG_IMAGE = "https://thekhan.io/og-image.jpg";
 
@@ -66,7 +66,8 @@ const SERVICE_SCHEMA = {
   "areaServed": ["Chicago metropolitan area", "United States"],
   "offers": [
     { "@type": "Offer", "name": "Landing Page Build", "price": "300", "priceCurrency": "USD" },
-    { "@type": "Offer", "name": "Starter Website Build", "price": "550", "priceCurrency": "USD" }
+    { "@type": "Offer", "name": "Starter Website Build", "price": "550", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Full Site Build", "price": "750", "priceCurrency": "USD" }
   ]
 };
 
@@ -211,7 +212,7 @@ export default function WebsitesPage() {
             </ScrollReveal>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Tier 1 — LANDING */}
             <ScrollReveal direction="up" delay={0.1}>
               <SpotlightGlow>
@@ -245,6 +246,37 @@ export default function WebsitesPage() {
 
             {/* Tier 2 — STARTER */}
             <ScrollReveal direction="up" delay={0.2}>
+              <SpotlightGlow>
+                <div className="p-8 md:p-10 h-full flex flex-col">
+                  <p className="text-[#06b6d4] text-xs font-medium tracking-[0.25em] uppercase mb-3">Starter</p>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$550</span>
+                  </div>
+                  <p className="text-[#a3a3a3] text-sm italic mb-6">Best for: a real website with room to grow.</p>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {[
+                      "3 pages (home, services, contact)",
+                      "Everything in Landing",
+                      "Custom section design — no template feel",
+                      "FAQ or testimonials block",
+                      "Up to 2 rounds of revisions",
+                      "Priority launch slot",
+                    ].map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-[#d4d4d4] text-sm leading-relaxed">
+                        <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#contact" className="block w-full text-center px-6 py-3.5 rounded-full text-[#d4d4d4] hover:text-white border border-white/[0.15] hover:border-transparent hover:bg-gradient-to-r hover:from-[#2563eb] hover:to-[#06b6d4] transition-all duration-200 text-sm tracking-wide">
+                    Start a starter site →
+                  </a>
+                </div>
+              </SpotlightGlow>
+            </ScrollReveal>
+
+            {/* Tier 3 — FULL */}
+            <ScrollReveal direction="up" delay={0.3}>
               <div className="relative h-full">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                   <span className="px-4 py-1 rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white text-xs font-semibold tracking-widest uppercase shadow-[0_0_20px_rgba(6,182,212,0.5)]">
@@ -253,18 +285,18 @@ export default function WebsitesPage() {
                 </div>
                 <div className="relative h-full rounded-2xl border-2 border-[#06b6d4]/40 bg-[#111111] shadow-[0_0_40px_rgba(6,182,212,0.15)]">
                   <div className="p-8 md:p-10 h-full flex flex-col">
-                    <p className="text-[#06b6d4] text-xs font-medium tracking-[0.25em] uppercase mb-3">Starter</p>
+                    <p className="text-[#06b6d4] text-xs font-medium tracking-[0.25em] uppercase mb-3">Full</p>
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$550</span>
+                      <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$750</span>
                     </div>
-                    <p className="text-[#a3a3a3] text-sm italic mb-6">Best for: a real website with room to grow.</p>
+                    <p className="text-[#a3a3a3] text-sm italic mb-6">Best for: a complete site that covers every angle.</p>
                     <ul className="space-y-3 mb-8 flex-1">
                       {[
-                        "3–5 pages (home, about, services, contact + one more)",
-                        "Everything in Landing",
-                        "Custom section design — no template feel",
-                        "FAQ or testimonials block",
-                        "Up to 2 rounds of revisions",
+                        "5 pages (home, about, services, contact + one more)",
+                        "Everything in Starter",
+                        "About page included",
+                        "Extra content module (blog, gallery, or reviews)",
+                        "Up to 3 rounds of revisions",
                         "Priority launch slot",
                       ].map((f) => (
                         <li key={f} className="flex items-start gap-3 text-[#d4d4d4] text-sm leading-relaxed">
@@ -283,15 +315,9 @@ export default function WebsitesPage() {
           </div>
 
           <div className="mt-12 max-w-2xl mx-auto text-center">
-            <div className="inline-block px-6 py-4 rounded-xl border border-white/[0.08] bg-[#111111]/60">
-              <p className="text-[#d4d4d4] text-sm">
-                <span className="text-white font-semibold">Need more pages?</span>{" "}
-                <span className="italic text-[#a3a3a3]">+$75 per additional page beyond 5.</span>
-              </p>
-            </div>
-            <p className="text-[#a3a3a3] text-sm mt-6 leading-relaxed">
-              <span className="text-white font-semibold">Bigger project?</span>{" "}
-              <span className="italic">Custom multi-page builds with advanced systems start at $1,500. Tell me about your project and I&apos;ll quote it.</span>
+            <p className="text-[#a3a3a3] text-sm leading-relaxed">
+              <span className="text-white font-semibold">Need more than 5 pages?</span>{" "}
+              <span className="italic">Custom builds start at $999. Tell me about your project and I&apos;ll quote it.</span>
             </p>
             <p className="text-[#808080] text-xs italic mt-6 leading-relaxed">
               All builds live in 1–6 weeks. Need it sooner? Tell me when you reach out and I&apos;ll see what I can do.
