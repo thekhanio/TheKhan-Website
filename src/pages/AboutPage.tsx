@@ -91,6 +91,9 @@ const ABOUT_SCHEMA = {
         "Home service marketing",
         "Small business marketing",
       ],
+      "sameAs": [
+        "https://www.linkedin.com/in/omair-khan-64088a357",
+      ],
     },
   ],
 };
