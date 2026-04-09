@@ -32,7 +32,41 @@ const CONTRACTORS_SCHEMA = {
   "name": "Home Service Contractor Marketing",
   "description": "Websites, Google Ads, and SEO that make the phone ring for home service contractors in the Chicago area.",
   "provider": { "@id": "https://thekhan.io/#localbusiness" },
-  "areaServed": "Chicago metropolitan area",
+  "areaServed": [
+    { "@type": "City", "name": "Deerfield", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Highland Park", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Lake Forest", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Lake Bluff", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Northbrook", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Glencoe", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Winnetka", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Wilmette", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Kenilworth", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Bannockburn", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Riverwoods", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Lincolnshire", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Glenview", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Evanston", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Skokie", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Morton Grove", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Niles", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Park Ridge", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Arlington Heights", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Palatine", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Mount Prospect", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Des Plaines", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Buffalo Grove", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Wheeling", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Schaumburg", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Hoffman Estates", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Oak Park", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Elmhurst", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Oak Brook", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Naperville", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Downers Grove", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Orland Park", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+    { "@type": "City", "name": "Chicago", "containedInPlace": { "@type": "State", "name": "Illinois" } },
+  ],
   "serviceType": [
     "Home Service Contractor Marketing",
     "Website Design",
@@ -48,6 +82,54 @@ const CONTRACTORS_SCHEMA = {
     "Marketing for Cleaners",
     "Marketing for Handymen",
     "Marketing for Snow Removal",
+  ],
+};
+
+const CONTRACTORS_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://thekhan.io/contractors#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does marketing for home service contractors cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I work on monthly retainers in three tiers: Foundation ($550/mo), Engine ($1,050/mo — most common), and Machine ($1,500/mo). Every new contractor starts with a 60-day intro at $550/mo flat, regardless of which tier you pick — that's when I build the foundation: new site, Google listing, basic SEO. Day 61, you move to your full tier rate. No setup fee, no long-term contract.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "How long before I see more phone calls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Ads can start driving calls within days of launch. Local SEO and organic rankings take 3 to 6 months to show up meaningfully — that's why every new contractor starts with a 60-day intro, so the foundational work is in place by the time the deeper SEO work starts paying off. I'll tell you which channel fits your timeline and budget before we start, not after.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Do I own my Google Ads account, or do you?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, you keep the account, the history, and the data. No agency-owned account hostage situations.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the marketing doesn't work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 60-day intro comes with a 30-day walk clause — if I'm not delivering in the first 30 days, you can walk, no questions asked. Beyond that, I cap myself at a handful of clients per year specifically so I can pay attention to each one. If something isn't working, I find out fast and fix it — not 90 days later when your next retainer invoice hits.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "What Chicago suburbs do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I work with contractors across the North Shore and Chicagoland — Deerfield, Highland Park, Lake Forest, Northbrook, Glencoe, Winnetka, Bannockburn, Evanston, and the broader Chicago metro area. Remote clients anywhere in the US welcome if the project fits.",
+      },
+    },
   ],
 };
 
@@ -90,10 +172,10 @@ export default function ContractorsPage() {
     <main className="min-h-screen antialiased relative">
       <SEO
         title="Marketing for Home Service Contractors in Chicago | TheKhan"
-        description="I build websites and run marketing for Chicago home service contractors who want their phone ringing every week. You do the work. I make people find you."
+        description="Websites, Google Ads, and SEO for Chicago home service contractors. Get your phone ringing every week. You do the work. I make people find you."
         canonical="https://thekhan.io/contractors"
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
-        schema={CONTRACTORS_SCHEMA}
+        schema={[CONTRACTORS_SCHEMA, CONTRACTORS_FAQ_SCHEMA]}
       />
 
       <BackgroundPaths />
@@ -169,6 +251,10 @@ export default function ContractorsPage() {
             </span>
           </h1>
 
+          <h2 className={`text-sm sm:text-base md:text-lg text-[#a3a3a3] font-medium tracking-wide mb-6 md:mb-7 text-center transition-all duration-700 delay-[175ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ fontFamily: "'Cinzel', serif" }}>
+            Home Service Contractor Marketing &mdash; Chicago &amp; North Shore
+          </h2>
+
           <p className={`text-lg sm:text-xl text-[#d4d4d4] mb-9 md:mb-10 max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             One-man shop. I treat every business I work with like my own.
           </p>
@@ -194,6 +280,9 @@ export default function ContractorsPage() {
           </p>
           <p className={`text-[#808080] text-sm italic mt-3 max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-[450ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             &mdash; Before TheKhan, I built my own home service company to 84 clients &mdash; before I realized I was better at the growth side than the job site. &mdash;
+          </p>
+          <p className={`text-[#808080] text-sm italic mt-3 max-w-3xl mx-auto leading-relaxed transition-all duration-700 delay-[500ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            &mdash; Serving contractors across Chicagoland &mdash; Deerfield, Highland Park, Lake Forest, Northbrook, Glencoe, Winnetka, Wilmette, Evanston, Skokie, Arlington Heights, Naperville, Oak Park, and the rest of the Chicago metro. Websites and marketing clients served nationwide. &mdash;
           </p>
         </div>
       </section>
