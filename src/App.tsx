@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import QuestionnairePage from "./pages/QuestionnairePage";
-import PackagesPage from "./pages/PackagesPage";
 import ContractorsPage from "./pages/ContractorsPage";
 import WebsitesPage from "./pages/WebsitesPage";
 import PortfolioPage from "./pages/PortfolioPage";
@@ -26,7 +25,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/start" element={<QuestionnairePage />} />
-        <Route path="/packages" element={<PackagesPage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/websites" element={<WebsitesPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
