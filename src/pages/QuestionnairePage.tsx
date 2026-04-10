@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { SEO } from "@/components/SEO";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { IconCheck, IconLoader2, IconChevronDown } from "@tabler/icons-react";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 import { Logo } from "@/components/Logo";
@@ -676,13 +676,13 @@ export default function QuestionnairePage() {
         </h2>
         {subtitle && !openSections[sectionKey] && <p className="text-sm text-[#a3a3a3] mt-2">{subtitle}</p>}
       </div>
-      <motion.div
+      <m.div
         animate={{ rotate: openSections[sectionKey] ? 180 : 0 }}
         transition={{ duration: 0.2 }}
         className="text-[#a3a3a3] group-hover:text-[#2563eb] transition-colors shrink-0 ml-4"
       >
         <IconChevronDown size={24} />
-      </motion.div>
+      </m.div>
     </button>
   );
 
@@ -716,20 +716,20 @@ export default function QuestionnairePage() {
         {questionnaireSEO}
         <BackgroundPaths />
         <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-md w-full text-center"
           >
             <div className="rounded-2xl bg-[#111111] border border-white/[0.08] p-8">
-              <motion.div
+              <m.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring" }}
                 className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] flex items-center justify-center"
               >
                 <IconCheck className="w-10 h-10 text-white" />
-              </motion.div>
+              </m.div>
               <h2 className="text-3xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
                 Thank You!
               </h2>
@@ -743,7 +743,7 @@ export default function QuestionnairePage() {
                 Return to Homepage
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     );
@@ -757,7 +757,7 @@ export default function QuestionnairePage() {
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <div className="h-1.5 bg-white/[0.08]">
-          <motion.div
+          <m.div
             className="h-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] shadow-[0_0_10px_rgba(37,99,235,0.4)]"
             style={{ width: `${progress}%` }}
             initial={{ width: 0 }}
@@ -799,7 +799,7 @@ export default function QuestionnairePage() {
               />
               <AnimatePresence>
                 {openSections.intent && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -887,7 +887,7 @@ export default function QuestionnairePage() {
                       </div>
                     </div>
                     <ContinueButton sectionKey="intent" />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -895,7 +895,7 @@ export default function QuestionnairePage() {
             {/* Fix 1: Something else inline textarea */}
             <AnimatePresence>
               {formData.intent.includes("Something else") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -911,7 +911,7 @@ export default function QuestionnairePage() {
                     value={formData.servicesOther}
                     onChange={(e) => updateField("servicesOther", e.target.value)}
                   />
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
@@ -920,7 +920,7 @@ export default function QuestionnairePage() {
               <SectionHeader sectionKey="basic" title="Basic Information" />
               <AnimatePresence>
                 {openSections.basic && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1065,7 +1065,7 @@ export default function QuestionnairePage() {
 
               <AnimatePresence>
                 {formData.decisionMaker === "Someone else" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1080,7 +1080,7 @@ export default function QuestionnairePage() {
                       value={formData.decisionMakerOther}
                       onChange={(e) => updateField("decisionMakerOther", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
@@ -1107,7 +1107,7 @@ export default function QuestionnairePage() {
 
               <AnimatePresence>
                 {formData.hearAboutUs === "Referral" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1122,13 +1122,13 @@ export default function QuestionnairePage() {
                       value={formData.referralSource}
                       onChange={(e) => updateField("referralSource", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {formData.hearAboutUs === "Social Media" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1152,13 +1152,13 @@ export default function QuestionnairePage() {
                         </button>
                       ))}
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {formData.hearAboutUs === "Social Media" && formData.socialMediaSource === "Other" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1173,13 +1173,13 @@ export default function QuestionnairePage() {
                       value={formData.hearAboutUsOther}
                       onChange={(e) => updateField("hearAboutUsOther", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {formData.hearAboutUs === "Other" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1194,7 +1194,7 @@ export default function QuestionnairePage() {
                       value={formData.hearAboutUsOther}
                       onChange={(e) => updateField("hearAboutUsOther", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
@@ -1221,7 +1221,7 @@ export default function QuestionnairePage() {
 
               <AnimatePresence>
                 {formData.hasWebsite === "Yes" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1236,7 +1236,7 @@ export default function QuestionnairePage() {
                       value={formData.websiteUrl}
                       onChange={(e) => updateField("websiteUrl", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
@@ -1263,7 +1263,7 @@ export default function QuestionnairePage() {
 
               <AnimatePresence>
                 {formData.hasDomainGlobal === "Yes" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1303,7 +1303,7 @@ export default function QuestionnairePage() {
                     </div>
                     <AnimatePresence>
                       {formData.domainRegistrar === "Other" && (
-                        <motion.div
+                        <m.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
@@ -1318,16 +1318,16 @@ export default function QuestionnairePage() {
                             value={formData.domainRegistrarOther}
                             onChange={(e) => updateField("domainRegistrarOther", e.target.value)}
                           />
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {formData.hasDomainGlobal === "No, I need help getting one" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1342,7 +1342,7 @@ export default function QuestionnairePage() {
                       value={formData.domainPreference}
                       onChange={(e) => updateField("domainPreference", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
@@ -1369,7 +1369,7 @@ export default function QuestionnairePage() {
 
               <AnimatePresence>
                 {formData.hasGBPGlobal === "Yes" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1384,11 +1384,11 @@ export default function QuestionnairePage() {
                       value={formData.gbpLink}
                       onChange={(e) => updateField("gbpLink", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
               <ContinueButton sectionKey="basic" />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -1398,7 +1398,7 @@ export default function QuestionnairePage() {
               <SectionHeader sectionKey="details" title="Business Details" subtitle="This info helps me scope your project. If you have multiple businesses, provide details for your primary one here." />
               <AnimatePresence>
                 {openSections.details && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1537,7 +1537,7 @@ export default function QuestionnairePage() {
 
               <AnimatePresence>
                 {formData.needsProfessionalEmail === "Yes" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1552,13 +1552,13 @@ export default function QuestionnairePage() {
                       value={formData.businessEmail}
                       onChange={(e) => updateField("businessEmail", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {formData.needsProfessionalEmail === "Already have one" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1573,11 +1573,11 @@ export default function QuestionnairePage() {
                       value={formData.businessEmail}
                       onChange={(e) => updateField("businessEmail", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
               <ContinueButton sectionKey="details" />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -1587,7 +1587,7 @@ export default function QuestionnairePage() {
               <SectionHeader sectionKey="services" title="Services Interested In" subtitle="These were auto-selected based on your first answer — deselect any that don't apply, or add anything else you need." />
               <AnimatePresence>
                 {openSections.services && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1629,7 +1629,7 @@ export default function QuestionnairePage() {
               {/* Services Other Text Field */}
               <AnimatePresence>
                 {formData.services.includes("Other") && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -1645,11 +1645,11 @@ export default function QuestionnairePage() {
                       value={formData.servicesOther}
                       onChange={(e) => updateField("servicesOther", e.target.value)}
                     />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
               <ContinueButton sectionKey="services" />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -1659,7 +1659,7 @@ export default function QuestionnairePage() {
             {/* Marketing Intake (conditional on intent = Ongoing marketing or Both) */}
             <AnimatePresence>
               {showMarketingIntake && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -1802,7 +1802,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {(formData.currentAgency === "Yes, currently" || formData.currentAgency === "Yes, in the past") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -1817,7 +1817,7 @@ export default function QuestionnairePage() {
                           value={formData.currentAgencyDetails}
                           onChange={(e) => updateField("currentAgencyDetails", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -1901,7 +1901,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {formData.mainGoal.includes("Other") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -1916,7 +1916,7 @@ export default function QuestionnairePage() {
                           value={formData.mainGoalOther}
                           onChange={(e) => updateField("mainGoalOther", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2055,14 +2055,14 @@ export default function QuestionnairePage() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* Website Questions */}
             <AnimatePresence>
               {formData.services.includes("Website") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -2129,7 +2129,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {formData.websiteGoals.includes("Sell products online") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2177,13 +2177,13 @@ export default function QuestionnairePage() {
                             ))}
                           </div>
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
                   <AnimatePresence>
                     {formData.websiteGoals.includes("Collect payments") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2208,13 +2208,13 @@ export default function QuestionnairePage() {
                             </button>
                           ))}
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
                   <AnimatePresence>
                     {formData.hasWebsite === "Yes" && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2229,7 +2229,7 @@ export default function QuestionnairePage() {
                           value={formData.siteChanges}
                           onChange={(e) => updateField("siteChanges", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2277,7 +2277,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {(formData.websiteCount === "2" || formData.websiteCount === "3+") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2301,13 +2301,13 @@ export default function QuestionnairePage() {
                             </button>
                           ))}
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
                   <AnimatePresence>
                     {(formData.websiteCount === "2" || formData.websiteCount === "3+") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2323,7 +2323,7 @@ export default function QuestionnairePage() {
                           value={formData.multipleWebsitesDescription}
                           onChange={(e) => updateField("multipleWebsitesDescription", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2350,7 +2350,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {formData.hasHosting === "Yes" && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2374,13 +2374,13 @@ export default function QuestionnairePage() {
                             </button>
                           ))}
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
                   <AnimatePresence>
                     {formData.hostingProvider === "Other" && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2395,7 +2395,7 @@ export default function QuestionnairePage() {
                           value={formData.hostingProviderOther}
                           onChange={(e) => updateField("hostingProviderOther", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2443,7 +2443,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {formData.hasBrandColors === "Yes" && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2458,7 +2458,7 @@ export default function QuestionnairePage() {
                           value={formData.brandColorValues}
                           onChange={(e) => updateField("brandColorValues", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2528,7 +2528,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {formData.pages.includes("Other") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2543,7 +2543,7 @@ export default function QuestionnairePage() {
                           value={formData.otherPages}
                           onChange={(e) => updateField("otherPages", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2603,7 +2603,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {(formData.needsContactForm === "Contact Form" || formData.needsContactForm === "Both") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2634,13 +2634,13 @@ export default function QuestionnairePage() {
                             </button>
                           ))}
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
                   <AnimatePresence>
                     {formData.contactFormTypes.includes("Other") && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2655,7 +2655,7 @@ export default function QuestionnairePage() {
                           value={formData.contactFormOther}
                           onChange={(e) => updateField("contactFormOther", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2682,7 +2682,7 @@ export default function QuestionnairePage() {
 
                   <AnimatePresence>
                     {formData.bookingSystem === "Other" && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2697,13 +2697,13 @@ export default function QuestionnairePage() {
                           value={formData.bookingSystemOther}
                           onChange={(e) => updateField("bookingSystemOther", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
                   <AnimatePresence>
                     {formData.bookingSystem && formData.bookingSystem !== "None" && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
@@ -2718,7 +2718,7 @@ export default function QuestionnairePage() {
                           value={formData.bookingEmbedLink}
                           onChange={(e) => updateField("bookingEmbedLink", e.target.value)}
                         />
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -2755,14 +2755,14 @@ export default function QuestionnairePage() {
                       onChange={(e) => updateField("integrations", e.target.value)}
                     />
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* Google Business Profile Questions */}
             <AnimatePresence>
               {formData.services.includes("Google Business Profile") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -2791,14 +2791,14 @@ export default function QuestionnairePage() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* Social Media Questions */}
             <AnimatePresence>
               {formData.services.includes("Social Media Setup") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -2849,14 +2849,14 @@ export default function QuestionnairePage() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* Logo Design Questions */}
             <AnimatePresence>
               {formData.services.includes("Logo Design") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -2898,14 +2898,14 @@ export default function QuestionnairePage() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* Print Design Questions */}
             <AnimatePresence>
               {formData.services.includes("Print Design (brochures, flyers, business cards)") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -2956,14 +2956,14 @@ export default function QuestionnairePage() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* CRM & Business Dashboard Questions */}
             <AnimatePresence>
               {formData.services.includes("CRM & Business Dashboard") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -3038,14 +3038,14 @@ export default function QuestionnairePage() {
                       onChange={(e) => updateField("crmPainPoint", e.target.value)}
                     />
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* Custom Software / Web App Questions (Fix 2) */}
             <AnimatePresence>
               {formData.services.includes("Custom Software / Web App") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -3131,14 +3131,14 @@ export default function QuestionnairePage() {
                       onChange={(e) => updateField("customSoftwareExistingTools", e.target.value)}
                     />
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* AI Chatbot Questions (Fix 9) */}
             <AnimatePresence>
               {formData.services.includes("AI Chatbot (Website)") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -3236,14 +3236,14 @@ export default function QuestionnairePage() {
                       onChange={(e) => updateField("aiChatbotExistingChat", e.target.value)}
                     />
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* AI Receptionist Questions (Fix 10) */}
             <AnimatePresence>
               {formData.services.includes("AI Receptionist (Phone)") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -3360,14 +3360,14 @@ export default function QuestionnairePage() {
                       onChange={(e) => updateField("aiReceptionistCurrentSetup", e.target.value)}
                     />
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
             {/* Google Ads / LSA Details (Fix 11) */}
             <AnimatePresence>
               {formData.services.includes("Google Ads / Paid Advertising") && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -3495,7 +3495,7 @@ export default function QuestionnairePage() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
 
@@ -3504,7 +3504,7 @@ export default function QuestionnairePage() {
               <SectionHeader sectionKey="competition" title="Competition & Inspiration" />
               <AnimatePresence>
                 {openSections.competition && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -3523,7 +3523,7 @@ export default function QuestionnairePage() {
                       />
                     </div>
                     <ContinueButton sectionKey="competition" />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -3533,7 +3533,7 @@ export default function QuestionnairePage() {
               <SectionHeader sectionKey="timeline" title="Timeline & Budget" />
               <AnimatePresence>
                 {openSections.timeline && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -3564,7 +3564,7 @@ export default function QuestionnairePage() {
                       />
                     </div>
                     <ContinueButton sectionKey="timeline" />
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -3574,7 +3574,7 @@ export default function QuestionnairePage() {
               <SectionHeader sectionKey="anything" title="Anything Else?" />
               <AnimatePresence>
                 {openSections.anything && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
@@ -3592,7 +3592,7 @@ export default function QuestionnairePage() {
                         onChange={(e) => updateField("additionalInfo", e.target.value)}
                       />
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>

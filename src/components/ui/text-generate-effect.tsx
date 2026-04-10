@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
+import { m, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const TextGenerateEffect = ({
@@ -53,9 +53,9 @@ export const TextGenerateEffect = ({
     <div className={cn("font-bold", className)}>
       <div className="mt-4">
         <div className="text-neutral-400 text-2xl leading-snug tracking-wide">
-          <motion.div ref={scope}>
+          <m.div ref={scope}>
             {wordsArray.map((word, idx) => (
-              <motion.span
+              <m.span
                 key={`${word}-${idx}`}
                 className="opacity-0"
                 style={{
@@ -63,9 +63,9 @@ export const TextGenerateEffect = ({
                 }}
               >
                 {word}{" "}
-              </motion.span>
+              </m.span>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </div>

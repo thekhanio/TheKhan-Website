@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
 import { SEO } from "@/components/SEO";
@@ -132,6 +132,25 @@ const HOME_SCHEMA = {
     },
   ],
 };
+
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://thekhan.io/#organization",
+  "name": "TheKhan",
+  "url": "https://thekhan.io",
+  "logo": "https://thekhan.io/portfolio/logo-white.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Omair Khan",
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/thekhanio",
+    "https://www.instagram.com/thekhanio",
+    "https://www.facebook.com/profile.php?id=61584909881446",
+  ],
+};
+
 import {
   IconPhone,
   IconMail,
@@ -161,7 +180,7 @@ export default function HomePage() {
         description="Custom websites and marketing that actually bring in business. One point of contact, start to finish."
         canonical="https://thekhan.io/"
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
-        schema={HOME_SCHEMA}
+        schema={[HOME_SCHEMA, ORG_SCHEMA]}
       />
       <BackgroundPaths />
 
@@ -199,7 +218,7 @@ export default function HomePage() {
 
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -216,7 +235,7 @@ export default function HomePage() {
                   Let&apos;s Talk
                 </a>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </nav>

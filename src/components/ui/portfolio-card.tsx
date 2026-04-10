@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useAnimationFrame, useMotionTemplate, useMotionValue, useTransform } from "framer-motion";
+import { m, useAnimationFrame, useMotionTemplate, useMotionValue, useTransform } from "framer-motion";
 import { IconExternalLink } from "@tabler/icons-react";
 
 interface PortfolioCardProps {
@@ -54,7 +54,7 @@ function AnimatedBorderWrapper({ children }: { children: React.ReactNode }) {
           />
         </svg>
         {mounted && (
-          <motion.div
+          <m.div
             style={{
               position: "absolute",
               top: 0,
@@ -64,7 +64,7 @@ function AnimatedBorderWrapper({ children }: { children: React.ReactNode }) {
             }}
           >
             <div className="h-10 w-10 bg-[radial-gradient(#06b6d4_40%,transparent_70%)] opacity-90" />
-          </motion.div>
+          </m.div>
         )}
       </div>
 

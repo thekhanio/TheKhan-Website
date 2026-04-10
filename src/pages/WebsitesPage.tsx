@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
 import { SEO } from "@/components/SEO";
@@ -145,7 +145,7 @@ export default function WebsitesPage() {
 
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -162,7 +162,7 @@ export default function WebsitesPage() {
                   Let&apos;s Talk
                 </a>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </nav>
@@ -620,7 +620,7 @@ export default function WebsitesPage() {
                 </button>
                 <AnimatePresence initial={false}>
                   {openFaq === i && (
-                    <motion.div
+                    <m.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -628,7 +628,7 @@ export default function WebsitesPage() {
                       className="overflow-hidden"
                     >
                       <p className="px-6 pb-5 text-[#d4d4d4] leading-relaxed italic">{faq.a}</p>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
               </div>

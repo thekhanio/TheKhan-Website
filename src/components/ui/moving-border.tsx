@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import {
-  motion,
+  m,
   useAnimationFrame,
   useMotionTemplate,
   useMotionValue,
@@ -196,7 +196,7 @@ export const MovingBorder = ({
           ref={pathRef}
         />
       </svg>
-      <motion.div
+      <m.div
         style={{
           position: "absolute",
           top: 0,
@@ -206,7 +206,7 @@ export const MovingBorder = ({
         }}
       >
         {children}
-      </motion.div>
+      </m.div>
     </>
   );
 };

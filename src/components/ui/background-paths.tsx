@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 
 function FloatingPaths({ position }: { position: number }) {
@@ -25,7 +25,7 @@ function FloatingPaths({ position }: { position: number }) {
             >
                 <title>Background Paths</title>
                 {paths.map((path) => (
-                    <motion.path
+                    <m.path
                         key={path.id}
                         d={path.d}
                         stroke="currentColor"

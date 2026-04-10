@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
+import { useMotionValue, m, useMotionTemplate } from "framer-motion";
 import React from "react";
 
 export const Spotlight = ({
@@ -30,7 +30,7 @@ export const Spotlight = ({
       )}
       onMouseMove={handleMouseMove}
     >
-      <motion.div
+      <m.div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`

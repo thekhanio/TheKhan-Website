@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface AnimatedUnderlineProps {
@@ -23,13 +23,13 @@ export function AnimatedUnderline({ className = "", vertical = false }: Animated
     return (
       <div className={`relative rounded-full overflow-hidden ${className}`} style={{ minWidth: "2px" }}>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563eb]/40 to-transparent" />
-        <motion.div
+        <m.div
           className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563eb] to-transparent"
           initial={{ y: "-100%" }}
           animate={{ y: "100%" }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
-        <motion.div
+        <m.div
           className="absolute inset-0 bg-gradient-to-b from-transparent via-[#06b6d4] to-transparent"
           initial={{ y: "-100%" }}
           animate={{ y: "100%" }}
@@ -51,7 +51,7 @@ export function AnimatedUnderline({ className = "", vertical = false }: Animated
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2563eb]/30 to-transparent" />
 
       {/* Animated flowing gradient - cyan to blue */}
-      <motion.div
+      <m.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2563eb] to-transparent"
         initial={{ x: "-100%" }}
         animate={{ x: "100%" }}
@@ -63,7 +63,7 @@ export function AnimatedUnderline({ className = "", vertical = false }: Animated
       />
 
       {/* Secondary animated gradient - lighter cyan for depth */}
-      <motion.div
+      <m.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-[#06b6d4]/70 to-transparent"
         initial={{ x: "-100%" }}
         animate={{ x: "100%" }}

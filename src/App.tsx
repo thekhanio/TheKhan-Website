@@ -1,5 +1,6 @@
 import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { LazyMotion, domAnimation } from "framer-motion";
 import HomePage from "./pages/HomePage";
 import ContractorsPage from "./pages/ContractorsPage";
 import WebsitesPage from "./pages/WebsitesPage";
@@ -31,7 +32,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <>
+    <LazyMotion features={domAnimation} strict>
       <ScrollToTop />
       <Suspense fallback={null}>
         <Routes>
@@ -46,6 +47,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-    </>
+    </LazyMotion>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
 import { SEO } from "@/components/SEO";
@@ -120,7 +120,7 @@ export default function PortfolioPage() {
 
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -137,7 +137,7 @@ export default function PortfolioPage() {
                   Let&apos;s Talk
                 </a>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </nav>
