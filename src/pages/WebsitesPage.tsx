@@ -198,7 +198,7 @@ export default function WebsitesPage() {
           </div>
 
           <p className={`text-[#a3a3a3] text-sm mt-10 transition-all duration-700 delay-[400ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Just me. No agency, no handoff, no account managers.{" "}
+            Just me. You talk to the person building your site, start to finish.{" "}
             <Link to="/portfolio" className="text-[#06b6d4] hover:text-white underline underline-offset-4 transition-colors">
               See the work →
             </Link>
@@ -427,7 +427,7 @@ export default function WebsitesPage() {
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white mb-2">You control the technical SEO.</h3>
                   <p className="text-[#d4d4d4] leading-relaxed italic">
-                    Google rewards fast performance, proper schema, and clean structured data. Template platforms give you a generic version of all three. Custom-coded means I can tune every page for the exact search you&apos;re trying to win — not the one-size-fits-all setup everyone else on the platform gets.
+                    Google rewards fast sites with clean structure behind them. Template platforms give you a generic version of that. Custom-coded means I can tune every page to rank for the exact search you&apos;re trying to win — not the one-size-fits-all setup everyone else on the platform gets.
                   </p>
                 </div>
               </div>
@@ -762,9 +762,6 @@ export default function WebsitesPage() {
               <Logo variant="white" size="md" className="mb-4" />
               <p className="text-[#a3a3a3] text-sm leading-relaxed">
                 Your digital partner.
-              </p>
-              <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Custom-built websites. Here to grow your business.
               </p>
             </div>
           </div>

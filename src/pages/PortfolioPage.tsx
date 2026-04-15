@@ -156,7 +156,7 @@ export default function PortfolioPage() {
           </h1>
 
           <p className={`text-lg sm:text-xl md:text-2xl text-[#a3a3a3] max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Five clients. Ten custom-coded sites.<br />
+            Five clients. Ten sites.<br />
             Click any logo and see for yourself.
           </p>
         </div>
