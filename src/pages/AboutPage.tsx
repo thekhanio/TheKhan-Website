@@ -43,7 +43,7 @@ const TIMELINE_NODES = [
 
 const NEXT_STEPS = [
   "I read your message myself — usually within a few hours.",
-  "I reply by call, text, or email — whatever works for you.",
+  "I'll reach back out by call or text — whatever works for you.",
   "If there's a project to talk about, we'll find time. If not, no pressure.",
 ];
 
@@ -198,7 +198,7 @@ export default function AboutPage() {
             </span>
 
             <span
-              className="block text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl text-gradient whitespace-nowrap"
+              className="block text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl text-gradient"
               style={{ fontFamily: "'Cinzel', serif" }}
             >
               The second one is all I do now.
@@ -463,7 +463,7 @@ export default function AboutPage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Custom-built websites. Here to grow your business.
+                Websites and marketing for growing businesses.
               </p>
             </div>
           </div>

@@ -623,7 +623,7 @@ export default function ContractorsPage() {
                       <AnimatedUnderline vertical className="flex-1 min-h-[28px] my-1.5" />
                     </div>
                     <div className="pb-6 pt-1.5">
-                      <p className="text-[#d0d0d0] text-sm leading-relaxed">I&apos;ll reach back by call or text &mdash; whatever works for you.</p>
+                      <p className="text-[#d0d0d0] text-sm leading-relaxed">I&apos;ll reach back out by call or text &mdash; whatever works for you.</p>
                     </div>
                   </div>
                   {/* Step 3 */}
@@ -703,7 +703,7 @@ export default function ContractorsPage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Custom-built websites. Here to grow your business.
+                Websites and marketing for growing businesses.
               </p>
             </div>
           </div>

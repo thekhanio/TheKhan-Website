@@ -391,7 +391,7 @@ export default function PortfolioPage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Custom-built websites. Here to grow your business.
+                Websites and marketing for growing businesses.
               </p>
             </div>
           </div>

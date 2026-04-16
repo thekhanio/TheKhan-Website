@@ -766,6 +766,9 @@ export default function WebsitesPage() {
               <p className="text-[#a3a3a3] text-sm leading-relaxed">
                 Your digital partner.
               </p>
+              <p className="text-[#606060] text-xs leading-relaxed mt-1">
+                Websites and marketing for growing businesses.
+              </p>
             </div>
           </div>
           <div className="pt-8 border-t border-white/[0.06] text-center">
