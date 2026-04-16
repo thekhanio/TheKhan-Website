@@ -37,12 +37,12 @@ const TIMELINE_NODES = [
   },
   {
     date: "Mar '26",
-    body: "I closed Clean & Green and went all in on TheKhan. I know what that seat feels like — so I treat every business I work with like my own.",
+    body: "I closed Clean & Green and went all in on TheKhan. The company phone still rings today from the SEO work I did. I know what that seat feels like — so I treat every business I work with like my own.",
   },
 ];
 
 const NEXT_STEPS = [
-  "I read every message myself — usually within a few hours.",
+  "I read your message myself — usually within a few hours.",
   "I reply by call, text, or email — whatever works for you.",
   "If there's a project to talk about, we'll find time. If not, no pressure.",
 ];
@@ -201,12 +201,12 @@ export default function AboutPage() {
               className="block text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl text-gradient whitespace-nowrap"
               style={{ fontFamily: "'Cinzel', serif" }}
             >
-              The second one is all I do.
+              The second one is all I do now.
             </span>
           </h1>
 
           <p className={`text-lg sm:text-xl text-[#d4d4d4] max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            You keep doing the work. I&apos;ll keep it coming.
+            You keep doing the work. I&apos;ll help you bring more in.
           </p>
         </div>
       </section>
@@ -312,7 +312,7 @@ export default function AboutPage() {
                 {" "}who want their phone ringing every week.
               </p>
               <p>
-                I work with a handful of clients at a time. If your project doesn&apos;t fit those two cleanly, reach out anyway — I partner with Velli, a technology studio, when something needs deeper engineering or strategy muscle.
+                I work with a handful of clients at a time. If your project doesn&apos;t fit those two cleanly, reach out anyway — I partner with Velli, a technology studio, when something needs deeper engineering or a bigger build.
               </p>
             </div>
           </ScrollReveal>
@@ -334,13 +334,13 @@ export default function AboutPage() {
           <ScrollReveal direction="up" delay={0.05}>
             <div className="max-w-3xl mx-auto space-y-7 text-[#d4d4d4] text-lg leading-relaxed">
               <p>
-                Code will always outperform a template. That&apos;s why I write every site from scratch — and why you own every line when I&apos;m done.
+                Code will always outperform a template. That&apos;s why I build every site from scratch — and why you own every file when I&apos;m done.
               </p>
               <p>
                 You deal with me from day one. No front desk giving you the runaround. No wondering who&apos;s actually handling your project. Just one person, start to finish.
               </p>
               <p>
-                I&apos;d rather tell you &ldquo;no&rdquo; on a first call than waste your time pretending we&apos;re a fit. If that sounds right, the form&apos;s below.
+                I&apos;d rather tell you &ldquo;no&rdquo; on a first call than waste your time. If that sounds right, the form&apos;s below.
               </p>
             </div>
           </ScrollReveal>
@@ -400,7 +400,7 @@ export default function AboutPage() {
                   ))}
                 </div>
                 <p className="text-[#808080] text-xs italic mt-5 leading-relaxed">
-                  Rather call or text instead? The number&apos;s right above.
+                  Prefer to skip the form? Text or call (847) 220-8550.
                 </p>
               </div>
             </div>

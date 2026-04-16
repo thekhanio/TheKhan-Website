@@ -47,11 +47,11 @@ const COLLECTION_PAGE_SCHEMA = {
     "itemListOrder": "https://schema.org/ItemListOrderAscending",
     "numberOfItems": 5,
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "item": { "@type": "WebSite", "name": "Premier Partners", "url": "https://servicesfrompremier.com", "about": "Multi-brand home services company serving Cook, Lake, and McHenry counties plus southern Wisconsin" } },
-      { "@type": "ListItem", "position": 2, "item": { "@type": "WebSite", "name": "MarioScape", "url": "https://marioscape.com", "about": "North Shore landscaping company" } },
-      { "@type": "ListItem", "position": 3, "item": { "@type": "WebSite", "name": "Shifa Home Care", "url": "https://shifahomecareservices.com", "about": "Chicagoland home care" } },
-      { "@type": "ListItem", "position": 4, "item": { "@type": "WebSite", "name": "Nour's Barbershop", "url": "https://noursbarbershop.com", "about": "Morton Grove barbershop" } },
-      { "@type": "ListItem", "position": 5, "item": { "@type": "WebSite", "name": "WAF Chicago", "url": "https://wafchicago.org", "about": "Nonprofit organization" } },
+      { "@type": "ListItem", "position": 1, "item": { "@type": "WebSite", "name": "Premier Partners", "url": "https://servicesfrompremier.com", "about": "Multi-brand home service company serving Cook County, Lake County, and McHenry County" } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "WebSite", "name": "MarioScape", "url": "https://marioscape.com", "about": "Landscaping and removal company serving Chicago's North Shore" } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "WebSite", "name": "Shifa Home Care", "url": "https://shifahomecareservices.com", "about": "Non-medical home care services serving Will County, Kane County, Cook County, and DuPage County" } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "WebSite", "name": "Nour's Barbershop", "url": "https://noursbarbershop.com", "about": "Local barbershop in Morton Grove, IL" } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "WebSite", "name": "WAF Chicago", "url": "https://wafchicago.org", "about": "Nonprofit serving Cook County, based in Des Plaines" } },
     ],
   },
 };
@@ -66,10 +66,10 @@ const PREMIER_SUBSITES = [
 ];
 
 const SMALL_CARDS = [
-  { name: "MarioScape", niche: "North Shore landscaping company", url: "https://marioscape.com", display: "marioscape.com", screenshot: "/portfolio/marioscape-screenshot.jpg", alt: "MarioScape homepage — custom-built by TheKhan" },
-  { name: "Shifa Home Care", niche: "Chicagoland home care", url: "https://shifahomecareservices.com", display: "shifahomecareservices.com", screenshot: "/portfolio/shifa-screenshot.jpg", alt: "Shifa Home Care homepage — custom-built by TheKhan" },
-  { name: "Nour's Barbershop", niche: "Morton Grove barbershop", url: "https://noursbarbershop.com", display: "noursbarbershop.com", screenshot: "/portfolio/nours-screenshot.jpg", alt: "Nour's Barbershop homepage — custom-built by TheKhan" },
-  { name: "WAF Chicago", niche: "Nonprofit organization", url: "https://wafchicago.org", display: "wafchicago.org", screenshot: "/portfolio/waf-screenshot.jpg", alt: "WAF Chicago homepage — custom-built by TheKhan" },
+  { name: "MarioScape", niche: "Landscaping and removal company serving Chicago's North Shore", url: "https://marioscape.com", display: "marioscape.com", screenshot: "/portfolio/marioscape-screenshot.jpg", alt: "MarioScape homepage — custom-built by TheKhan" },
+  { name: "Shifa Home Care", niche: "Non-medical home care services serving Will County, Kane County, Cook County, and DuPage County", url: "https://shifahomecareservices.com", display: "shifahomecareservices.com", screenshot: "/portfolio/shifa-screenshot.jpg", alt: "Shifa Home Care homepage — custom-built by TheKhan" },
+  { name: "Nour's Barbershop", niche: "Local barbershop in Morton Grove, IL", url: "https://noursbarbershop.com", display: "noursbarbershop.com", screenshot: "/portfolio/nours-screenshot.jpg", alt: "Nour's Barbershop homepage — custom-built by TheKhan" },
+  { name: "WAF Chicago", niche: "Nonprofit serving Cook County, based in Des Plaines", url: "https://wafchicago.org", display: "wafchicago.org", screenshot: "/portfolio/waf-screenshot.jpg", alt: "WAF Chicago homepage — custom-built by TheKhan" },
 ];
 
 export default function PortfolioPage() {
@@ -149,15 +149,12 @@ export default function PortfolioPage() {
             className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-5 md:mb-6 text-center transition-all duration-700 delay-150 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             <span className="text-gradient">
-              Built by me.<br />
-              Owned by them.<br />
-              Live right now.
+              Who I&apos;ve built for.
             </span>
           </h1>
 
           <p className={`text-lg sm:text-xl md:text-2xl text-[#a3a3a3] max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Five clients. Ten sites.<br />
-            Click any logo and see for yourself.
+            Five clients, ten sites &mdash; all custom-coded and live right now. Click any logo to see for yourself.
           </p>
         </div>
       </section>
@@ -192,7 +189,7 @@ export default function PortfolioPage() {
                       Premier Partners
                     </h3>
                     <p className="text-[#06b6d4] text-sm md:text-base mb-8">
-                      Multi-brand home services • Cook, Lake, McHenry counties + southern Wisconsin
+                      Multi-brand home service company serving Cook County, Lake County, and McHenry County
                     </p>
 
                     {/* 6 sub-brand tiles — logo card + domain caption beneath, whole thing clickable */}
@@ -313,7 +310,7 @@ export default function PortfolioPage() {
                   {[
                     "I read your message myself — usually within a few hours.",
                     "I'll reach back out by call or text — whatever works for you.",
-                    "If you'd like to talk, we'll book a quick call so I can dig into your project.",
+                    "From there, if a longer call makes sense, we'll book one so I can actually understand your project before I say anything.",
                   ].map((text, i, arr) => (
                     <div className="flex gap-4" key={i}>
                       <div className="flex flex-col items-center">
@@ -329,7 +326,7 @@ export default function PortfolioPage() {
                   ))}
                 </div>
                 <p className="text-[#808080] text-xs italic mt-5 leading-relaxed">
-                  Prefer to skip the form? Just call or text the number above.
+                  Prefer to skip the form? Text or call (847) 220-8550.
                 </p>
               </div>
             </div>
