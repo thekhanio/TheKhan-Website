@@ -37,14 +37,14 @@ const TIMELINE_NODES = [
   },
   {
     date: "Mar '26",
-    body: "I closed Clean & Green and went all in on TheKhan. The company phone still rings today from the SEO work I did. I know what that seat feels like — so I treat every business I work with like my own.",
+    body: "I closed Clean & Green Property Care and went all in on TheKhan. The company phone still rings today from the SEO work I did. I know what that seat feels like — so I treat every business I work with like my own.",
   },
 ];
 
 const NEXT_STEPS = [
   "I read your message myself — usually within a few hours.",
   "I'll reach back out by call or text — whatever works for you.",
-  "If there's a project to talk about, we'll find time. If not, no pressure.",
+  "If this is something you're interested in, we'll set up a time. If not, no pressure.",
 ];
 
 const ABOUT_SCHEMA = {
@@ -340,7 +340,7 @@ export default function AboutPage() {
                 You deal with me from day one. No front desk giving you the runaround. No wondering who&apos;s actually handling your project. Just one person, start to finish.
               </p>
               <p>
-                I&apos;d rather tell you &ldquo;no&rdquo; on a first call than waste your time. If that sounds right, the form&apos;s below.
+                I&apos;d rather tell you we&apos;re not a fit on a first call than waste your time. If that sounds right, the form&apos;s below.
               </p>
             </div>
           </ScrollReveal>
@@ -352,10 +352,10 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-              Glad you made it here.
+              Sounds like a fit?
             </h2>
             <p className="text-[#d4d4d4] text-lg max-w-xl mx-auto">
-              Got a project in mind? Drop a note and I&apos;ll get back to you.
+              Fill out the form, or reach out by call or text. I read every message myself &mdash; usually within a few hours.
             </p>
           </div>
 

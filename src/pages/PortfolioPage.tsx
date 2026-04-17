@@ -155,7 +155,7 @@ export default function PortfolioPage() {
           </h1>
 
           <p className={`text-lg sm:text-xl md:text-2xl text-[#a3a3a3] max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Five clients, ten sites &mdash; all custom-coded and live right now. Click any logo to see for yourself.
+            Five clients, ten sites &mdash; all custom-coded and live right now. <span className="text-[#06b6d4] font-semibold">Click any logo</span> to see for yourself.
           </p>
         </div>
       </section>
@@ -209,10 +209,10 @@ export default function PortfolioPage() {
                             <img
                               src={sub.logo}
                               alt={sub.name}
-                              className="max-h-full max-w-full object-contain opacity-70 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-300"
+                              className="max-h-full max-w-full object-contain group-hover:scale-[1.04] transition-all duration-300"
                               loading="lazy"
                             />
-                            <IconArrowUpRight className="absolute top-2.5 right-2.5 w-4 h-4 text-[#06b6d4] opacity-0 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                            <IconArrowUpRight className="absolute top-2.5 right-2.5 w-4 h-4 text-[#06b6d4] opacity-60 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
                           </div>
                           <span className="mt-3 text-[11px] md:text-sm text-[#a3a3a3] group-hover:text-white text-center tracking-wide truncate w-full px-1 transition-colors duration-200">
                             {sub.display}

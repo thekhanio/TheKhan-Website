@@ -215,7 +215,7 @@ export default function WebsitesPage() {
               </h2>
               <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6 mb-6" />
               <p className="text-[#d4d4d4] text-lg max-w-2xl mx-auto">
-                Every build is mobile-friendly, fast, built to rank, and yours to keep. More pages cost more. That&apos;s the only difference.
+                Same build quality on every tier &mdash; fast, mobile-friendly, built to rank, and yours to keep. The only thing that changes is how much work the pages do for you. You can&apos;t rank one page for everything.
               </p>
             </ScrollReveal>
           </div>
@@ -445,23 +445,23 @@ export default function WebsitesPage() {
                   <div className="grid sm:grid-cols-2 gap-3 mb-4">
                     <div className="px-4 py-3 rounded-lg border border-[#06b6d4]/40 bg-[#06b6d4]/5">
                       <p className="text-[#06b6d4] text-sm font-semibold">Custom-coded site</p>
-                      <p className="text-white text-lg font-bold">~$60 (domain only)</p>
+                      <p className="text-white text-lg font-bold">~$60 over 5 years (domain only)</p>
                     </div>
                     <div className="px-4 py-3 rounded-lg border border-red-500/20 bg-red-500/5">
                       <p className="text-red-400/80 text-sm font-semibold">GoDaddy Premium</p>
-                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,260</p>
+                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,260 over 5 years</p>
                     </div>
                     <div className="px-4 py-3 rounded-lg border border-red-500/20 bg-red-500/5">
                       <p className="text-red-400/80 text-sm font-semibold">Webflow CMS</p>
-                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,380</p>
+                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,380 over 5 years</p>
                     </div>
                     <div className="px-4 py-3 rounded-lg border border-red-500/20 bg-red-500/5">
                       <p className="text-red-400/80 text-sm font-semibold">Wix Core</p>
-                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,790</p>
+                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,790 over 5 years</p>
                     </div>
                     <div className="px-4 py-3 rounded-lg border border-red-500/20 bg-red-500/5 sm:col-span-2">
                       <p className="text-red-400/80 text-sm font-semibold">Squarespace Core</p>
-                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,990</p>
+                      <p className="text-[#d4d4d4] text-lg font-bold">~$1,990 over 5 years</p>
                     </div>
                   </div>
                   <p className="text-[#d4d4d4] leading-relaxed italic mb-3">

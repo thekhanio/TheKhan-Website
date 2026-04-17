@@ -420,7 +420,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div className="pt-1.5">
-                      <p className="text-[#d0d0d0] text-sm leading-relaxed">From there, if a longer call makes sense, we&apos;ll book one so I can actually understand your business before I say anything.</p>
+                      <p className="text-[#d0d0d0] text-sm leading-relaxed">From there, if a longer call makes sense, we&apos;ll book one so I can understand your business before I recommend anything.</p>
                     </div>
                   </div>
                 </div>
