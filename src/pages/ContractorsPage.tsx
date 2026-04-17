@@ -381,6 +381,7 @@ export default function ContractorsPage() {
                     <>Website hosted and maintained</>,
                     <>Google Business Profile kept active &mdash; <strong className="text-white font-semibold">so it doesn&apos;t go dormant</strong></>,
                     <>Every Google review replied to &mdash; <strong className="text-white font-semibold">good or bad, none ignored</strong></>,
+                    <>Past customers texted every quarter &mdash; <strong className="text-white font-semibold">more calls from people who already know you</strong></>,
                     <>Monthly report in plain English &mdash; <strong className="text-white font-semibold">what moved, what didn&apos;t, what&apos;s next</strong></>,
                     <>Dashboard to edit your site yourself</>,
                     <>Text or email me direct &mdash; <strong className="text-white font-semibold">no tickets, no gatekeepers</strong></>,
@@ -417,11 +418,12 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>New pages added every month &mdash; <strong className="text-white font-semibold">so you rank for more services in more towns</strong></>,
-                    <>Review request scripts you send after jobs &mdash; <strong className="text-white font-semibold">more reviews come in without the awkward ask</strong></>,
-                    <>More photos on your Google profile from jobs you share &mdash; <strong className="text-white font-semibold">keeps your listing looking alive</strong></>,
-                    <>Listed consistently across the directories customers actually check</>,
-                    <>Seasonal pivots handled &mdash; <strong className="text-white font-semibold">your site and Google match what you&apos;re actually selling this season</strong></>,
+                    <>New service and city pages every month &mdash; <strong className="text-white font-semibold">you rank for more services in more towns</strong></>,
+                    <>Older pages refreshed &mdash; <strong className="text-white font-semibold">so they keep ranking as Google updates</strong></>,
+                    <>Directories cleaned up and checked quarterly &mdash; <strong className="text-white font-semibold">so Google can verify who you are everywhere it matters</strong></>,
+                    <>Deeper Google Business Profile work &mdash; <strong className="text-white font-semibold">expanded services list, questions seeded, attributes set</strong></>,
+                    <>Rank tracking across your service area &mdash; <strong className="text-white font-semibold">shown in your monthly report</strong></>,
+                    <>Call tracking available &mdash; <strong className="text-white font-semibold">know which ads, pages, and channels actually drive your phone calls</strong> (optional add-on, you pay direct)</>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -452,10 +454,10 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>Google Ads managed (up to three services, your account, your card) &mdash; <strong className="text-white font-semibold">you show up for the jobs you want most</strong></>,
-                    <>Google LSA managed &mdash; <strong className="text-white font-semibold">you rank at the very top of search as Google Guaranteed.</strong> I handle bids, fake-lead disputes, and reviews so you don&apos;t have to.</>,
-                    <>Full online cleanup at onboarding &mdash; your business listed the same way everywhere it matters, <strong className="text-white font-semibold">so Google can actually verify who you are</strong></>,
-                    <>Third-party audit at onboarding &mdash; Porch, Angi, HomeAdvisor, any lead service you pay for. <strong className="text-white font-semibold">If you&apos;re paying, I make sure they&apos;re actually sending leads.</strong></>,
+                    <>Paid ads managed &mdash; <strong className="text-white font-semibold">LSA where your service is eligible, Google Ads where it&apos;s not.</strong> I match the channel to each service, run bids, dispute fake leads, handle the review flow.</>,
+                    <>More pages every month &mdash; <strong className="text-white font-semibold">faster coverage across your full service area</strong></>,
+                    <>Past customers texted every month &mdash; <strong className="text-white font-semibold">segmented by service, season, and offer</strong></>,
+                    <>Full site audit every quarter &mdash; <strong className="text-white font-semibold">find what&apos;s weakening, double down on what&apos;s working</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -482,7 +484,7 @@ export default function ContractorsPage() {
           {/* Ads add-on line */}
           <ScrollReveal direction="up" delay={0.19}>
             <p className="max-w-3xl mx-auto mb-10 text-center text-[#a3a3a3] text-sm md:text-base leading-relaxed px-4">
-              <span className="text-white font-semibold">Want ads?</span> Machine includes Google Ads and LSA management. On Foundation or Engine, add Google Ads ($400/mo &mdash; setup, ongoing optimization, and landing pages built to convert) or LSA ($150/mo &mdash; bid management, fake-lead disputes, review flow). Ad spend is separate and billed directly to your card by Google &mdash; you see exactly where every dollar goes.
+              <span className="text-white font-semibold">Want ads?</span> Machine includes both. On Foundation or Engine, add them as needed &mdash; Google Ads at $400/mo or LSA at $150/mo. Ad spend is separate, billed directly to your card by Google. You see exactly where every dollar goes.
             </p>
           </ScrollReveal>
 
@@ -496,6 +498,26 @@ export default function ContractorsPage() {
                 <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                   Month-to-month. Cancel any month with 72 hours notice before your next bill. If you ever leave, I transfer every account I manage &mdash; site files, hosting, analytics. Everything goes with you.
                 </p>
+              </div>
+            </SpotlightGlow>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ==================== HOW THIS WORKS ==================== */}
+      <section className="py-20 md:py-24 px-6 relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <ScrollReveal direction="up">
+            <SpotlightGlow>
+              <div className="p-8 md:p-10 text-center">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-6" style={{ fontFamily: "'Cinzel', serif" }}>
+                  How this works
+                </h3>
+                <div className="space-y-4 text-[#d4d4d4] text-base md:text-lg leading-relaxed">
+                  <p>I handle the digital side &mdash; the site, the SEO, the ads when you want them, the writing, the reports.</p>
+                  <p>You handle the customer-facing side &mdash; photos from jobs you finish, asking happy customers for a Google review, and giving me your past customer list so I can text them for repeat work.</p>
+                  <p>That&apos;s the whole thing. No busy work from either side.</p>
+                </div>
               </div>
             </SpotlightGlow>
           </ScrollReveal>
@@ -526,6 +548,7 @@ export default function ContractorsPage() {
                     "You're good at the work but slow months still scare you.",
                     "This is your full-time business — not a side gig.",
                     "You're tired of reports full of numbers nobody explains — and someone telling you \"it's working.\"",
+                    "You can wait 3 to 6 months for SEO to compound — once you're ranking, it takes less work to hold than it did to earn. (My old company closed in March. The phone still rings.)",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#06b6d4]/15 border border-[#06b6d4]/40 flex items-center justify-center mt-0.5">
@@ -548,7 +571,9 @@ export default function ContractorsPage() {
                   {[
                     "Your budget is under $550/mo.",
                     "You want me to promise you a specific number of leads.",
-                    "You need the phone ringing in week one.",
+                    "You're starting from zero — no past customers, no online presence — and need jobs this week.",
+                    "You expect SEO to be driving calls inside 30 days. Google just doesn't work that way — trust takes 3 to 6 months to build. Wish it were faster.",
+                    "You're running ads and want them at full capacity day one. Ads take 30 to 60 days of real data to optimize — you'll get calls in the meantime, just not the full volume yet.",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.1] flex items-center justify-center mt-0.5">
