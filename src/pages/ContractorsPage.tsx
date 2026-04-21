@@ -104,7 +104,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "How much does marketing for home service contractors cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three monthly tiers: Foundation ($550/mo), Engine ($1,050/mo — most common), and Machine ($1,500/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill.",
+        "text": "Three monthly tiers: Foundation ($570/mo), Engine ($1,050/mo — most common), and Machine ($1,500/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill.",
       },
     },
     {
@@ -368,7 +368,7 @@ export default function ContractorsPage() {
                   Foundation
                 </h3>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-6">
-                  $550<span className="text-base font-medium text-[#808080]">/mo</span>
+                  $570<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Get found.
@@ -569,7 +569,7 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-5">
                   {[
-                    "Your budget is under $550/mo.",
+                    "Your budget is under $570/mo.",
                     "You want me to promise you a specific number of leads.",
                     "You're starting from zero — no past customers, no online presence — and need jobs this week.",
                     "You expect SEO to be driving calls inside 30 days. Google just doesn't work that way — trust takes 3 to 6 months to build. Wish it were faster.",
