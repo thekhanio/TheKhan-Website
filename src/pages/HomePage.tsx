@@ -253,7 +253,7 @@ export default function HomePage() {
           </h1>
 
           <p className={`text-lg sm:text-xl md:text-2xl text-[#a3a3a3] mb-8 md:mb-10 max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Websites built from scratch to rank on Google. Marketing built to bring in more business.
+            Built to rank on Google and bring in real business.
           </p>
 
           <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -272,7 +272,7 @@ export default function HomePage() {
           </div>
 
           <p className={`text-[#a3a3a3] text-sm mt-5 transition-all duration-700 delay-[400ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Just me. No agency. No pitch.
+            Just me. No reps. No pitch.
           </p>
 
           {/* Trust strip */}
@@ -290,6 +290,70 @@ export default function HomePage() {
                 See what I&apos;ve built →
               </Link>
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== WHAT I DO ==================== */}
+      <section className="py-24 px-6 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <ScrollReveal direction="up">
+              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
+                What makes this different.
+              </h2>
+              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
+            </ScrollReveal>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <ScrollReveal direction="up" delay={0.1}>
+              <SpotlightGlow>
+                <div className="p-8 md:p-10 h-full flex flex-col">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4" style={{ fontFamily: "'Cinzel', serif" }}>
+                    You own the code.
+                  </h3>
+                  <ul className="space-y-3 flex-1">
+                    <li className="flex items-start gap-3 text-[#d4d4d4] text-base leading-relaxed">
+                      <span className="text-[#06b6d4] flex-shrink-0">—</span>
+                      <span>Built from scratch, not a template</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[#d4d4d4] text-base leading-relaxed">
+                      <span className="text-[#06b6d4] flex-shrink-0">—</span>
+                      <span>Yours to take, anytime</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[#d4d4d4] text-base leading-relaxed">
+                      <span className="text-[#06b6d4] flex-shrink-0">—</span>
+                      <span>Move it to any host you want</span>
+                    </li>
+                  </ul>
+                </div>
+              </SpotlightGlow>
+            </ScrollReveal>
+
+            <ScrollReveal direction="up" delay={0.2}>
+              <SpotlightGlow>
+                <div className="p-8 md:p-10 h-full flex flex-col">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4" style={{ fontFamily: "'Cinzel', serif" }}>
+                    Month-to-month.
+                  </h3>
+                  <ul className="space-y-3 flex-1">
+                    <li className="flex items-start gap-3 text-[#d4d4d4] text-base leading-relaxed">
+                      <span className="text-[#06b6d4] flex-shrink-0">—</span>
+                      <span>No annual contracts</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[#d4d4d4] text-base leading-relaxed">
+                      <span className="text-[#06b6d4] flex-shrink-0">—</span>
+                      <span>72 hours notice cancels it</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-[#d4d4d4] text-base leading-relaxed">
+                      <span className="text-[#06b6d4] flex-shrink-0">—</span>
+                      <span>Cancel any month, any reason</span>
+                    </li>
+                  </ul>
+                </div>
+              </SpotlightGlow>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -322,11 +386,8 @@ export default function HomePage() {
                     </p>
                   </div>
                   <div className="flex-1 space-y-5 text-[#d4d4d4] text-lg leading-relaxed text-center md:text-left">
-                    <h3 className="text-2xl md:text-3xl font-semibold text-white" style={{ fontFamily: "'Cinzel', serif" }}>
-                      No team. No handoffs.
-                    </h3>
                     <p>
-                      I&apos;m a one-man shop — but that&apos;s the point. No account managers, no ticket queues, no &ldquo;let me check with the team.&rdquo; Whether that&apos;s one project or a long-term run, you&apos;re dealing with me from day one.
+                      No account managers, no ticket queues, no &ldquo;let me check with the team.&rdquo; Whether it&apos;s one project or long-term, you&apos;re working with me from day one.
                     </p>
                     <div className="border-l-2 border-[#06b6d4]/60 pl-5 my-2">
                       <p className="text-white">
@@ -358,7 +419,7 @@ export default function HomePage() {
               Let&apos;s talk.
             </h2>
             <p className="text-[#d4d4d4] text-lg max-w-xl mx-auto">
-              Tell me where you&apos;re at and I&apos;ll give you an honest recommendation. No pitch.
+              Goes straight to my phone.
             </p>
           </div>
 
@@ -420,7 +481,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div className="pt-1.5">
-                      <p className="text-[#d0d0d0] text-sm leading-relaxed">From there, if a longer call makes sense, we&apos;ll book one so I can understand your business before I recommend anything.</p>
+                      <p className="text-[#d0d0d0] text-sm leading-relaxed">From there, if a longer call makes sense, we&apos;ll book one so I can quote it right.</p>
                     </div>
                   </div>
                 </div>
@@ -488,7 +549,7 @@ export default function HomePage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Websites and marketing for growing businesses.
+                For home service businesses and growing companies.
               </p>
             </div>
           </div>

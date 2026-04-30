@@ -104,7 +104,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "How much does marketing for home service contractors cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three monthly tiers: Foundation ($570/mo), Engine ($1,050/mo — most common), and Machine ($1,500/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill.",
+        "text": "Three monthly tiers: Foundation ($600/mo), Engine ($1,250/mo — most common), and Machine ($1,800/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill.",
       },
     },
     {
@@ -368,7 +368,7 @@ export default function ContractorsPage() {
                   Foundation
                 </h3>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-6">
-                  $570<span className="text-base font-medium text-[#808080]">/mo</span>
+                  $600<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Get found.
@@ -378,13 +378,13 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>Website hosted and maintained</>,
-                    <>Google Business Profile kept active &mdash; <strong className="text-white font-semibold">so it doesn&apos;t go dormant</strong></>,
-                    <>Every Google review replied to &mdash; <strong className="text-white font-semibold">good or bad, none ignored</strong></>,
-                    <>Past customers texted every quarter &mdash; <strong className="text-white font-semibold">more calls from people who already know you</strong></>,
-                    <>Monthly report in plain English &mdash; <strong className="text-white font-semibold">what moved, what didn&apos;t, what&apos;s next</strong></>,
-                    <>Dashboard to edit your site yourself</>,
-                    <>Text or email me direct &mdash; <strong className="text-white font-semibold">no tickets, no gatekeepers</strong></>,
+                    <>Custom-coded site hosted and kept online &mdash; <strong className="text-white font-semibold">secure, monitored, contact form working</strong></>,
+                    <>Google Business Profile kept active and watched &mdash; <strong className="text-white font-semibold">photos posted, reviews and edits caught fast</strong></>,
+                    <>Every review replied to in your voice &mdash; <strong className="text-white font-semibold">typically by next business day</strong></>,
+                    <>Past customers reactivated approximately every quarter &mdash; <strong className="text-white font-semibold">more calls from people who already know you</strong></>,
+                    <>Monthly 1-page report in plain English &mdash; <strong className="text-white font-semibold">traffic, leads, AI-search visibility, what&apos;s next</strong></>,
+                    <>Dashboard to edit your site yourself &mdash; <strong className="text-white font-semibold">at yourdomain.com/admin</strong></>,
+                    <>Text or email me direct &mdash; <strong className="text-white font-semibold">same-day response, no tickets, no gatekeepers</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -405,25 +405,26 @@ export default function ContractorsPage() {
                   Engine
                 </h3>
                 <p className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  $1,050<span className="text-base font-medium text-[#808080]">/mo</span>
+                  $1,250<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Make the phone ring.
                 </p>
                 <p className="text-[#a3a3a3] text-sm leading-relaxed mb-5">
-                  For contractors who want jobs coming in every week &mdash; not just during busy season.
+                  For contractors who want jobs coming in every week &mdash; not just busy season.
                 </p>
                 <p className="text-[#06b6d4] text-xs tracking-wide uppercase font-semibold mb-3">
                   Everything in Foundation, plus:
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>New service and city pages every month &mdash; <strong className="text-white font-semibold">you rank for more services in more towns</strong></>,
-                    <>Older pages refreshed &mdash; <strong className="text-white font-semibold">so they keep ranking as Google updates</strong></>,
-                    <>Directories cleaned up and checked quarterly &mdash; <strong className="text-white font-semibold">so Google can verify who you are everywhere it matters</strong></>,
-                    <>Deeper Google Business Profile work &mdash; <strong className="text-white font-semibold">expanded services list, questions seeded, attributes set</strong></>,
-                    <>Rank tracking across your service area &mdash; <strong className="text-white font-semibold">shown in your monthly report</strong></>,
-                    <>Call tracking available &mdash; <strong className="text-white font-semibold">know which ads, pages, and channels actually drive your phone calls</strong> (optional add-on, you pay direct)</>,
+                    <>New service and city pages every month &mdash; <strong className="text-white font-semibold">rank for more services in more towns</strong></>,
+                    <>Older pages refreshed regularly &mdash; <strong className="text-white font-semibold">so they keep ranking as Google updates</strong></>,
+                    <>Directories cleaned up and checked quarterly &mdash; <strong className="text-white font-semibold">verified everywhere it matters</strong></>,
+                    <>Google Posts published regularly &mdash; <strong className="text-white font-semibold">profile stays active in search</strong></>,
+                    <>Profile fully filled out and watched &mdash; <strong className="text-white font-semibold">services dialed in, customer messaging on, competitors monitored</strong></>,
+                    <>Fake reviews disputed &mdash; <strong className="text-white font-semibold">escalated through Google as far as it&apos;ll go</strong></>,
+                    <>Rank tracking across your service area &mdash; <strong className="text-white font-semibold">monthly geographic ranking map in your report</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -441,23 +442,25 @@ export default function ContractorsPage() {
                   Machine
                 </h3>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-6">
-                  $1,500<span className="text-base font-medium text-[#808080]">/mo</span>
+                  $1,800<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Turn jobs away.
                 </p>
                 <p className="text-[#a3a3a3] text-sm leading-relaxed mb-5">
-                  For contractors ready to stop being the bottleneck and start running a real company.
+                  For contractors ready to stop being the bottleneck.
                 </p>
                 <p className="text-[#06b6d4] text-xs tracking-wide uppercase font-semibold mb-3">
                   Everything in Engine, plus:
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>Paid ads managed &mdash; <strong className="text-white font-semibold">LSA where your service is eligible, Google Ads where it&apos;s not.</strong> I match the channel to each service, run bids, dispute fake leads, handle the review flow.</>,
+                    <>Past customers reactivated approximately every month &mdash; <strong className="text-white font-semibold">different messages for different customer types and seasons</strong></>,
                     <>More pages every month &mdash; <strong className="text-white font-semibold">faster coverage across your full service area</strong></>,
-                    <>Past customers texted every month &mdash; <strong className="text-white font-semibold">segmented by service, season, and offer</strong></>,
+                    <>Paid ads managed &mdash; <strong className="text-white font-semibold">Google Ads + LSA, on your account, your card pays direct, zero markup</strong></>,
+                    <>Custom landing pages for ads &mdash; <strong className="text-white font-semibold">built to convert, refined as data comes in</strong></>,
                     <>Full site audit every quarter &mdash; <strong className="text-white font-semibold">find what&apos;s weakening, double down on what&apos;s working</strong></>,
+                    <>Add more ad campaigns anytime &mdash; <strong className="text-white font-semibold">+$250/mo each</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -569,7 +572,7 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-5">
                   {[
-                    "Your budget is under $570/mo.",
+                    "Your budget is under $600/mo.",
                     "You want me to promise you a specific number of leads.",
                     "You're starting from zero — no past customers, no online presence — and need jobs this week.",
                     "You expect SEO to be driving calls inside 30 days. Google just doesn't work that way — trust takes 3 to 6 months to build. Wish it were faster.",
