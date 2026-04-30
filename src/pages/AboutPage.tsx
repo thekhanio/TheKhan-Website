@@ -312,7 +312,7 @@ export default function AboutPage() {
                 {" "}who want their phone ringing every week.
               </p>
               <p>
-                I work with a handful of clients at a time. If your project doesn&apos;t fit those two cleanly, reach out anyway — I partner with Velli, a technology studio, when something needs deeper engineering or a bigger build.
+                I work with a handful of clients at a time. If your project doesn&apos;t fit those two cleanly, reach out anyway — I partner with Velli when a project needs a bigger team.
               </p>
             </div>
           </ScrollReveal>
@@ -463,7 +463,7 @@ export default function AboutPage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Websites and marketing for growing businesses.
+                For home service businesses and growing companies.
               </p>
             </div>
           </div>

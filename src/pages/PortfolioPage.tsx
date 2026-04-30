@@ -20,7 +20,7 @@ import {
 } from "@tabler/icons-react";
 
 const PAGE_TITLE = "Portfolio — Custom Websites for Small Businesses | TheKhan";
-const PAGE_DESC = "Omair is an independent web designer at TheKhan who builds custom-coded websites for home service businesses across the Chicago area.";
+const PAGE_DESC = "I build custom websites and run the marketing for home service businesses across Chicago.";
 const PAGE_URL = "https://thekhan.io/portfolio";
 const OG_IMAGE = "https://thekhan.io/portfolio-og.jpg";
 
@@ -67,7 +67,7 @@ const PREMIER_SUBSITES = [
 
 const SMALL_CARDS = [
   { name: "MarioScape", niche: "Landscaping and removal company serving Chicago's North Shore", url: "https://marioscape.com", display: "marioscape.com", screenshot: "/portfolio/marioscape-screenshot.jpg", alt: "MarioScape homepage — custom-built by TheKhan" },
-  { name: "Shifa Home Care", niche: "Non-medical home care services serving Will County, Kane County, Cook County, and DuPage County", url: "https://shifahomecareservices.com", display: "shifahomecareservices.com", screenshot: "/portfolio/shifa-screenshot.jpg", alt: "Shifa Home Care homepage — custom-built by TheKhan" },
+  { name: "Shifa Home Care", niche: "Non-medical home care services serving Will County, Kane County, Cook County, and DuPage County", url: "https://shifahomecareservices.com", display: "shifahomecareservices.com", screenshot: "/portfolio/shifa-screenshot.jpg", alt: "Shifa Home Care homepage — custom-built by TheKhan", paused: true },
   { name: "Nour's Barbershop", niche: "Local barbershop in Morton Grove, IL", url: "https://noursbarbershop.com", display: "noursbarbershop.com", screenshot: "/portfolio/nours-screenshot.jpg", alt: "Nour's Barbershop homepage — custom-built by TheKhan" },
   { name: "WAF Chicago", niche: "Nonprofit serving Cook County, based in Des Plaines", url: "https://wafchicago.org", display: "wafchicago.org", screenshot: "/portfolio/waf-screenshot.jpg", alt: "WAF Chicago homepage — custom-built by TheKhan" },
 ];
@@ -155,7 +155,7 @@ export default function PortfolioPage() {
           </h1>
 
           <p className={`text-lg sm:text-xl md:text-2xl text-[#a3a3a3] max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Five clients, ten sites &mdash; all custom-coded and live right now. <span className="text-[#06b6d4] font-semibold">Click any of them</span> to see for yourself.
+            Ten sites, all live right now. <span className="text-[#06b6d4] font-semibold">Click any of them</span> to see for yourself.
           </p>
         </div>
       </section>
@@ -230,31 +230,58 @@ export default function PortfolioPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {SMALL_CARDS.map((card, i) => (
               <ScrollReveal key={card.url} direction="up" delay={0.1 + i * 0.05}>
-                <a
-                  href={card.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block bg-[#141414] rounded-2xl border border-white/[0.18] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)] hover:border-[#06b6d4]/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(6,182,212,0.25)]"
-                >
-                  <div className="overflow-hidden border-b border-white/[0.06]">
-                    <img
-                      src={card.screenshot}
-                      alt={card.alt}
-                      className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6 md:p-7">
-                    <h3 className="text-xl md:text-2xl font-semibold text-white mb-1.5" style={{ fontFamily: "'Cinzel', serif" }}>
-                      {card.name}
-                    </h3>
-                    <p className="text-[#06b6d4] text-sm mb-5">{card.niche}</p>
-                    <div className="flex items-center gap-1.5 text-[#d4d4d4] group-hover:text-white text-sm tracking-wide transition-colors">
-                      <span>Visit {card.display}</span>
-                      <IconArrowUpRight className="w-4 h-4 text-[#06b6d4] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+                {card.paused ? (
+                  <div className="block bg-[#141414] rounded-2xl border border-white/[0.1] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+                    <div className="overflow-hidden border-b border-white/[0.06] relative">
+                      <img
+                        src={card.screenshot}
+                        alt={card.alt}
+                        className="w-full h-auto object-cover blur-sm grayscale opacity-40"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="px-5 py-2 bg-[#0a0a0a]/95 border border-[#06b6d4]/40 rounded-full text-[#06b6d4] text-xs tracking-[0.2em] uppercase font-semibold">
+                          Currently Paused
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6 md:p-7">
+                      <h3 className="text-xl md:text-2xl font-semibold text-white mb-1.5" style={{ fontFamily: "'Cinzel', serif" }}>
+                        {card.name}
+                      </h3>
+                      <p className="text-[#06b6d4] text-sm mb-5">{card.niche}</p>
+                      <div className="flex items-center gap-1.5 text-[#808080] text-sm italic tracking-wide">
+                        <span>Site temporarily offline</span>
+                      </div>
                     </div>
                   </div>
-                </a>
+                ) : (
+                  <a
+                    href={card.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block bg-[#141414] rounded-2xl border border-white/[0.18] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)] hover:border-[#06b6d4]/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(6,182,212,0.25)]"
+                  >
+                    <div className="overflow-hidden border-b border-white/[0.06]">
+                      <img
+                        src={card.screenshot}
+                        alt={card.alt}
+                        className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6 md:p-7">
+                      <h3 className="text-xl md:text-2xl font-semibold text-white mb-1.5" style={{ fontFamily: "'Cinzel', serif" }}>
+                        {card.name}
+                      </h3>
+                      <p className="text-[#06b6d4] text-sm mb-5">{card.niche}</p>
+                      <div className="flex items-center gap-1.5 text-[#d4d4d4] group-hover:text-white text-sm tracking-wide transition-colors">
+                        <span>Visit {card.display}</span>
+                        <IconArrowUpRight className="w-4 h-4 text-[#06b6d4] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+                      </div>
+                    </div>
+                  </a>
+                )}
               </ScrollReveal>
             ))}
           </div>
@@ -311,7 +338,7 @@ export default function PortfolioPage() {
                   {[
                     "I read your message myself — usually within a few hours.",
                     "I'll reach back out by call or text — whatever works for you.",
-                    "From there, if a longer call makes sense, we'll book one so I can understand your project before I recommend anything.",
+                    "From there, if a longer call makes sense, we'll book one so I can quote it right.",
                   ].map((text, i, arr) => (
                     <div className="flex gap-4" key={i}>
                       <div className="flex flex-col items-center">
@@ -392,7 +419,7 @@ export default function PortfolioPage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Websites and marketing for growing businesses.
+                For home service businesses and growing companies.
               </p>
             </div>
           </div>

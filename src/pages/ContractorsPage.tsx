@@ -120,7 +120,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "Do I own my Google Ads account, or do you?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, you keep the account, the history, and the data. No agency-owned account hostage situations.",
+        "text": "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, you keep the account, the history, and the data. Nothing of yours is locked behind me.",
       },
     },
     {
@@ -181,7 +181,7 @@ export default function ContractorsPage() {
     <main className="min-h-screen antialiased relative">
       <SEO
         title="Marketing for Home Service Contractors in Chicago | TheKhan"
-        description="Websites, Google Ads, and SEO for Chicago home service contractors. Get your phone ringing every week. You do the work. I make people find you."
+        description="Websites, Google Ads, and SEO for Chicago home service contractors. Get your phone ringing every week. You do the work. I make sure people find you."
         canonical="https://thekhan.io/contractors"
         ogImage="https://thekhan.io/contractors-og.jpg"
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
@@ -731,7 +731,7 @@ export default function ContractorsPage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Websites and marketing for growing businesses.
+                For home service businesses and growing companies.
               </p>
             </div>
           </div>

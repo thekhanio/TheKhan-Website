@@ -401,7 +401,7 @@ export default function WebsitesPage() {
               </h2>
               <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6 mb-6" />
               <p className="text-[#d4d4d4] text-lg max-w-2xl mx-auto">
-                Short version: you get more control, lower long-term cost, and no platform lock-in. Here&apos;s how.
+                You get more control, lower cost, and no platform lock-in.
               </p>
             </ScrollReveal>
           </div>
@@ -768,7 +768,7 @@ export default function WebsitesPage() {
                 Your digital partner.
               </p>
               <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                Websites and marketing for growing businesses.
+                For home service businesses and growing companies.
               </p>
             </div>
           </div>
