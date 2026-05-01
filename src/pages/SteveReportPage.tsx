@@ -201,7 +201,7 @@ const steveReport: ReportConfig = {
         title: "Paver Restoration website",
         highlight: "12 leads",
         detail:
-          "Built and deployed at no extra charge after paver came up post-proposal. Drove 12 of April's 40 leads through the website on its own.",
+          "Built and deployed at no charge — paver wasn't in the original proposal. Drove 12 of April's 40 leads on its own.",
       },
       {
         title: "Wix subscription cleanup",
@@ -246,7 +246,7 @@ const steveReport: ReportConfig = {
           {
             title: "Paver Restoration site",
             detail:
-              "Currently ranks #1 for 12+ paver keywords on the homepage alone. Adding city-specific landing pages and service-detail pages (full restoration, re-leveling, sealing, repair) lets it rank for hundreds of long-tail variations. In-season priority.",
+              "Currently ranks #1 for 12+ paver keywords on the homepage alone. Adding city-specific landing pages and service-detail pages (full restoration, re-leveling, sealing, repair) lets it rank for hundreds of long-tail variations. In-season priority. Part of ongoing partnership scope — no separate cost.",
           },
           {
             title: "Auto Spa site",
