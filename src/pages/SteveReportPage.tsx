@@ -22,7 +22,7 @@ const steveReport: ReportConfig = {
           { value: "$43 / lead", label: "Power Washing — Google LSA" },
         ],
       },
-      { value: "18", label: "new Google reviews", sublabel: "17 five-star" },
+      { value: "18", label: "new Google reviews", sublabel: "17 five-star · 1 fake one-star (disputed)" },
       { value: "9,129", label: "people who saw your business in search" },
     ],
 
