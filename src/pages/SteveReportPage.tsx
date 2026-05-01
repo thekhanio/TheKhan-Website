@@ -44,6 +44,36 @@ const steveReport: ReportConfig = {
       },
     },
 
+    revenueBreakdown: {
+      intro:
+        "Here's what those 40 leads turned into — paid jobs and signed estimates already booked for May.",
+      buckets: [
+        {
+          label: "Organic SEO + Clean & Green",
+          value: "$8,303",
+          percent: "96%",
+          detail: "from 9 closed leads",
+          type: "organic",
+        },
+        {
+          label: "Paid Ads (Google Search + LSA)",
+          value: "$375",
+          percent: "4%",
+          detail: "from 1 closed lead",
+          type: "paid",
+        },
+      ],
+      total: {
+        value: "$8,678",
+        label: "Total April lead revenue",
+        detail: "10 of 40 leads closed (25% close rate)",
+      },
+      adSpend: {
+        spent: "$1,159",
+        pipeline: "~$16,960",
+        note: "Pavers take 2–4 weeks to close. April pipeline lands in May.",
+      },
+    },
 
     gbpProfiles: [
       { name: "Power Washing", views: 382, calls: 11, directions: 36, websiteClicks: 36, newReviews: 9 },

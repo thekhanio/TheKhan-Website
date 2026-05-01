@@ -68,6 +68,27 @@ export interface LeadSource {
   type?: "paid" | "organic" | "forwarded" | "other";
 }
 
+export interface RevenueBucket {
+  label: string;
+  /** Pre-formatted dollar string, e.g. "$8,303". */
+  value: string;
+  /** Pre-formatted percent string, e.g. "96%". */
+  percent: string;
+  /** Optional sub-line under the value, e.g. "from 9 closed leads". */
+  detail?: string;
+  /** Drives accent color: paid = blue, organic/forwarded = cyan. */
+  type?: "paid" | "organic";
+}
+
+export interface RevenueBreakdown {
+  intro?: string;
+  buckets: RevenueBucket[];
+  /** Optional total row rendered below the bucket grid. */
+  total?: { value: string; label: string; detail?: string };
+  /** Optional secondary stats row: ad spend + open pipeline + a single context note. */
+  adSpend?: { spent: string; pipeline: string; note: string };
+}
+
 export interface GBPProfileRow {
   name: string;
   views: number;
@@ -169,6 +190,7 @@ export interface MonthReport {
   leadTransparency?: LeadTransparency;
   leadSources?: LeadSource[];
   leadSourcesNote?: string;
+  revenueBreakdown?: RevenueBreakdown;
   gbpProfiles?: GBPProfileRow[];
   reviews?: ReviewSummary;
   websiteTraffic?: WebsiteTraffic;
@@ -470,6 +492,96 @@ function LeadSourcesSection({ items, note }: { items: LeadSource[]; note?: strin
         <p className="mt-4 text-sm md:text-base text-[#a3a3a3] italic leading-relaxed font-[family-name:var(--font-manrope)]">
           {note}
         </p>
+      )}
+    </section>
+  );
+}
+
+function RevenueBreakdownSection({ data }: { data: RevenueBreakdown }) {
+  const accentFor = (type?: RevenueBucket["type"]) =>
+    type === "paid" ? "#2563eb" : "#06b6d4";
+  return (
+    <section className="report-subsection report-revenue-breakdown rounded-xl border border-white/[0.08] bg-[#0f0f0f] p-6 md:p-8 mb-10">
+      <SectionLabel>Revenue from April leads</SectionLabel>
+      {data.intro && (
+        <p className="text-[#d4d4d4] text-sm md:text-base leading-relaxed font-[family-name:var(--font-manrope)] mb-6">
+          {data.intro}
+        </p>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+        {data.buckets.map((b, i) => {
+          const accent = accentFor(b.type);
+          return (
+            <div
+              key={i}
+              className="report-revenue-bucket relative rounded-lg border border-white/10 bg-[#0a0a0a] p-5 md:p-6 overflow-hidden flex flex-col"
+            >
+              <div
+                className="absolute top-0 left-0 right-0 h-1"
+                style={{ background: accent }}
+              />
+              <p className="text-sm md:text-base uppercase tracking-wider text-white font-semibold font-[family-name:var(--font-manrope)] mt-1">
+                {b.label}
+              </p>
+              <p
+                className="text-4xl md:text-5xl font-semibold tabular-nums leading-none my-3"
+                style={{ color: accent }}
+              >
+                {b.value}
+              </p>
+              <p className="text-sm text-[#d4d4d4] font-[family-name:var(--font-manrope)] tabular-nums">
+                {b.percent} of April lead revenue
+              </p>
+              {b.detail && (
+                <p className="text-xs text-[#a3a3a3] font-[family-name:var(--font-manrope)] leading-relaxed mt-2">
+                  {b.detail}
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      {data.total && (
+        <div className="report-revenue-total rounded-lg border border-white/[0.15] bg-white/[0.03] px-5 md:px-6 py-4 flex items-baseline justify-between gap-4 font-[family-name:var(--font-manrope)] mb-5">
+          <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#9ca3af] font-semibold">
+            {data.total.label}
+          </span>
+          <div className="text-right">
+            <span className="text-3xl md:text-4xl font-bold text-white tabular-nums block">
+              {data.total.value}
+            </span>
+            {data.total.detail && (
+              <p className="text-xs text-[#9ca3af] font-[family-name:var(--font-manrope)] mt-1">
+                {data.total.detail}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+      {data.adSpend && (
+        <div className="report-revenue-adspend mt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="rounded-md border border-white/10 bg-[#0a0a0a] p-4 font-[family-name:var(--font-manrope)]">
+              <p className="text-xs uppercase tracking-wider text-[#9ca3af] font-semibold mb-1">
+                Ad spend in April
+              </p>
+              <p className="text-2xl text-white font-semibold tabular-nums">
+                {data.adSpend.spent}
+              </p>
+            </div>
+            <div className="rounded-md border border-white/10 bg-[#0a0a0a] p-4 font-[family-name:var(--font-manrope)]">
+              <p className="text-xs uppercase tracking-wider text-[#9ca3af] font-semibold mb-1">
+                Open pipeline from paid ads
+              </p>
+              <p className="text-2xl text-white font-semibold tabular-nums">
+                {data.adSpend.pipeline}
+              </p>
+            </div>
+          </div>
+          <p className="mt-3 text-sm md:text-base text-[#a3a3a3] italic leading-relaxed font-[family-name:var(--font-manrope)]">
+            {data.adSpend.note}
+          </p>
+        </div>
       )}
     </section>
   );
@@ -941,6 +1053,7 @@ function MonthBody({ data }: { data: MonthReport }) {
       )}
       {data.leadTransparency && <LeadTransparencySection data={data.leadTransparency} />}
       {data.leadSources && data.leadSources.length > 0 && <LeadSourcesSection items={data.leadSources} note={data.leadSourcesNote} />}
+      {data.revenueBreakdown && <RevenueBreakdownSection data={data.revenueBreakdown} />}
       {data.gbpProfiles && data.gbpProfiles.length > 0 && <GBPProfilesSection rows={data.gbpProfiles} />}
       {data.reviews && <ReviewsSection data={data.reviews} />}
       {data.websiteTraffic && <WebsiteTrafficSection data={data.websiteTraffic} />}
