@@ -19,6 +19,11 @@ export interface HeadlineMetric {
   /** When present, renders two stacked value/label pairs instead of the single
    *  value layout. Used for cases like split CPL across ad channels. */
   lines?: Array<{ value: string; label: string }>;
+  /** When present, renders a hero number + per-source breakdown rows
+   *  (count | label | cpl). Used as the consolidated lead-breakdown card. */
+  breakdown?: Array<{ count: string | number; label: string; cpl: string }>;
+  /** When true, the card spans two grid columns on desktop and full width on mobile. */
+  wide?: boolean;
 }
 
 export interface MathBreakdownRow {
@@ -206,7 +211,34 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MetricCard({ value, label, sublabel, lines }: HeadlineMetric) {
+function MetricCard({ value, label, sublabel, lines, breakdown }: HeadlineMetric) {
+  if (breakdown && breakdown.length > 0) {
+    return (
+      <div className="report-metric rounded-lg border border-white/10 bg-[#0f0f0f] p-5 md:p-6 flex flex-col">
+        <div className="text-3xl md:text-4xl font-semibold text-[#06b6d4] tabular-nums leading-tight">
+          {value}
+        </div>
+        <div className="mt-2 text-sm text-white font-[family-name:var(--font-manrope)] leading-snug">
+          {label}
+        </div>
+        <div className="mt-5 pt-5 border-t border-white/10 flex flex-col gap-3 font-[family-name:var(--font-manrope)]">
+          {breakdown.map((row, i) => (
+            <div key={i} className="grid grid-cols-[2.25rem_1fr_auto] gap-3 items-baseline">
+              <div className="text-xl md:text-2xl font-semibold text-[#06b6d4] tabular-nums leading-none">
+                {row.count}
+              </div>
+              <div className="text-sm text-white leading-snug">
+                {row.label}
+              </div>
+              <div className="text-sm text-[#9ca3af] tabular-nums whitespace-nowrap">
+                {row.cpl}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
   if (lines && lines.length > 0) {
     return (
       <div className="report-metric rounded-lg border border-white/10 bg-[#0f0f0f] p-5 md:p-6 flex flex-col gap-4">
@@ -262,7 +294,9 @@ function HeadlineStripSection({ items }: { items: HeadlineMetric[] }) {
     <section className="report-subsection report-headline-strip mb-12">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {items.map((m, i) => (
-          <MetricCard key={i} {...m} />
+          <div key={i} className={m.wide ? "col-span-2" : ""}>
+            <MetricCard {...m} />
+          </div>
         ))}
       </div>
     </section>

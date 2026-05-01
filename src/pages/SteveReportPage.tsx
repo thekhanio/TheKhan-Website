@@ -13,13 +13,15 @@ const steveReport: ReportConfig = {
     headline: "40 customer leads · 18 new reviews · #1 cited by Google AI Overview in Volo",
 
     headlineMetrics: [
-      { value: "40", label: "customer leads", sublabel: "19 organic · 16 paid · 5 C&G" },
       {
-        value: "",
-        label: "cost per lead",
-        lines: [
-          { value: "$87 / lead", label: "Pavers — Google Search Ads" },
-          { value: "$43 / lead", label: "Power Washing — Google LSA" },
+        value: "40",
+        label: "customer leads in April",
+        wide: true,
+        breakdown: [
+          { count: 19, label: "Organic / SEO", cpl: "$0 / lead" },
+          { count: 12, label: "Pavers — Google Search Ads", cpl: "$87 / lead" },
+          { count: 4, label: "Power Washing — Google LSA", cpl: "$43 / lead" },
+          { count: 5, label: "Clean & Green forwarded", cpl: "$0 / lead" },
         ],
       },
       { value: "18", label: "new Google reviews", sublabel: "17 five-star · 1 fake one-star (disputed)" },
@@ -41,33 +43,6 @@ const steveReport: ReportConfig = {
         total: { value: 40, label: "unique customer leads in April" },
       },
     },
-
-    leadSources: [
-      {
-        label: "Organic / SEO",
-        detail: "Website forms · no ad spend",
-        count: 19,
-        type: "organic",
-      },
-      {
-        label: "Google Search Ads",
-        detail: "Pavers · 8 form leads + 4 phone calls",
-        count: 12,
-        type: "paid",
-      },
-      {
-        label: "Google LSA",
-        detail: "Power Washing · 4 leads (1 missed — called back, no answer)",
-        count: 4,
-        type: "paid",
-      },
-      {
-        label: "Clean & Green",
-        detail: "TheKhan forwarded leads",
-        count: 5,
-        type: "forwarded",
-      },
-    ],
 
 
     gbpProfiles: [
