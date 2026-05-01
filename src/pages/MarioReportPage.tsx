@@ -13,10 +13,18 @@ const marioReport: ReportConfig = {
       "14 customer leads · $0 ad spend · 40 reviews preserved through migration + 4 new in April",
 
     headlineMetrics: [
-      { value: "14", label: "customer leads", sublabel: "demonstration month" },
-      { value: "$0", label: "ad spend", sublabel: "every lead earned, not bought" },
-      { value: "44", label: "Google reviews", sublabel: "40 preserved + 4 new in April" },
-      { value: "5.0", label: "real customer rating", sublabel: "across 41 real reviews" },
+      {
+        value: "14",
+        label: "customer leads in April",
+        wide: true,
+        breakdown: [
+          { count: 10, label: "C&G channel", cpl: "$0 / lead" },
+          { count: 2, label: "Organic / Google Search", cpl: "$0 / lead" },
+          { count: 2, label: "Direct / Referral", cpl: "$0 / lead" },
+        ],
+      },
+      { value: "44", label: "Google reviews", sublabel: "40 baseline preserved + 4 new in April" },
+      { value: "278", label: "people who saw your business on Google" },
     ],
 
     leadTransparency: {
@@ -31,29 +39,6 @@ const marioReport: ReportConfig = {
         total: { value: 14, label: "real customer leads in April" },
       },
     },
-
-    leadSources: [
-      {
-        label: "Google Search",
-        detail: "Found you on Google, filled out the form on marioscape.com",
-        count: 2,
-        type: "organic",
-      },
-      {
-        label: "Direct / Referral",
-        detail: "Visited the site through other channels (typed URL, referred to you)",
-        count: 2,
-        type: "organic",
-      },
-      {
-        label: "C&G channel",
-        detail: "Inbound leads from Clean & Green forwarded directly to you. No referral fee, no markup.",
-        count: 10,
-        type: "forwarded",
-      },
-    ],
-    leadSourcesNote:
-      "All 14 leads delivered with $0 in ad spend. Foundation is doing the work.",
 
     gbpProfiles: [
       {
