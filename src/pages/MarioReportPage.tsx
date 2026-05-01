@@ -10,7 +10,7 @@ const marioReport: ReportConfig = {
   currentMonth: {
     month: "April 2026",
     headline:
-      "14 customer leads · $0 ad spend · 44 Google reviews preserved through GBP migration",
+      "14 customer leads · $0 ad spend · 40 reviews preserved through migration + 4 new in April",
 
     headlineMetrics: [
       { value: "14", label: "customer leads", sublabel: "demonstration month" },
@@ -135,15 +135,15 @@ const marioReport: ReportConfig = {
 
     bonuses: [
       {
-        title: "C&G lead channel feeding leads to you",
+        title: "C&G channel sending leads your way",
         highlight: "10 leads in April",
         detail:
           "Every inbound lead that comes through the legacy Clean & Green channel — phone calls, texts, emails — gets forwarded straight to you. No referral fee. No markup. 10 of April's 14 leads came through this channel.",
       },
       {
-        title: "Leads delivered straight to your inbox",
+        title: "You own the entire pipeline",
         detail:
-          "Every form submission on marioscape.com routes to your inbox. The lead pipeline belongs to you — aligns with the proposal's \"what you own\" promise. If you ever leave, you take it with you.",
+          "Website code, domain, GBP, lead inbox, analytics — all in your accounts. If you ever decide to leave, every piece goes with you. No contracts. No lock-in. The proposal's \"what you own\" promise made real.",
       },
     ],
 
@@ -200,7 +200,7 @@ const marioReport: ReportConfig = {
         {
           highlight: "50+ Google reviews",
           detail:
-            "snowballing your map ranking — Google rewards profiles with steady review velocity, and you're already at 41 real reviews on day one",
+            "snowballing your map ranking — Google rewards profiles with steady review velocity, and you're already sitting at 41 real reviews (40 from years of work, plus 1 new in April)",
         },
         {
           highlight: "Organic search becomes a primary lead source",
