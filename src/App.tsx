@@ -8,8 +8,8 @@ import PortfolioPage from "./pages/PortfolioPage";
 import AboutPage from "./pages/AboutPage";
 
 const QuestionnairePage = lazy(() => import("./pages/QuestionnairePage"));
-const SteveProposalPage = lazy(() => import("./pages/SteveProposalPage"));
-const MarioProposalPage = lazy(() => import("./pages/MarioProposalPage"));
+const SteveReportPage = lazy(() => import("./pages/SteveReportPage"));
+const MarioReportPage = lazy(() => import("./pages/MarioReportPage"));
 
 function NotFound() {
   return (
@@ -42,8 +42,9 @@ export default function App() {
           <Route path="/websites" element={<WebsitesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/premierpartners" element={<SteveProposalPage />} />
-          <Route path="/marioscape" element={<MarioProposalPage />} />
+          <Route path="/premier" element={<SteveReportPage />} />
+          <Route path="/premierpartners" element={<SteveReportPage />} />
+          <Route path="/marioscape" element={<MarioReportPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

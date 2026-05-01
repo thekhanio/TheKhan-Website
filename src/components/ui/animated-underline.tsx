@@ -16,12 +16,12 @@ export function AnimatedUnderline({ className = "", vertical = false }: Animated
   if (vertical) {
     if (!mounted) {
       return (
-        <div className={`w-[2px] rounded-full bg-gradient-to-b from-transparent via-[#2563eb] to-transparent ${className}`} />
+        <div data-decoration="true" className={`w-[2px] rounded-full bg-gradient-to-b from-transparent via-[#2563eb] to-transparent ${className}`} />
       );
     }
 
     return (
-      <div className={`relative rounded-full overflow-hidden ${className}`} style={{ minWidth: "2px" }}>
+      <div data-decoration="true" className={`relative rounded-full overflow-hidden ${className}`} style={{ minWidth: "2px" }}>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563eb]/40 to-transparent" />
         <m.div
           className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563eb] to-transparent"
@@ -41,12 +41,12 @@ export function AnimatedUnderline({ className = "", vertical = false }: Animated
 
   if (!mounted) {
     return (
-      <div className={`h-0.5 rounded-full bg-gradient-to-r from-transparent via-[#2563eb] to-transparent ${className}`} />
+      <div data-decoration="true" className={`h-0.5 rounded-full bg-gradient-to-r from-transparent via-[#2563eb] to-transparent ${className}`} />
     );
   }
 
   return (
-    <div className={`relative h-0.5 rounded-full overflow-hidden ${className}`}>
+    <div data-decoration="true" className={`relative h-0.5 rounded-full overflow-hidden ${className}`}>
       {/* Static base gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2563eb]/30 to-transparent" />
 

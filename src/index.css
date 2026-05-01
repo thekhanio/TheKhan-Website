@@ -271,3 +271,202 @@ body {
   transition: all 100ms ease;
 }
 
+/* ============================================================
+   Proposal archive — print to PDF with full visual fidelity.
+   Preserves dark theme + gradients, defeats ScrollReveal/Framer
+   Motion hidden states, hides only site nav and CTAs.
+   Scoped to .proposal-archive so the monthly report page gets
+   its own (ink-friendly) print mode separately.
+   ============================================================ */
+@media print {
+  @page {
+    margin: 0.4in;
+  }
+
+  html,
+  body {
+    background: #0a0a0a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .proposal-archive {
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .proposal-archive *,
+  .proposal-archive *::before,
+  .proposal-archive *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    /* Defeat ScrollReveal inline opacity:0/transform + Framer animations */
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Hide site chrome + decorative overlays.
+     `display: none` beats the universal `opacity: 1` above, which is
+     critical: SpotlightGlow's hover glows + AnimatedUnderline's animated
+     gradient layers are designed to be `opacity-0` on screen and would
+     otherwise be unhid by the universal rule and collide with text at
+     page breaks. */
+  .proposal-archive nav,
+  .proposal-archive [data-print-hide="true"],
+  .proposal-archive [data-decoration="true"],
+  .proposal-archive .pointer-events-none,
+  .proposal-archive svg[preserveAspectRatio] {
+    display: none !important;
+  }
+
+  /* Keep major blocks intact across page breaks where possible */
+  .proposal-archive section,
+  .proposal-archive header,
+  .proposal-archive footer {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .proposal-archive h1,
+  .proposal-archive h2,
+  .proposal-archive h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .proposal-archive p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Recover initial top padding the sticky nav was reserving */
+  .proposal-archive header {
+    padding-top: 1rem !important;
+  }
+
+  /* Chrome's print engine fails `background-clip: text` at page-break
+     boundaries — instead of clipping the gradient to glyph shapes, it
+     paints the whole element rect as a solid bar across the heading.
+     Force gradient-text elements to a solid cyan in print to dodge it. */
+  .proposal-archive [class*="bg-clip-text"] {
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    color: #06b6d4 !important;
+    -webkit-text-fill-color: #06b6d4 !important;
+  }
+}
+
+/* Client-logo print variant defaults to hidden on screen — only swaps
+   in during print. The default "screen" variant stays visible at all
+   times until print mode hides it (see @media print rules below). */
+.report-client-logo-print {
+  display: none;
+}
+
+/* ============================================================
+   Monthly report — print with full visual fidelity.
+   Preserves dark theme + brand colors so the saved PDF looks
+   like the on-screen page. Same philosophy as .proposal-archive.
+   ============================================================ */
+@media print {
+  @page {
+    margin: 0.4in;
+  }
+
+  /* Force the dark page bg to render edge-to-edge. */
+  html,
+  body {
+    background: #0a0a0a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .report-page {
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .report-page *,
+  .report-page *::before,
+  .report-page *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    /* Defeat any inline animations / transforms / transitions */
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  /* Hide site chrome + any explicitly-marked CTA */
+  .report-page nav,
+  .report-page [data-print-hide="true"] {
+    display: none !important;
+  }
+
+  /* Logo: keep the screen variant (designed for dark bg) since the
+     print bg is now also dark. Hide the brightness-shifted print
+     variant — it was for the old white-bg print mode. */
+  .report-page .report-client-logo-print {
+    display: none !important;
+  }
+
+  .report-page .report-client-logo-screen {
+    display: block !important;
+  }
+
+  /* Headings stay with their content across breaks */
+  .report-page h1,
+  .report-page h2,
+  .report-page h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Major blocks + each card type avoid mid-card splits */
+  .report-page section,
+  .report-page .report-month,
+  .report-page .report-subsection,
+  .report-page .report-metric,
+  .report-page .report-ad-box,
+  .report-page .report-bonus-card,
+  .report-page .report-deliverable,
+  .report-page .report-seo-win,
+  .report-page .report-ai-overview,
+  .report-page .report-lead-transparency,
+  .report-page .report-headline-strip,
+  .report-page .report-next-step-card,
+  .report-page .report-next-step-group,
+  .report-page .report-lead-source-card,
+  .report-page .report-lead-sources-total,
+  .report-page .report-math-breakdown {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .report-page p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Prior months: collapse in print regardless of UI open state.
+     The PDF should be the current month only. */
+  .report-page .report-month-prior > *:not(summary) {
+    display: none !important;
+  }
+
+  .report-page .report-summary [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  /* Recover top padding the sticky nav was reserving */
+  .report-page .report-header {
+    padding-top: 1rem !important;
+  }
+}
+
+

@@ -51,7 +51,7 @@ export default function ProposalPage({ config }: { config: ProposalConfig }) {
         noindex
       />
 
-      <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a] text-white">
+      <div className="proposal-archive min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a] text-white">
         {/* Nav */}
         <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-white/[0.06]">
           <div className="max-w-5xl mx-auto px-6 py-4 h-20 sm:h-18 flex items-center justify-center relative">
@@ -235,7 +235,10 @@ export default function ProposalPage({ config }: { config: ProposalConfig }) {
                 <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed font-[family-name:var(--font-manrope)] mb-8">
                   {scarcity}
                 </p>
-                <a href="mailto:omair@thekhan.io?subject=I%27m%20in%20%E2%80%94%20let%27s%20go">
+                <a
+                  href="mailto:omair@thekhan.io?subject=I%27m%20in%20%E2%80%94%20let%27s%20go"
+                  data-print-hide="true"
+                >
                   <MovingBorderButton
                     as="div"
                     borderRadius="9999px"
