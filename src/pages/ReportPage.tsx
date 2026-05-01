@@ -214,14 +214,14 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function MetricCard({ value, label, sublabel, lines, breakdown }: HeadlineMetric) {
   if (breakdown && breakdown.length > 0) {
     return (
-      <div className="report-metric rounded-lg border border-white/10 bg-[#0f0f0f] p-5 md:p-6 flex flex-col">
+      <div className="report-metric h-full rounded-lg border border-white/10 bg-[#0f0f0f] p-5 md:p-6 flex flex-col">
         <div className="text-3xl md:text-4xl font-semibold text-[#06b6d4] tabular-nums leading-tight">
           {value}
         </div>
         <div className="mt-2 text-sm text-white font-[family-name:var(--font-manrope)] leading-snug">
           {label}
         </div>
-        <div className="mt-5 pt-5 border-t border-white/10 flex flex-col gap-3 font-[family-name:var(--font-manrope)]">
+        <div className="mt-5 pt-5 border-t border-white/10 flex flex-col gap-3 font-[family-name:var(--font-manrope)] flex-1 justify-center">
           {breakdown.map((row, i) => (
             <div key={i} className="grid grid-cols-[2.25rem_1fr_auto] gap-3 items-baseline">
               <div className="text-xl md:text-2xl font-semibold text-[#06b6d4] tabular-nums leading-none">
@@ -290,14 +290,22 @@ function statusLabel(status: DeliverableItem["status"]) {
 // ---------- Section renderers ----------
 
 function HeadlineStripSection({ items }: { items: HeadlineMetric[] }) {
+  const hasWide = items.some((m) => m.wide);
   return (
     <section className="report-subsection report-headline-strip mb-12">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        {items.map((m, i) => (
-          <div key={i} className={m.wide ? "col-span-2" : ""}>
-            <MetricCard {...m} />
-          </div>
-        ))}
+        {items.map((m, i) => {
+          const wrapperClass = m.wide
+            ? "col-span-2 lg:row-span-2"
+            : hasWide
+            ? "col-span-2"
+            : "";
+          return (
+            <div key={i} className={wrapperClass}>
+              <MetricCard {...m} />
+            </div>
+          );
+        })}
       </div>
     </section>
   );

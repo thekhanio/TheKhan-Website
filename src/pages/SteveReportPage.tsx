@@ -131,10 +131,10 @@ const steveReport: ReportConfig = {
 
     deliverables: [
       {
-        title: "Tracking across all 5 sites",
+        title: "Tracking across all 6 Premier sites",
         status: "done",
         detail:
-          "Every visitor across every Premier site is now tracked — organic, paid, direct. You can see where each lead came from instead of guessing.",
+          "Every visitor across all 6 sites (5 service brands + the hub) is now tracked — organic, paid, direct. You can see where each lead came from instead of guessing.",
       },
       {
         title: "Search Console — see what people type to find you",
