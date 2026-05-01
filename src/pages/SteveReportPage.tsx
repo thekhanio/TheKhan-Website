@@ -13,7 +13,7 @@ const steveReport: ReportConfig = {
     headline: "40 customer leads · 18 new reviews · #1 cited by Google AI Overview in Volo",
 
     headlineMetrics: [
-      { value: "40", label: "customer leads", sublabel: "19 organic · 16 paid · 5 forwarded" },
+      { value: "40", label: "customer leads", sublabel: "19 organic · 16 paid · 5 C&G" },
       {
         value: "",
         label: "cost per lead",
