@@ -420,7 +420,7 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>New service and city pages every month &mdash; <strong className="text-white font-semibold">rank for more services in more towns</strong></>,
+                    <>1&ndash;2 new service or city pages every month &mdash; <strong className="text-white font-semibold">rank for more services in more towns</strong></>,
                     <>Older pages refreshed regularly &mdash; <strong className="text-white font-semibold">so they keep ranking as Google updates</strong></>,
                     <>Directories cleaned up and checked quarterly &mdash; <strong className="text-white font-semibold">verified everywhere it matters</strong></>,
                     <>Google Posts published regularly &mdash; <strong className="text-white font-semibold">profile stays active in search</strong></>,
@@ -459,8 +459,8 @@ export default function ContractorsPage() {
                 <ul className="space-y-3 mt-auto">
                   {[
                     <>Past customers reactivated approximately every month &mdash; <strong className="text-white font-semibold">different messages for different customer types and seasons</strong></>,
-                    <>More pages every month &mdash; <strong className="text-white font-semibold">faster coverage across your full service area</strong></>,
-                    <>Paid ads managed &mdash; <strong className="text-white font-semibold">Google Ads + LSA, on your account, your card pays direct, zero markup</strong></>,
+                    <>3&ndash;4 new service or city pages every month &mdash; <strong className="text-white font-semibold">faster coverage across your full service area</strong></>,
+                    <>Paid ads managed &mdash; <strong className="text-white font-semibold">1 Google Ads campaign + LSA, on your account, your card pays direct, zero markup</strong></>,
                     <>Custom landing pages for ads &mdash; <strong className="text-white font-semibold">built to convert, refined as data comes in</strong></>,
                     <>Full site audit every quarter &mdash; <strong className="text-white font-semibold">find what&apos;s weakening, double down on what&apos;s working</strong></>,
                     <>Add more ad campaigns anytime &mdash; <strong className="text-white font-semibold">+$250/mo each</strong></>,
@@ -489,8 +489,15 @@ export default function ContractorsPage() {
 
           {/* Ads add-on line */}
           <ScrollReveal direction="up" delay={0.19}>
-            <p className="max-w-3xl mx-auto mb-10 text-center text-[#a3a3a3] text-sm md:text-base leading-relaxed px-4">
+            <p className="max-w-3xl mx-auto mb-6 text-center text-[#a3a3a3] text-sm md:text-base leading-relaxed px-4">
               <span className="text-white font-semibold">Want ads?</span> Machine includes both. On Foundation or Engine, add them as needed &mdash; Google Ads at $400/mo or LSA at $150/mo. Ad spend is separate, billed directly to your card by Google. You see exactly where every dollar goes.
+            </p>
+          </ScrollReveal>
+
+          {/* Multi-DBA add-on line */}
+          <ScrollReveal direction="up" delay={0.195}>
+            <p className="max-w-3xl mx-auto mb-10 text-center text-[#a3a3a3] text-sm md:text-base leading-relaxed px-4">
+              <span className="text-white font-semibold">Running multiple service brands?</span> Each tier covers one. Each additional brand &mdash; separate name, separate Google profile, separate site &mdash; is +$600/mo. Four or more, ask for a custom quote.
             </p>
           </ScrollReveal>
 
