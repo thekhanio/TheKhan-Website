@@ -64,7 +64,10 @@ export interface GBPProfileRow {
   name: string;
   views: number;
   calls: number;
-  directions: number;
+  /** Numeric value, or a string like "no data yet" when GBP hasn't surfaced
+   *  the metric for the profile. Strings render muted/italic and are
+   *  excluded from the totals row. */
+  directions: number | string;
   websiteClicks: number;
   newReviews: number;
   note?: string;
@@ -416,12 +419,15 @@ function GBPProfilesSection({ rows }: { rows: GBPProfileRow[] }) {
     (acc, r) => ({
       views: acc.views + r.views,
       calls: acc.calls + r.calls,
-      directions: acc.directions + r.directions,
+      directions:
+        acc.directions + (typeof r.directions === "number" ? r.directions : 0),
       websiteClicks: acc.websiteClicks + r.websiteClicks,
       newReviews: acc.newReviews + r.newReviews,
     }),
     { views: 0, calls: 0, directions: 0, websiteClicks: 0, newReviews: 0 },
   );
+  // Single-row tables don't need a totals row — it just duplicates the row.
+  const showTotals = rows.length > 1;
   return (
     <section className="report-subsection rounded-xl border border-white/[0.08] bg-[#0f0f0f] p-6 md:p-8 mb-10">
       <SectionLabel>Google Business Profiles</SectionLabel>
@@ -468,19 +474,29 @@ function GBPProfilesSection({ rows }: { rows: GBPProfileRow[] }) {
                 </td>
                 <td className="px-3 py-3 text-white tabular-nums text-right">{r.views}</td>
                 <td className="px-3 py-3 text-white tabular-nums text-right">{r.calls}</td>
-                <td className="px-3 py-3 text-white tabular-nums text-right">{r.directions}</td>
+                <td className="px-3 py-3 text-white tabular-nums text-right">
+                  {typeof r.directions === "number" ? (
+                    r.directions
+                  ) : (
+                    <span className="text-[#9ca3af] italic text-xs font-normal normal-case tracking-normal">
+                      {r.directions}
+                    </span>
+                  )}
+                </td>
                 <td className="px-3 py-3 text-white tabular-nums text-right">{r.websiteClicks}</td>
                 <td className="px-3 py-3 text-white tabular-nums text-right">{r.newReviews}</td>
               </tr>
             ))}
-            <tr className="border-t-2 border-white/[0.15] bg-white/[0.03]">
-              <td className="px-4 py-3 text-white font-semibold uppercase tracking-wider text-xs">Total</td>
-              <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.views}</td>
-              <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.calls}</td>
-              <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.directions}</td>
-              <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.websiteClicks}</td>
-              <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.newReviews}</td>
-            </tr>
+            {showTotals && (
+              <tr className="border-t-2 border-white/[0.15] bg-white/[0.03]">
+                <td className="px-4 py-3 text-white font-semibold uppercase tracking-wider text-xs">Total</td>
+                <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.views}</td>
+                <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.calls}</td>
+                <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.directions}</td>
+                <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.websiteClicks}</td>
+                <td className="px-3 py-3 text-white font-bold tabular-nums text-right">{totals.newReviews}</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

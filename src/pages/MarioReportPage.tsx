@@ -5,7 +5,7 @@ const marioReport: ReportConfig = {
   clientLogo: {
     src: "/portfolio/marioscape-logo.png",
     alt: "MarioScape",
-    maxHeightClass: "max-h-20 md:max-h-24",
+    maxHeightClass: "max-h-32 md:max-h-44",
   },
   currentMonth: {
     month: "April 2026",
@@ -60,7 +60,7 @@ const marioReport: ReportConfig = {
         name: "MarioScape",
         views: 278,
         calls: 3,
-        directions: 0,
+        directions: "no data yet",
         websiteClicks: 5,
         newReviews: 4,
         note: "newly renamed from Clean & Green — first month under the new brand",
@@ -74,7 +74,7 @@ const marioReport: ReportConfig = {
         "1 real five-star review from Daniel Villa: \"Great company. Great work 👍🏼\"",
         "3 fake one-star reviews flagged and reported to Google (all 3 hit the same day with generic negative-template language — appears to be a coordinated attempt)",
       ],
-      note: "Real customer rating across April: 5.0 stars. Once Google removes the 3 fakes (typical 5–14 day resolution), your displayed rating returns to 5.0 across 41 real reviews.",
+      note: "The 40 baseline reviews preserved through the Clean & Green → MarioScape migration are stable — those are reviews you'd already earned over years, just now under your own brand. April added 1 real five-star and 3 fakes on top. Real customer rating across April: 5.0 stars. Once Google removes the 3 fakes (typical 5–14 day resolution), displayed rating returns to 5.0 across 41 real reviews.",
     },
 
     websiteTraffic: {
@@ -94,7 +94,7 @@ const marioReport: ReportConfig = {
         title: "Google Business Profile migration",
         status: "done",
         detail:
-          "Profile renamed from Clean & Green to MarioScape with all 40 existing reviews preserved. The migration goal was 40+ reviews on launch — already there, plus 4 new this month. Ownership transfer to your account happens at the May 1 sit-down.",
+          "The Clean & Green profile was renamed to MarioScape — all 40 of the five-star reviews you'd already earned carried over with it. The migration goal was 40+ reviews on launch — hit on day one, plus 4 new in April on top. Ownership transfer to your account happens at the May 1 sit-down.",
       },
       {
         title: "Tracking installed",
@@ -106,7 +106,7 @@ const marioReport: ReportConfig = {
         title: "Lead routing live — leads come straight to you",
         status: "done",
         detail:
-          "Web3Forms account swapped on April 7 — every form submission on marioscape.com now lands in your inbox first. You own the lead data directly. This was a small piece of plumbing but it matters: it's the technical version of the proposal's \"what you own\" promise.",
+          "Every form submission on marioscape.com routes to your inbox. You own the lead data directly. It's the technical version of the proposal's \"what you own\" promise.",
       },
       {
         title: "Bing Places",
@@ -141,9 +141,9 @@ const marioReport: ReportConfig = {
           "Every inbound lead that comes through the legacy Clean & Green channel — phone calls, texts, emails — gets forwarded straight to you. No referral fee. No markup. 10 of April's 14 leads came through this channel.",
       },
       {
-        title: "Lead data ownership transferred",
+        title: "Leads delivered straight to your inbox",
         detail:
-          "Web3Forms account swap on April 7 means every form submission on marioscape.com goes to your inbox before anyone else's. Aligns with the proposal's \"what you own\" promise — if you ever leave, you take the lead pipeline with you.",
+          "Every form submission on marioscape.com routes to your inbox. The lead pipeline belongs to you — aligns with the proposal's \"what you own\" promise. If you ever leave, you take it with you.",
       },
     ],
 
@@ -176,7 +176,7 @@ const marioReport: ReportConfig = {
           {
             title: "Review push to 50+",
             detail:
-              "Reach out to past snow-removal clients for fresh reviews. Goal: cross 50 before next snow season. Review velocity is one of the strongest signals Google uses to rank a profile in map results.",
+              "Outreach to past snow-removal clients already started in April — fresh reviews already coming in. Continue pushing through May. Goal: cross 50 before next snow season. Review velocity is one of the strongest signals Google uses to rank a profile in map results.",
           },
           {
             title: "GBP photo refresh + posting cadence",
