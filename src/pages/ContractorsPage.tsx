@@ -104,7 +104,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "How much does marketing for home service contractors cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three monthly tiers: Foundation ($600/mo), Engine ($1,250/mo — most common), and Machine ($1,800/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill.",
+        "text": "Three monthly tiers: Foundation ($600/mo), Engine ($1,260/mo — most common), and Machine ($1,800/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill.",
       },
     },
     {
@@ -367,9 +367,10 @@ export default function ContractorsPage() {
                 <h3 className="text-sm tracking-[0.25em] uppercase text-[#a3a3a3] font-semibold mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
                   Foundation
                 </h3>
-                <p className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <p className="text-3xl md:text-4xl font-bold text-white mb-1">
                   $600<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
+                <p className="text-sm text-[#808080] mb-5">$20 a day</p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Get found.
                 </p>
@@ -404,9 +405,10 @@ export default function ContractorsPage() {
                 <h3 className="text-sm tracking-[0.25em] uppercase text-[#06b6d4] font-semibold mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
                   Engine
                 </h3>
-                <p className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  $1,250<span className="text-base font-medium text-[#808080]">/mo</span>
+                <p className="text-4xl md:text-5xl font-bold text-white mb-1">
+                  $1,260<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
+                <p className="text-sm text-[#808080] mb-5">$42 a day</p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Make the phone ring.
                 </p>
@@ -441,9 +443,10 @@ export default function ContractorsPage() {
                 <h3 className="text-sm tracking-[0.25em] uppercase text-[#a3a3a3] font-semibold mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
                   Machine
                 </h3>
-                <p className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <p className="text-3xl md:text-4xl font-bold text-white mb-1">
                   $1,800<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
+                <p className="text-sm text-[#808080] mb-5">$60 a day</p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Turn jobs away.
                 </p>
