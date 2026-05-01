@@ -16,6 +16,9 @@ export interface HeadlineMetric {
   value: string;       // "44" or "$61" or "9,129"
   label: string;       // "customer leads"
   sublabel?: string;   // "first paid month"
+  /** When present, renders two stacked value/label pairs instead of the single
+   *  value layout. Used for cases like split CPL across ad channels. */
+  lines?: Array<{ value: string; label: string }>;
 }
 
 export interface MathBreakdownRow {
@@ -203,7 +206,23 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MetricCard({ value, label, sublabel }: HeadlineMetric) {
+function MetricCard({ value, label, sublabel, lines }: HeadlineMetric) {
+  if (lines && lines.length > 0) {
+    return (
+      <div className="report-metric rounded-lg border border-white/10 bg-[#0f0f0f] p-5 md:p-6 flex flex-col gap-4">
+        {lines.map((line, i) => (
+          <div key={i}>
+            <div className="text-2xl md:text-3xl font-semibold text-[#06b6d4] tabular-nums leading-tight">
+              {line.value}
+            </div>
+            <div className="mt-1 text-xs md:text-sm text-white font-[family-name:var(--font-manrope)] leading-snug">
+              {line.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
   return (
     <div className="report-metric rounded-lg border border-white/10 bg-[#0f0f0f] p-5 md:p-6">
       <div className="text-3xl md:text-4xl font-semibold text-[#06b6d4] tabular-nums leading-tight">
