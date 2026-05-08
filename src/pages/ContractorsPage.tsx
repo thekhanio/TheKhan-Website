@@ -104,7 +104,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "How much does marketing for home service contractors cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three monthly tiers: Foundation ($600/mo), Engine ($1,260/mo — most common), and Machine ($1,800/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill.",
+        "text": "Three monthly tiers: Starter ($599/mo), Engine ($1,260/mo — most common), and Partnership ($2,200/mo). Build + setup is a one-time $1,699 (Spring 2026 launch pricing through June 30, 2026; $2,400 after). Your monthly tier kicks in Day 31. Month-to-month — cancel any month with 72 hours notice before your next bill.",
       },
     },
     {
@@ -112,7 +112,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "How long before I see more phone calls?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Google Ads can start driving calls within days of launch. Local SEO compounds — it doesn't work day one. Organic rankings take 3 to 6 months to show up meaningfully, which is why most contractors run both: ads bridge the gap while SEO builds. I'll tell you which channel fits your timeline and budget before we start, not after.",
+        "text": "Google Ads can start driving calls shortly after launch. Local SEO is the long game — it compounds over time. You'll usually start seeing some results around 3 months, real movement on the needle by 6 months, and the full payoff around the 1-year mark. That's why most contractors run both: ads bring leads right away while SEO builds for the long haul. If you want results now, ads is the play. If you want the long-term win, SEO. Both gets you both. I'll tell you which fits your timeline and budget before we start, not after.",
       },
     },
     {
@@ -120,7 +120,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "Do I own my Google Ads account, or do you?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, you keep the account, the history, and the data. Nothing of yours is locked behind me.",
+        "text": "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, everything stays with you. Nothing of yours is locked behind me.",
       },
     },
     {
@@ -137,6 +137,22 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "I work with contractors across the North Shore and Chicagoland — Deerfield, Highland Park, Lake Forest, Northbrook, Glencoe, Winnetka, Bannockburn, Evanston, and the broader Chicago metro area. Remote clients anywhere in the US welcome if the project fits.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer exclusive territory protection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, on the Partnership tier. You lock up to 8 cities of your choice — I won't take a competitor of yours in any of those cities. Beyond 8 cities is +$100/mo per city. At Starter and Engine, I won't double up on competitors in the same service area either — that's just how I run. But Partnership is the only tier where exclusivity is locked in writing. If a competitor of yours ever tries to sign me on for your locked cities, the answer is no.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with contractors running multiple service brands?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Each tier covers one brand — one site, one Google profile, one set of reviews. Each additional brand is +$649/mo on top of your monthly tier. Setup for additional brands is quoted separately based on scope. If you're running multiple service brands, tell me upfront — I'll lay out what makes sense for your situation.",
       },
     },
   ],
@@ -354,21 +370,21 @@ export default function ContractorsPage() {
                 Three tiers, all month-to-month.
               </h2>
               <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed">
-                Your monthly starts the day your site goes live. Cancel any month with 72 hours notice before your next bill. The website build is $750 upfront.
+                Build + setup is a one-time $1,699 (<span className="line-through text-[#606060]">$2,400</span> &mdash; Spring 2026 launch pricing through June 30, 2026). Your monthly tier kicks in Day 31.
               </p>
             </ScrollReveal>
           </div>
 
           {/* Tier cards */}
           <div className="grid md:grid-cols-3 gap-6 md:items-stretch mb-8">
-            {/* Foundation */}
+            {/* Starter */}
             <ScrollReveal direction="up" delay={0.05}>
               <div className="md:mt-8 h-full bg-[#111111] rounded-2xl border border-white/[0.08] p-8 flex flex-col">
                 <h3 className="text-sm tracking-[0.25em] uppercase text-[#a3a3a3] font-semibold mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
-                  Foundation
+                  Starter
                 </h3>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-1">
-                  $600<span className="text-base font-medium text-[#808080]">/mo</span>
+                  $599<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
                 <p className="text-sm text-[#808080] mb-5">$20 a day</p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
@@ -379,13 +395,13 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>Custom-coded site hosted and kept online &mdash; <strong className="text-white font-semibold">secure, monitored, contact form working</strong></>,
-                    <>Google Business Profile kept active and watched &mdash; <strong className="text-white font-semibold">photos posted, reviews and edits caught fast</strong></>,
+                    <>Custom-coded site hosted and watched &mdash; <strong className="text-white font-semibold">secure, monitored, contact form working</strong></>,
+                    <>Google Business Profile kept active &mdash; <strong className="text-white font-semibold">photos and posts published, reviews and edits caught fast</strong></>,
                     <>Every review replied to in your voice &mdash; <strong className="text-white font-semibold">typically by next business day</strong></>,
-                    <>Past customers reactivated approximately every quarter &mdash; <strong className="text-white font-semibold">more calls from people who already know you</strong></>,
+                    <>One new page every month &mdash; <strong className="text-white font-semibold">a service, city, or FAQ that pulls in calls you&apos;re not getting now</strong></>,
                     <>Monthly 1-page report in plain English &mdash; <strong className="text-white font-semibold">traffic, leads, AI-search visibility, what&apos;s next</strong></>,
                     <>Dashboard to edit your site yourself &mdash; <strong className="text-white font-semibold">at yourdomain.com/admin</strong></>,
-                    <>Text or email me direct &mdash; <strong className="text-white font-semibold">same-day response, no tickets, no gatekeepers</strong></>,
+                    <>Text or email me direct &mdash; <strong className="text-white font-semibold">next-business-day response, no tickets, no gatekeepers</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -416,17 +432,16 @@ export default function ContractorsPage() {
                   For contractors who want jobs coming in every week &mdash; not just busy season.
                 </p>
                 <p className="text-[#06b6d4] text-xs tracking-wide uppercase font-semibold mb-3">
-                  Everything in Foundation, plus:
+                  Everything in Starter, plus:
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>1&ndash;2 new service or city pages every month &mdash; <strong className="text-white font-semibold">rank for more services in more towns</strong></>,
-                    <>Older pages refreshed regularly &mdash; <strong className="text-white font-semibold">so they keep ranking as Google updates</strong></>,
-                    <>Directories cleaned up and checked quarterly &mdash; <strong className="text-white font-semibold">verified everywhere it matters</strong></>,
-                    <>Google Posts published regularly &mdash; <strong className="text-white font-semibold">profile stays active in search</strong></>,
-                    <>Profile fully filled out and watched &mdash; <strong className="text-white font-semibold">services dialed in, customer messaging on, competitors monitored</strong></>,
-                    <>Fake reviews disputed &mdash; <strong className="text-white font-semibold">escalated through Google as far as it&apos;ll go</strong></>,
-                    <>Rank tracking across your service area &mdash; <strong className="text-white font-semibold">monthly geographic ranking map in your report</strong></>,
+                    <>2&ndash;3 new pages every month &mdash; <strong className="text-white font-semibold">you rank for more searches across your service area</strong></>,
+                    <>Your Google profile worked every week &mdash; <strong className="text-white font-semibold">posts, photos, services kept tight</strong></>,
+                    <>Geographic rank tracking &mdash; <strong className="text-white font-semibold">you see exactly where you rank in every city you serve, every month</strong></>,
+                    <>Directories kept clean &mdash; <strong className="text-white font-semibold">no conflicting info hurting your rank</strong></>,
+                    <>Fake reviews disputed &mdash; <strong className="text-white font-semibold">when a competitor posts one, I take the case to Google and push it through</strong></>,
+                    <>I send you overflow leads from my own pipeline &mdash; <strong className="text-white font-semibold">calls coming in while yours warms up</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -437,33 +452,32 @@ export default function ContractorsPage() {
               </div>
             </ScrollReveal>
 
-            {/* Machine */}
+            {/* Partnership */}
             <ScrollReveal direction="up" delay={0.15}>
               <div className="md:mt-8 h-full bg-[#111111] rounded-2xl border border-white/[0.08] p-8 flex flex-col">
                 <h3 className="text-sm tracking-[0.25em] uppercase text-[#a3a3a3] font-semibold mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
-                  Machine
+                  Partnership
                 </h3>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-1">
-                  $1,800<span className="text-base font-medium text-[#808080]">/mo</span>
+                  $2,200<span className="text-base font-medium text-[#808080]">/mo</span>
                 </p>
-                <p className="text-sm text-[#808080] mb-5">$60 a day</p>
+                <p className="text-sm text-[#808080] mb-5">$73 a day</p>
                 <p className="text-white font-semibold text-lg leading-snug mb-4">
                   Turn jobs away.
                 </p>
                 <p className="text-[#a3a3a3] text-sm leading-relaxed mb-5">
-                  For contractors ready to stop being the bottleneck.
+                  For contractors ready to lock down their service area and pick which jobs to take.
                 </p>
                 <p className="text-[#06b6d4] text-xs tracking-wide uppercase font-semibold mb-3">
                   Everything in Engine, plus:
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
-                    <>Past customers reactivated approximately every month &mdash; <strong className="text-white font-semibold">different messages for different customer types and seasons</strong></>,
-                    <>3&ndash;4 new service or city pages every month &mdash; <strong className="text-white font-semibold">faster coverage across your full service area</strong></>,
-                    <>Paid ads managed &mdash; <strong className="text-white font-semibold">1 Google Ads campaign + LSA, on your account, your card pays direct, zero markup</strong></>,
-                    <>Custom landing pages for ads &mdash; <strong className="text-white font-semibold">built to convert, refined as data comes in</strong></>,
-                    <>Full site audit every quarter &mdash; <strong className="text-white font-semibold">find what&apos;s weakening, double down on what&apos;s working</strong></>,
-                    <>Add more ad campaigns anytime &mdash; <strong className="text-white font-semibold">+$250/mo each</strong></>,
+                    <>Up to 8 cities locked to you &mdash; <strong className="text-white font-semibold">I won&apos;t take a competitor&apos;s check in any of them</strong></>,
+                    <>4&ndash;6 new pages every month &mdash; <strong className="text-white font-semibold">you cover more services and cities than competitors can keep up with</strong></>,
+                    <>Overflow leads from my pipeline &mdash; <strong className="text-white font-semibold">they come to you every month, not split with the next contractor I sign</strong></>,
+                    <>Full site audit every quarter &mdash; <strong className="text-white font-semibold">find what&apos;s slipping, double down on what&apos;s working</strong></>,
+                    <>Custom playbook built around how you work &mdash; <strong className="text-white font-semibold">scripts, templates, systems yours to keep, even if you cancel</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
@@ -475,30 +489,57 @@ export default function ContractorsPage() {
             </ScrollReveal>
           </div>
 
-          {/* $750 build education blurb */}
+          {/* Setup block */}
           <ScrollReveal direction="up" delay={0.18}>
             <div className="max-w-3xl mx-auto mb-8 p-6 md:p-8 rounded-2xl bg-[#0d0d0d] border border-white/[0.06]">
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-3">
-                Why the build is $750.
+              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+                What build + setup gets you &mdash; first 30 days
               </h3>
-              <p className="text-[#d4d4d4] text-base leading-relaxed">
-                Five pages &mdash; home, services, about, contact, area served. Each one answers a different question Google asks about your business: what you do, who you are, how to reach you, what areas you work. Template sites pile it all onto one page and Google can&apos;t sort it out.
+              <p className="text-[#06b6d4] text-base font-semibold mb-1">
+                One-time $1,699 <span className="text-[#808080] font-normal text-sm">(<span className="line-through text-[#606060]">$2,400</span> after June 30, 2026)</span>
+              </p>
+              <ul className="space-y-3 mt-5">
+                {[
+                  <>Custom-coded website (7&ndash;8 pages) &mdash; <strong className="text-white font-semibold">fast, mobile, built to rank</strong></>,
+                  <>Google Business Profile set up &mdash; <strong className="text-white font-semibold">you show up on the map for your services and area</strong></>,
+                  <>Tracking installed &mdash; <strong className="text-white font-semibold">you see where every call and click is coming from</strong></>,
+                  <>Listed where it counts for local search &mdash; <strong className="text-white font-semibold">so customers find you when they look, not just when they Google</strong></>,
+                  <>First SEO pages built and submitted to Google from day one &mdash; <strong className="text-white font-semibold">the foundation Google needs to start ranking you for the searches you care about</strong></>,
+                  <>Dashboard set up at yourdomain.com/admin &mdash; <strong className="text-white font-semibold">edit anything yourself, anytime</strong></>,
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
+                    <span className="text-[#d4d4d4] text-sm leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-[#a3a3a3] text-sm italic">
+                Day 31: your monthly tier kicks in.
               </p>
             </div>
           </ScrollReveal>
 
-          {/* Ads add-on line */}
+          {/* Add-ons block */}
           <ScrollReveal direction="up" delay={0.19}>
-            <p className="max-w-3xl mx-auto mb-6 text-center text-[#a3a3a3] text-sm md:text-base leading-relaxed px-4">
-              <span className="text-white font-semibold">Want ads?</span> Machine includes both. On Foundation or Engine, add them as needed &mdash; Google Ads at $400/mo or LSA at $150/mo. Ad spend is separate, billed directly to your card by Google. You see exactly where every dollar goes.
-            </p>
-          </ScrollReveal>
-
-          {/* Multi-DBA add-on line */}
-          <ScrollReveal direction="up" delay={0.195}>
-            <p className="max-w-3xl mx-auto mb-10 text-center text-[#a3a3a3] text-sm md:text-base leading-relaxed px-4">
-              <span className="text-white font-semibold">Running multiple service brands?</span> Each tier covers one. Each additional brand &mdash; separate name, separate Google profile, separate site &mdash; is +$600/mo. Four or more, ask for a custom quote.
-            </p>
+            <div className="max-w-3xl mx-auto mb-10 px-4">
+              <h3 className="text-center text-[#06b6d4] text-xs sm:text-sm tracking-[0.25em] uppercase font-semibold mb-6">
+                Add-ons
+              </h3>
+              <div className="space-y-5 text-[#a3a3a3] text-sm md:text-base leading-relaxed">
+                <p>
+                  <span className="text-white font-semibold">Ad management</span> &mdash; Add-on at any tier. $599/mo bundled (Google Search + LSA), $500/mo Google only, $150/mo LSA only. Partnership clients pay $500/mo bundled, first landing page included. Ad spend goes on your card direct &mdash; zero markup.
+                </p>
+                <p className="text-[#808080] text-sm italic">
+                  Engine is the best place to run ads &mdash; the ongoing optimization makes spend compound faster. Starter + ads still works, just slower organically alongside.
+                </p>
+                <p>
+                  <span className="text-white font-semibold">Custom landing pages</span> &mdash; $300 each (<span className="line-through text-[#606060]">$750</span> &mdash; Spring 2026 launch pricing through June 30, 2026). Partnership ads bundle includes the first one free; add&apos;l pages run $250 each (<span className="line-through text-[#606060]">$500</span> after June 30) at the Partnership rate.
+                </p>
+                <p>
+                  <span className="text-white font-semibold">Multiple service brands</span> &mdash; say you run paving, snow plowing, and holiday lighting as separate businesses. Each tier covers one brand. Each additional brand is +$649/mo. Build + setup quoted separately based on scope.
+                </p>
+              </div>
+            </div>
           </ScrollReveal>
 
           {/* Terms callout */}
@@ -509,7 +550,7 @@ export default function ContractorsPage() {
                   The terms, plain.
                 </h3>
                 <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                  Month-to-month. Cancel any month with 72 hours notice before your next bill. If you ever leave, I transfer every account I manage &mdash; site files, hosting, analytics. Everything goes with you.
+                  Month-to-month &mdash; cancel any month with 72 hours notice before your next bill. Build + setup is paid Day 1 and non-refundable &mdash; that&apos;s what covers the foundation work. After that, every month is your call. If you ever leave, I transfer everything I manage. Full ownership stays with you.
                 </p>
               </div>
             </SpotlightGlow>
@@ -534,6 +575,54 @@ export default function ContractorsPage() {
               </div>
             </SpotlightGlow>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ==================== WHAT I ACTUALLY DO ==================== */}
+      <section className="py-20 md:py-24 px-6 relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <ScrollReveal direction="up">
+              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
+                What I actually do
+              </h2>
+              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
+              <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed mt-6">
+                Marketing comes with a lot of acronyms. Here&apos;s what each one does for you:
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="space-y-5">
+            <ScrollReveal direction="up" delay={0.05}>
+              <div className="p-6 md:p-7 rounded-xl border border-white/[0.08] bg-[#111111]/60">
+                <p className="text-[#d4d4d4] leading-relaxed">
+                  <strong className="text-white font-semibold">You&apos;re findable in regular Google searches</strong> &mdash; when someone types &quot;[your service] in [your town],&quot; your business is part of the results. That&apos;s <strong className="text-[#06b6d4]">SEO</strong> (search engine optimization). The version that matters most for contractors is <strong className="text-[#06b6d4]">local SEO</strong> &mdash; the &quot;near me&quot; and city searches that bring jobs.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.1}>
+              <div className="p-6 md:p-7 rounded-xl border border-white/[0.08] bg-[#111111]/60">
+                <p className="text-[#d4d4d4] leading-relaxed">
+                  <strong className="text-white font-semibold">You&apos;re findable when people ask AI tools instead of typing into Google</strong> &mdash; ChatGPT, Google&apos;s AI Overviews, Perplexity. Customers are starting to ask AI things like &quot;best [your service] in [town],&quot; and your business is part of the answer. That&apos;s <strong className="text-[#06b6d4]">AEO</strong> (answer engine optimization), also called <strong className="text-[#06b6d4]">GEO</strong> (generative engine optimization). Same idea, different acronym.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.15}>
+              <div className="p-6 md:p-7 rounded-xl border border-white/[0.08] bg-[#111111]/60">
+                <p className="text-[#d4d4d4] leading-relaxed">
+                  <strong className="text-white font-semibold">Your site is built right under the hood</strong> &mdash; fast, mobile-friendly, structured the way search engines expect. That&apos;s <strong className="text-[#06b6d4]">technical SEO</strong> &mdash; the foundation everything else stands on.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.2}>
+              <div className="p-6 md:p-7 rounded-xl border border-white/[0.08] bg-[#111111]/60">
+                <p className="text-[#d4d4d4] leading-relaxed">
+                  <strong className="text-white font-semibold">The right words on each page, plus the rest of the internet pointing back to you.</strong> That&apos;s <strong className="text-[#06b6d4]">on-page SEO</strong> (content side) and <strong className="text-[#06b6d4]">off-page SEO</strong> (credibility side).
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -582,7 +671,7 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-5">
                   {[
-                    "Your budget is under $600/mo.",
+                    "Your budget is under $599/mo.",
                     "You want me to promise you a specific number of leads.",
                     "You're starting from zero — no past customers, no online presence — and need jobs this week.",
                     "You expect SEO to be driving calls inside 30 days. Google just doesn't work that way — trust takes 3 to 6 months to build. Wish it were faster.",
