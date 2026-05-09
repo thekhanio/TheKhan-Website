@@ -210,15 +210,15 @@ export default function CalvinProposalPage() {
           
           
             <p className="text-[#F5F1EB] text-lg md:text-xl leading-relaxed font-[family-name:var(--font-body)] mb-6">
-              Three paid memberships worth looking into. None are required &mdash; and the applications are something you&apos;d handle, not me. I&apos;ll point you in the right direction if you decide to pursue any of them.
+              A few memberships worth looking into. None are required. If you decide to pursue any of these, the applications are on you &mdash; but I&apos;ll point you in the right direction.
             </p>
           
           <div className="space-y-5 mb-16">
             {[
-              { title: "BBB Accreditation — about $600/year", why: "Universal credibility signal." },
-              { title: "BOMA Chicago — about $2,000/year", why: "Where Chicago property managers go to find vendors." },
-              { title: "CMSDC membership — about $1,000/year", why: "You’re already CMSDC-certified — membership is the next step. It puts you in the supplier database where corporate procurement teams search for minority vendors." },
-              { title: "BSCAI (Building Service Contractors Association International) — about $500–1,000/year", why: "Industry-specific. If you’re not already in it, worth a look — they have a contractor directory where commercial procurement teams search." },
+              { title: "BBB Accreditation", why: "Universal credibility signal." },
+              { title: "BOMA Chicago", why: "Where Chicago property managers go to find vendors." },
+              { title: "CMSDC membership", why: "You’re already CMSDC-certified — membership is the next step. It puts you in the supplier database where corporate procurement teams search for minority vendors." },
+              { title: "BSCAI (Building Service Contractors Association International)", why: "Industry-specific. If you’re not already in it, worth a look — they have a contractor directory where commercial procurement teams search." },
             ].map((item, i) => (
               
                 <div key={i} className="flex gap-4 items-start">
