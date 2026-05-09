@@ -1,50 +1,23 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { m, AnimatePresence } from "framer-motion";
-import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
 import { SEO } from "@/components/SEO";
-import { BackgroundPaths } from "@/components/ui/background-paths";
+import { Layout } from "@/components/Layout";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { AnimatedUnderline } from "@/components/ui/animated-underline";
-import { SpotlightGlow } from "@/components/ui/spotlight-glow";
-import {
-  IconPhone,
-  IconMail,
-  IconBrandLinkedin,
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconMenu2,
-  IconX,
-} from "@tabler/icons-react";
+import { Eyebrow, DisplayH2, MonoNum } from "@/components/editorial";
+import { IconPhone, IconMail } from "@tabler/icons-react";
 
 const TIMELINE_NODES = [
-  {
-    date: "Jun '24",
-    body: "I started Clean & Green Property Care as a cleaning company. My wife and I ran every clean ourselves — move-in/move-out jobs, whatever the marketing brought in from the city to the burbs. The problem was keeping up with both the marketing and the field work.",
-  },
-  {
-    date: "Jan '25",
-    body: "I stopped doing the work myself. Started running everything through subcontractors — added landscaping, power washing, gutter cleaning, and lighting installs. Margins got tighter and the volume got higher. But the business side was finally the only thing on my plate.",
-  },
-  {
-    date: "Oct '25",
-    body: "I registered TheKhan as a company. I built the first version of the site, took on my first clients, and started running marketing for them on the side. It was still a side project — but I was spending more of my week on it than I should have been.",
-  },
-  {
-    date: "Late '25",
-    body: "A couple of subcontractors fell through, so I brought the work back in-house myself. I was out in the field again, running two routes that took me 15 to 20 hours straight to finish. The company hit 84 clients at peak — and between the workload and some old injuries, I knew the labor side wasn't my edge.",
-  },
-  {
-    date: "Mar '26",
-    body: "I closed Clean & Green Property Care and went all in on TheKhan. The company phone still rings today from the SEO work I did. I know what that seat feels like — so I treat every business I work with like my own.",
-  },
+  { date: "Jun '24", body: "I started Clean & Green Property Care as a cleaning company. My wife and I ran every clean ourselves — move-in/move-out jobs from the city to the burbs. The problem was keeping up with both the marketing and the field work." },
+  { date: "Jan '25", body: "I stopped doing the work myself. Started running everything through subcontractors — added landscaping, power washing, gutter cleaning, and lighting installs. Margins got tighter and the volume got higher. But the business side was finally the only thing on my plate." },
+  { date: "Oct '25", body: "I registered TheKhan, built the first version of the site, took on my first clients, and started running marketing for them on the side. Still a side project — but I was spending more of my week on it than I should have been." },
+  { date: "Late '25", body: "A couple of subcontractors fell through, so I brought the work back myself. I was out in the field again, running two routes that took me 15 to 20 hours straight to finish. The company hit 84 clients at peak — and between the workload and some old injuries, I knew the labor side wasn't my edge." },
+  { date: "Mar '26", body: "I closed Clean & Green Property Care and went all in on TheKhan. The phone still rings from the SEO work I did. I know what that seat feels like — so I treat every business I work with like my own." },
 ];
 
 const NEXT_STEPS = [
   "I read your message myself — usually within a few hours.",
-  "I'll reach back out by call or text — whatever works for you.",
-  "If this is something you're interested in, we'll set up a time. If not, no pressure.",
+  "I'll reach back out by call or text.",
+  "If you're interested, we'll set up a time. If not, no pressure.",
 ];
 
 const ABOUT_SCHEMA = {
@@ -72,44 +45,20 @@ const ABOUT_SCHEMA = {
       "@id": "https://thekhan.io/about#omair",
       "name": "Omair Khan",
       "url": "https://thekhan.io/about",
-      "image": "https://thekhan.io/omair-headshot.webp",
+      "image": "https://thekhan.io/omair-portrait.webp",
       "jobTitle": "Founder",
-      "description": "Founder of TheKhan, an independent web design and digital marketing studio in Deerfield, Illinois. Before TheKhan, Omair built and scaled his own home service company to 84 clients before pivoting to help other contractors and small businesses grow.",
+      "description": "Founder of TheKhan, an independent web design and digital marketing studio in Deerfield, Illinois.",
       "worksFor": { "@id": "https://thekhan.io/#localbusiness" },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Deerfield",
-        "addressRegion": "IL",
-        "addressCountry": "US",
-      },
-      "knowsAbout": [
-        "Web design",
-        "Web development",
-        "SEO",
-        "Google Ads",
-        "Local SEO",
-        "Home service marketing",
-        "Small business marketing",
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/in/omair-khan-64088a357",
-      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Deerfield", "addressRegion": "IL", "addressCountry": "US" },
+      "knowsAbout": ["Web design", "Web development", "SEO", "Google Ads", "Local SEO", "Home service marketing", "Small business marketing"],
+      "sameAs": ["https://www.linkedin.com/in/omair-khan-64088a357"],
     },
   ],
 };
 
 export default function AboutPage() {
-  const [mounted, setMounted] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleNavClick = () => setMobileMenuOpen(false);
-
   return (
-    <main className="min-h-screen antialiased relative">
+    <Layout activePath="/about" contactHref="#contact">
       <SEO
         title="About Omair Khan — Founder of TheKhan | Web Design & Marketing"
         description="One-man shop. Before this I built my own home service company to 84 clients. Now I build websites and run marketing for others."
@@ -120,169 +69,76 @@ export default function AboutPage() {
         schema={ABOUT_SCHEMA}
       />
 
-      <BackgroundPaths />
-
-      {/* ==================== NAV ==================== */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/[0.05]" style={{ position: 'fixed' }}>
-        <div className="max-w-7xl mx-auto px-4 lg:px-6 py-4 lg:py-4 flex items-center justify-center lg:justify-between relative">
-          <Link to="/" className="flex flex-col cursor-pointer overflow-visible">
-            <div className="scale-[0.85] lg:scale-100 origin-center">
-              <Logo variant="white" size="sm" type="full" />
-            </div>
-          </Link>
-
-          <div className="hidden lg:flex items-center gap-12">
-            <Link to="/" className="nav-link text-[#d4d4d4] text-base tracking-wide">Home</Link>
-            <Link to="/websites" className="nav-link text-[#d4d4d4] text-base tracking-wide">Websites</Link>
-            <Link to="/contractors" className="nav-link text-[#d4d4d4] text-base tracking-wide">For Contractors</Link>
-            <Link to="/portfolio" className="nav-link text-[#d4d4d4] text-base tracking-wide">Portfolio</Link>
-            <Link to="/about" className="nav-link nav-link-active text-base tracking-wide">About</Link>
-            <a href="#contact" className="nav-button-premium px-7 py-3 bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white rounded-full text-base font-medium tracking-wide">
-              Let&apos;s Talk
-            </a>
-          </div>
-
-          <button className="lg:hidden absolute right-4 p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
-            {mobileMenuOpen ? <IconX className="w-6 h-6 text-[#06b6d4]" /> : <IconMenu2 className="w-6 h-6 text-[#06b6d4]" />}
-          </button>
-        </div>
-
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <m.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/[0.05] overflow-hidden"
-            >
-              <div className="px-4 py-5 flex flex-col items-center gap-3">
-                <Link to="/" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">Home</Link>
-                <Link to="/websites" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">Websites</Link>
-                <Link to="/contractors" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">For Contractors</Link>
-                <Link to="/portfolio" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">Portfolio</Link>
-                <Link to="/about" onClick={handleNavClick} className="nav-link nav-link-active text-base py-2">About</Link>
-                <a href="#contact" onClick={handleNavClick} className="nav-button-premium px-6 py-3 bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white rounded-full text-base font-medium text-center mt-2">
-                  Let&apos;s Talk
-                </a>
-              </div>
-            </m.div>
-          )}
-        </AnimatePresence>
-      </nav>
-
-      {/* ==================== HERO ==================== */}
-      <section className="relative z-10 flex items-center overflow-hidden pt-32 md:pt-40 pb-16 md:pb-20">
-        <div className="max-w-4xl mx-auto px-6 w-full text-center">
-          <p className={`text-[#2563eb] text-xs sm:text-sm tracking-[0.25em] uppercase font-medium mb-5 transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            About
-          </p>
-
-          <h1
-            className={`font-bold text-white leading-[1.15] mb-5 md:mb-6 text-center transition-all duration-700 delay-150 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            <span
-              className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gradient mb-6 md:mb-8"
-              style={{ fontFamily: "'Cinzel', serif" }}
-            >
+      {/* ==================== HERO — preserved two-axis composition (the template block) ==================== */}
+      <section className="section-base relative pt-16 md:pt-24 pb-16 md:pb-24 px-6 overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center">
+          <Eyebrow accent className="mb-8">About</Eyebrow>
+          <h1 className="display-h1">
+            <span className="block text-2xl sm:text-3xl md:text-4xl text-ink-muted mb-8 md:mb-10">
               Every business has two jobs.
             </span>
-
-            <span
-              className="flex items-center justify-center gap-5 sm:gap-8 md:gap-12 mb-6 md:mb-8 text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] font-medium"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            >
-              <span className="text-white">Doing<br className="sm:hidden" /> the work</span>
-              <span aria-hidden="true" className="block h-10 md:h-12 w-px bg-gradient-to-b from-transparent via-[#06b6d4] to-transparent" />
-              <span className="text-white [text-shadow:0_0_8px_rgba(255,255,255,0.6),0_0_20px_rgba(6,182,212,1),0_0_38px_rgba(6,182,212,0.75),0_0_64px_rgba(6,182,212,0.45)]">Getting<br className="sm:hidden" /> the work</span>
+            <span className="flex items-center justify-center gap-6 sm:gap-10 md:gap-14 mb-8 md:mb-10 text-sm sm:text-base md:text-lg uppercase tracking-[0.2em] font-mono">
+              <span className="text-ink-muted">Doing<br className="sm:hidden" /> the work</span>
+              <span aria-hidden="true" className="block h-10 md:h-14 w-px bg-accent" />
+              <span className="text-accent font-semibold">Getting<br className="sm:hidden" /> the work</span>
             </span>
-
-            <span
-              className="block text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl text-gradient"
-              style={{ fontFamily: "'Cinzel', serif" }}
-            >
+            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink">
               The second one is all I do now.
             </span>
           </h1>
-
-          <p className={`text-lg sm:text-xl text-[#d4d4d4] max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="lede mt-10 max-w-2xl mx-auto">
             You keep doing the work. I&apos;ll help you bring more in.
           </p>
         </div>
       </section>
 
-      {/* ==================== HANDSHAKE INTRO ==================== */}
-      <section className="py-20 md:py-24 px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <ScrollReveal direction="up">
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                Who you&apos;re working with.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
+      {/* ==================== HANDSHAKE ==================== */}
+      <section className="section-deep py-24 px-6 border-t border-line">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start">
+          <div className="md:col-span-5">
+            <ScrollReveal>
+              <img
+                src="/omair-portrait.webp"
+                alt="Omair Khan, founder of TheKhan"
+                className="w-full h-auto block"
+              />
+              <p className="mt-4 font-mono text-xs text-ink-quiet uppercase tracking-widest">
+                Omair Khan · Deerfield, IL
+              </p>
             </ScrollReveal>
           </div>
-
-          <ScrollReveal direction="up" delay={0.1}>
-            <SpotlightGlow>
-              <div className="p-8 md:p-12">
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
-                  <div className="flex-shrink-0">
-                    <img
-                      src="/omair-headshot.webp"
-                      alt="Omair Khan, founder of TheKhan"
-                      className="w-44 md:w-56 h-auto object-contain"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-5 text-[#d4d4d4] text-lg leading-relaxed text-center md:text-left">
-                    <h3 className="text-2xl md:text-3xl font-semibold text-white" style={{ fontFamily: "'Cinzel', serif" }}>
-                      Hi — I&apos;m Omair Khan.
-                    </h3>
-                    <p>
-                      I&apos;m based in the Deerfield area. At my desk most days — and usually forgetting to check the clock.
-                    </p>
-                    <p>
-                      I treat every business I work with like my own — because before this, I was running Clean &amp; Green Property Care, a home service business right here on the North Shore.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SpotlightGlow>
-          </ScrollReveal>
+          <div className="md:col-span-7">
+            <Eyebrow accent className="mb-5">Who you&apos;re working with</Eyebrow>
+            <DisplayH2 className="mb-8">Hi — I&apos;m Omair.</DisplayH2>
+            <div className="space-y-5 text-ink-muted leading-relaxed text-lg">
+              <p>I&apos;m based in the Deerfield area. At my desk most days — and usually forgetting to check the clock.</p>
+              <p>
+                I treat every business I work with like my own — because before this, I was running Clean &amp; Green Property Care, a home service business right here on the North Shore.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ==================== ORIGIN ARC ==================== */}
-      <section className="py-20 md:py-24 px-6 relative z-10">
+      {/* ==================== ORIGIN ARC — specimen timeline ==================== */}
+      <section className="section-raised py-24 md:py-32 px-6 border-t border-line">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <ScrollReveal direction="up">
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                How I got here.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
-            </ScrollReveal>
+          <div className="mb-16">
+            <Eyebrow accent className="mb-5">How I got here</Eyebrow>
+            <DisplayH2 className="mb-6">
+              I scaled a home service company to 84 clients before I shut it down.
+            </DisplayH2>
+            <p className="lede max-w-2xl">Here&apos;s why.</p>
           </div>
 
-          <ScrollReveal direction="up" delay={0.05}>
-            <p className="text-[#d4d4d4] text-lg leading-relaxed max-w-3xl mx-auto text-center mb-16">
-              I scaled a home service company to 84 clients before I shut it down. Here&apos;s why.
-            </p>
-          </ScrollReveal>
-
-          <div className="max-w-3xl mx-auto">
-            {TIMELINE_NODES.map((node, i, arr) => (
-              <ScrollReveal key={node.date} direction="up" delay={i * 0.05}>
-                <div className="flex gap-5 md:gap-6">
-                  <div className="flex flex-col items-center flex-shrink-0">
-                    <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-semibold text-[11px] md:text-xs tracking-wide flex-shrink-0 shadow-[0_0_20px_rgba(6,182,212,0.25)]">
-                      {node.date}
-                    </div>
-                    {i < arr.length - 1 && <AnimatedUnderline vertical className="flex-1 min-h-[40px] my-2" />}
-                  </div>
-                  <div className={`${i < arr.length - 1 ? 'pb-10' : ''} pt-3 md:pt-4`}>
-                    <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed">{node.body}</p>
-                  </div>
+          <div className="border-t border-line">
+            {TIMELINE_NODES.map((node) => (
+              <ScrollReveal key={node.date}>
+                <div className="grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-12 gap-y-3 py-8 border-b border-line">
+                  <p className="font-mono text-sm text-accent tracking-widest pt-1 whitespace-nowrap">
+                    {node.date}
+                  </p>
+                  <p className="text-ink-muted leading-relaxed">{node.body}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -291,188 +147,95 @@ export default function AboutPage() {
       </section>
 
       {/* ==================== WHAT THEKHAN IS NOW ==================== */}
-      <section className="py-20 md:py-24 px-6 relative z-10">
+      <section className="section-base py-24 md:py-32 px-6 border-t border-line">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <ScrollReveal direction="up">
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                What TheKhan is now.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
-            </ScrollReveal>
+          <Eyebrow accent className="mb-5">What TheKhan is now</Eyebrow>
+          <DisplayH2 className="mb-10">I do two things.</DisplayH2>
+          <div className="space-y-6 text-ink-muted text-lg leading-relaxed">
+            <p>
+              I build <Link to="/websites" className="link">custom websites</Link> for businesses that need more than a template.
+              And I run <Link to="/contractors" className="link">monthly marketing for contractors and local businesses</Link> who want their phone ringing every week.
+            </p>
+            <p>
+              I work with a handful of clients at a time. If your project doesn&apos;t fit those two cleanly,
+              reach out anyway — I partner with Velli when a project needs a bigger team.
+            </p>
           </div>
-
-          <ScrollReveal direction="up" delay={0.05}>
-            <div className="max-w-3xl mx-auto space-y-6 text-[#d4d4d4] text-lg leading-relaxed">
-              <p>
-                I do two things. I build{" "}
-                <Link to="/websites" className="text-[#06b6d4] hover:text-white underline underline-offset-4 transition-colors">custom websites</Link>
-                {" "}for businesses that need more than a template. And I run{" "}
-                <Link to="/contractors" className="text-[#06b6d4] hover:text-white underline underline-offset-4 transition-colors">monthly marketing for home service contractors</Link>
-                {" "}who want their phone ringing every week.
-              </p>
-              <p>
-                I work with a handful of clients at a time. If your project doesn&apos;t fit those two cleanly, reach out anyway — I partner with Velli when a project needs a bigger team.
-              </p>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
       {/* ==================== HOW I WORK ==================== */}
-      <section className="py-20 md:py-24 px-6 relative z-10">
+      <section className="section-deep py-24 md:py-32 px-6 border-t border-line">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <ScrollReveal direction="up">
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                How I work.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
-            </ScrollReveal>
+          <Eyebrow accent className="mb-5">How I work</Eyebrow>
+          <DisplayH2 className="mb-10">
+            Code will always outperform a template.
+          </DisplayH2>
+          <div className="space-y-7 text-ink-muted text-lg leading-relaxed">
+            <p>The site I build is yours to keep — move it anywhere, anytime.</p>
+            <p>You deal with me from day one — no front desk, no runaround, no wondering who&apos;s handling your project. Just one person, start to finish.</p>
+            <p>I&apos;d rather tell you we&apos;re not a fit on the first call than waste both our time. If that sounds right, the form&apos;s below.</p>
           </div>
-
-          <ScrollReveal direction="up" delay={0.05}>
-            <div className="max-w-3xl mx-auto space-y-7 text-[#d4d4d4] text-lg leading-relaxed">
-              <p>
-                Code will always outperform a template. That&apos;s why I build every site from scratch — and why you own every file when I&apos;m done.
-              </p>
-              <p>
-                You deal with me from day one. No front desk giving you the runaround. No wondering who&apos;s actually handling your project. Just one person, start to finish.
-              </p>
-              <p>
-                I&apos;d rather tell you we&apos;re not a fit on the first call than waste both our time. If that sounds right, the form&apos;s below.
-              </p>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
       {/* ==================== CONTACT ==================== */}
-      <section id="contact" className="py-24 px-6 relative z-10 scroll-mt-20">
-        <div className="max-w-6xl mx-auto relative">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-              Sounds like a fit?
-            </h2>
-            <p className="text-[#d4d4d4] text-lg max-w-xl mx-auto">
-              Fill out the form, or reach out by call or text. I read every message myself &mdash; usually within a few hours.
+      <section id="contact" className="section-raised py-24 md:py-32 px-6 border-t border-line scroll-mt-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 max-w-3xl">
+            <Eyebrow accent className="mb-5">Sounds like a fit?</Eyebrow>
+            <DisplayH2 className="mb-6">Let&apos;s talk.</DisplayH2>
+            <p className="lede">
+              Fill out the form, or reach out by call or text.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-10">
-            <div className="lg:col-span-2 space-y-8 flex flex-col items-center lg:items-start">
-              <div className="space-y-6">
+          <div className="grid lg:grid-cols-5 gap-12">
+            <div className="lg:col-span-2 space-y-8">
+              <div className="space-y-5">
                 <a href="tel:8472208550" className="flex items-start gap-4 group">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2563eb]/10 to-[#06b6d4]/10 border border-[#2563eb]/30 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors flex-shrink-0">
-                    <IconPhone className="w-4 h-4 text-[#2563eb]" />
+                  <div className="w-11 h-11 border border-line flex items-center justify-center flex-shrink-0 group-hover:border-accent transition-colors">
+                    <IconPhone className="w-4 h-4 text-accent" />
                   </div>
                   <div className="flex flex-col pt-1">
-                    <span className="text-[#2563eb] text-sm font-medium">Call or Text</span>
-                    <span className="text-[#d0d0d0] group-hover:text-white transition-colors">(847) 220-8550</span>
+                    <span className="eyebrow eyebrow-accent">Call or Text</span>
+                    <span className="text-ink mt-1 group-hover:text-accent transition-colors"><MonoNum>(847) 220-8550</MonoNum></span>
                   </div>
                 </a>
                 <a href="mailto:omair@thekhan.io" className="flex items-start gap-4 group">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2563eb]/10 to-[#06b6d4]/10 border border-[#2563eb]/30 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors flex-shrink-0">
-                    <IconMail className="w-4 h-4 text-[#2563eb]" />
+                  <div className="w-11 h-11 border border-line flex items-center justify-center flex-shrink-0 group-hover:border-accent transition-colors">
+                    <IconMail className="w-4 h-4 text-accent" />
                   </div>
                   <div className="flex flex-col pt-1">
-                    <span className="text-[#2563eb] text-sm font-medium">Email</span>
-                    <span className="text-[#d0d0d0] group-hover:text-white transition-colors">Omair@TheKhan.io</span>
+                    <span className="eyebrow eyebrow-accent">Email</span>
+                    <span className="text-ink mt-1 group-hover:text-accent transition-colors">Omair@TheKhan.io</span>
                   </div>
                 </a>
               </div>
 
-              <div className="pt-2 border-t border-white/[0.06] w-full">
-                <p className="text-[#2563eb] text-sm font-medium uppercase tracking-widest mb-6 pt-6">What happens next</p>
-                <div>
-                  {NEXT_STEPS.map((text, i, arr) => (
-                    <div className="flex gap-4" key={i}>
-                      <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
-                          {i + 1}
-                        </div>
-                        {i < arr.length - 1 && <AnimatedUnderline vertical className="flex-1 min-h-[28px] my-1.5" />}
-                      </div>
-                      <div className={`${i < arr.length - 1 ? 'pb-6' : ''} pt-1.5`}>
-                        <p className="text-[#d0d0d0] text-sm leading-relaxed">{text}</p>
-                      </div>
-                    </div>
+              <div className="pt-8 border-t border-line">
+                <Eyebrow accent className="mb-6">What happens next</Eyebrow>
+                <ol className="space-y-5">
+                  {NEXT_STEPS.map((text, i) => (
+                    <li key={i} className="grid grid-cols-[auto_1fr] gap-4 items-start">
+                      <span className="font-mono text-xs text-accent pt-1">0{i + 1}</span>
+                      <p className="text-ink-muted text-sm leading-relaxed">{text}</p>
+                    </li>
                   ))}
-                </div>
-                <p className="text-[#808080] text-xs italic mt-5 leading-relaxed">
-                  Prefer to skip the form? Text or call (847) 220-8550.
+                </ol>
+                <p className="text-ink-quiet text-xs italic mt-6 leading-relaxed">
+                  Prefer to skip the form? Text or call <MonoNum>(847) 220-8550</MonoNum>.
                 </p>
               </div>
             </div>
             <div className="lg:col-span-3">
-              <div className="bg-[#111111] rounded-2xl p-8 border border-white/[0.08]">
-                <ContactForm
-                  source="about-page"
-                  subjectPrefix="[About form]"
-                  showPhoneField
-                />
+              <div className="ed-card-dark">
+                <ContactForm source="about-page" subjectPrefix="[About form]" showPhoneField />
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* ==================== FOOTER ==================== */}
-      <footer className="py-16 px-6 border-t border-white/[0.06] relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-            <div className="flex flex-col items-center text-center md:items-start md:text-left">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Contact</h3>
-              <div className="space-y-2 text-[#d4d4d4] text-sm leading-relaxed">
-                <p>655 Deerfield Rd</p>
-                <p>Suite 100, Unit 404</p>
-                <p>Deerfield, IL 60015</p>
-                <div className="border-t border-white/[0.06] my-4" />
-                <p><a href="mailto:omair@thekhan.io" className="hover:text-white transition-colors">Omair@TheKhan.io</a></p>
-                <p><a href="tel:8472208550" className="hover:text-white transition-colors">(847) 220-8550</a></p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center md:items-start md:text-left">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Pages</h3>
-              <div className="space-y-2 text-[#d4d4d4] text-sm">
-                <p><Link to="/" className="hover:text-white transition-colors">Home</Link></p>
-                <p><Link to="/websites" className="hover:text-white transition-colors">Websites</Link></p>
-                <p><Link to="/contractors" className="hover:text-white transition-colors">For Contractors</Link></p>
-                <p><Link to="/portfolio" className="hover:text-white transition-colors">Portfolio</Link></p>
-                <p><Link to="/about" className="text-white transition-colors">About</Link></p>
-                <p><a href="#contact" className="hover:text-white transition-colors">Contact</a></p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Follow Along</h3>
-              <div className="flex gap-3">
-                <a href="https://www.linkedin.com/company/thekhanio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandLinkedin className="w-4 h-4" />
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61584909881446" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandFacebook className="w-4 h-4" />
-                </a>
-                <a href="https://www.instagram.com/thekhanio" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandInstagram className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <Logo variant="white" size="md" className="mb-4" />
-              <p className="text-[#a3a3a3] text-sm leading-relaxed">
-                Your digital partner.
-              </p>
-              <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                For home service businesses and growing companies.
-              </p>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-white/[0.06] text-center">
-            <p className="text-[#606060] text-sm">&copy; {new Date().getFullYear()} TheKhan. All rights reserved.</p>
-            <p className="text-[#606060] text-sm mt-2 opacity-70">Designed and built by TheKhan</p>
-          </div>
-        </div>
-      </footer>
-    </main>
+    </Layout>
   );
 }

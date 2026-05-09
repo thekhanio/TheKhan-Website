@@ -3,7 +3,7 @@ import ReportPage, { type ReportConfig } from "./ReportPage";
 const steveReport: ReportConfig = {
   client: { name: "Premier Partners", businessName: "Premier Partners" },
   clientLogo: {
-    src: "/portfolio/premier-partners-report.png",
+    src: "/portfolio/premier-partners-logo.png",
     printSrc: "/portfolio/premier-partners-report-print.png",
     alt: "Premier Partners",
     maxHeightClass: "max-h-20 md:max-h-24",

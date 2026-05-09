@@ -1,54 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { m, AnimatePresence } from "framer-motion";
-import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
 import { SEO } from "@/components/SEO";
-import { BackgroundPaths } from "@/components/ui/background-paths";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { AnimatedUnderline } from "@/components/ui/animated-underline";
-import { SpotlightGlow } from "@/components/ui/spotlight-glow";
-import {
-  IconPhone,
-  IconMail,
-  IconBrandLinkedin,
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconMenu2,
-  IconX,
-  IconCheck,
-  IconChevronDown,
-} from "@tabler/icons-react";
+import { Layout } from "@/components/Layout";
+import { Eyebrow, DisplayH1, DisplayH2, MonoNum } from "@/components/editorial";
+import { IconPhone, IconMail, IconCheck, IconChevronDown } from "@tabler/icons-react";
 
 const faqs = [
-  {
-    q: "Do I need my own domain?",
-    a: "If you don't have one, I'll walk you through buying it (about $12/year through GoDaddy, Namecheap, or whichever provider you prefer). You register it in your own account, with your own login. You own it forever — even if we never talk again.",
-  },
-  {
-    q: "Where will my site be hosted?",
-    a: "On modern hosting that's free for small business sites. Your only ongoing cost is your domain renewal — about $12 a year.",
-  },
-  {
-    q: "Can you migrate my existing Wix or Squarespace site?",
-    a: "I'll use your existing copy, photos, and content — anything that's yours, I move over. But the site itself gets built from scratch on custom code, which gives you a faster, cleaner result than dragging an old template along. Priced like any new build — Starter, Full, or Authority Site, depending on what you need.",
-  },
-  {
-    q: "What if my content isn't ready yet?",
-    a: "That's normal. Most people don't have polished copy or photos lined up before they hire me. I'll write the copy from what you tell me — you just review it. For photos, I'll tell you exactly what I need and help you figure out how to source it.",
-  },
-  {
-    q: "What if I want changes after launch?",
-    a: "Two options. Grab the optional dashboard ($59/mo) and edit anything yourself in a few clicks. Or text me for one-off updates — I'll quote each one upfront before I start. If you're going to be making changes regularly, the dashboard usually makes more sense.",
-  },
-  {
-    q: "Do I sign a long-term contract?",
-    a: "No. Site-only builds (Starter, Full, or Authority Site) are one-time projects — 50% paid Day 1 to start the build, 50% on launch, no retainer, no cancellation fee. The Marketing Bundle includes a monthly marketing tier that kicks in Day 31, billed month-to-month — cancel any month with 72 hours notice before your next bill. The optional dashboard ($59/mo) is also month-to-month with the same 72-hour cancel.",
-  },
-  {
-    q: "How and when do I pay?",
-    a: "Site-only builds: 50% paid Day 1 to start the build, 50% on launch. Marketing Bundle: build + setup paid Day 1, non-refundable. Either way — card or Zelle, your call. Invoiced upfront, no hidden fees, no surprise invoices.",
-  },
+  { q: "Do I need my own domain?", a: "If you don't have one, I'll walk you through buying it (about $12/year through GoDaddy, Namecheap, or whichever provider you prefer). You register it in your own account, with your own login. You own it forever — even if we never talk again." },
+  { q: "Where will my site be hosted?", a: "On modern hosting that's free for small business sites. Your only ongoing cost is your domain renewal — about $12 a year." },
+  { q: "Can you migrate my existing Wix or Squarespace site?", a: "I'll use your existing copy, photos, and content — anything that's yours, I move over. But I rebuild the site fresh, which gets you a faster, cleaner result than dragging an old template along. Priced like any new build — Starter, Full, or Authority Site, depending on what you need." },
+  { q: "What if my content isn't ready yet?", a: "That's normal. Most people don't have polished copy or photos lined up before they hire me. I'll write the copy from what you tell me — you just review it. For photos, I'll tell you exactly what I need and help you figure out how to source it." },
+  { q: "What if I want changes after launch?", a: "Two options. Grab the optional dashboard ($59/mo) and edit anything yourself in a few clicks. Or text me for one-off updates — I'll quote each one upfront before I start. If you're going to be making changes regularly, the dashboard usually makes more sense." },
+  { q: "Do I sign a long-term contract?", a: "No. Site-only builds (Starter, Full, or Authority Site) are one-time projects — 50% paid Day 1 to start the build, 50% on launch, no monthly fee, no cancellation fee. The Marketing Bundle includes a monthly marketing tier that kicks in Day 31, billed month-to-month — cancel any month with 72 hours notice before your next bill. The optional dashboard ($59/mo) is also month-to-month with the same 72-hour cancel." },
+  { q: "How and when do I pay?", a: "Site-only builds: 50% paid Day 1 to start the build, 50% on launch. Marketing Bundle: build + setup paid Day 1, non-refundable. Either way — card or Zelle, your call. Invoiced upfront, no hidden fees, no surprise invoices." },
 ];
 
 const PAGE_TITLE = "Custom Web Design — Deerfield, IL | Sites You Own";
@@ -71,7 +37,7 @@ const SERVICE_SCHEMA = {
   "@type": "Service",
   "@id": "https://thekhan.io/websites#service",
   "name": "Custom Website Design & Development",
-  "description": "Custom-coded websites built from scratch for small businesses and growing companies. Three site tiers (Starter, Full, Authority) or the Marketing Bundle with ongoing marketing handoff. Mobile-responsive, SEO-optimized, owner-controlled — no template platforms, no required retainer.",
+  "description": "Custom-coded websites built from scratch for small businesses and growing companies.",
   "provider": { "@id": "https://thekhan.io/#localbusiness" },
   "areaServed": ["Chicago metropolitan area", "United States"],
   "offers": [
@@ -86,30 +52,63 @@ const FAQ_SCHEMA_FOR_HEAD = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://thekhan.io/websites#faq",
-  "mainEntity": [
-    { "@type": "Question", "name": "Do I need my own domain?", "acceptedAnswer": { "@type": "Answer", "text": "If you don't have one, I'll walk you through buying it (about $12/year through GoDaddy, Namecheap, or whichever provider you prefer). You register it in your own account, with your own login. You own it forever — even if we never talk again." } },
-    { "@type": "Question", "name": "Where will my site be hosted?", "acceptedAnswer": { "@type": "Answer", "text": "On modern hosting that's free for small business sites. Your only ongoing cost is your domain renewal — about $12 a year." } },
-    { "@type": "Question", "name": "Can you migrate my existing Wix or Squarespace site?", "acceptedAnswer": { "@type": "Answer", "text": "I'll use your existing copy, photos, and content — anything that's yours, I move over. But the site itself gets built from scratch on custom code, which gives you a faster, cleaner result than dragging an old template along. Priced like any new build — Starter, Full, or Authority Site, depending on what you need." } },
-    { "@type": "Question", "name": "What if my content isn't ready yet?", "acceptedAnswer": { "@type": "Answer", "text": "That's normal. Most people don't have polished copy or photos lined up before they hire me. I'll write the copy from what you tell me — you just review it. For photos, I'll tell you exactly what I need and help you figure out how to source it." } },
-    { "@type": "Question", "name": "What if I want changes after launch?", "acceptedAnswer": { "@type": "Answer", "text": "Two options. Grab the optional dashboard ($59/mo) and edit anything yourself in a few clicks. Or text me for one-off updates — I'll quote each one upfront before I start. If you're going to be making changes regularly, the dashboard usually makes more sense." } },
-    { "@type": "Question", "name": "Do I sign a long-term contract?", "acceptedAnswer": { "@type": "Answer", "text": "No. Site-only builds (Starter, Full, or Authority Site) are one-time projects — 50% paid Day 1 to start the build, 50% on launch, no retainer, no cancellation fee. The Marketing Bundle includes a monthly marketing tier that kicks in Day 31, billed month-to-month — cancel any month with 72 hours notice before your next bill. The optional dashboard ($59/mo) is also month-to-month with the same 72-hour cancel." } },
-    { "@type": "Question", "name": "How and when do I pay?", "acceptedAnswer": { "@type": "Answer", "text": "Site-only builds: 50% paid Day 1 to start the build, 50% on launch. Marketing Bundle: build + setup paid Day 1, non-refundable. Either way — card or Zelle, your call. Invoiced upfront, no hidden fees, no surprise invoices." } }
-  ]
+  "mainEntity": faqs.map((f) => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })),
 };
 
+interface TierProps {
+  name: string;
+  price: string;
+  was: string;
+  blurb: string;
+  features: React.ReactNode[];
+  inheritsFrom?: string;
+  ctaLabel: string;
+  featured?: boolean;
+}
+
+function Tier({ name, price, was, blurb, features, inheritsFrom, ctaLabel, featured }: TierProps) {
+  return (
+    <a
+      href="#contact"
+      aria-label={`${ctaLabel} — go to contact form`}
+      className={`lift relative h-full flex flex-col p-10 md:p-12 border ${featured ? "border-accent border-2" : "border-line"} bg-bg-raised cursor-pointer transition-colors`}
+    >
+      {featured && (
+        <p className="absolute -top-3 left-10 bg-accent text-bg px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
+          Most common
+        </p>
+      )}
+      <Eyebrow accent className="mb-4">{name}</Eyebrow>
+      <div className="flex items-baseline gap-3 mb-3">
+        <span className="display-h2 text-5xl md:text-6xl text-ink">{price}</span>
+        <span className="font-mono text-sm text-ink-faint line-through">{was}</span>
+      </div>
+      <p className="text-ink-quiet text-sm italic mb-8">{blurb}</p>
+      {inheritsFrom && (
+        <p className="font-mono text-[11px] tracking-widest uppercase text-accent mb-4">
+          Everything in {inheritsFrom}, plus:
+        </p>
+      )}
+      <ul className="space-y-3 mb-10 flex-1">
+        {features.map((item, i) => (
+          <li key={i} className="flex items-start gap-3 text-ink-muted text-sm leading-relaxed">
+            <IconCheck className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <span className={featured ? "btn-primary text-sm" : "btn-ghost text-sm"}>
+        {ctaLabel}
+      </span>
+    </a>
+  );
+}
+
 export default function WebsitesPage() {
-  const [mounted, setMounted] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleNavClick = () => setMobileMenuOpen(false);
-
   return (
-    <main className="min-h-screen antialiased relative">
+    <Layout activePath="/websites" contactHref="#contact">
       <SEO
         title={PAGE_TITLE}
         description={PAGE_DESC}
@@ -118,543 +117,298 @@ export default function WebsitesPage() {
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
         schema={[BREADCRUMB_SCHEMA, SERVICE_SCHEMA, FAQ_SCHEMA_FOR_HEAD]}
       />
-      <BackgroundPaths />
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/[0.05]" style={{ position: 'fixed' }}>
-        <div className="max-w-7xl mx-auto px-4 lg:px-6 py-4 lg:py-4 flex items-center justify-center lg:justify-between relative">
-          <Link to="/" className="flex flex-col cursor-pointer overflow-visible">
-            <div className="scale-[0.85] lg:scale-100 origin-center">
-              <Logo variant="white" size="sm" type="full" />
-            </div>
-          </Link>
-
-          <div className="hidden lg:flex items-center gap-12">
-            <Link to="/" className="nav-link text-[#d4d4d4] text-base tracking-wide">Home</Link>
-            <Link to="/websites" className="nav-link nav-link-active text-base tracking-wide">Websites</Link>
-            <Link to="/contractors" className="nav-link text-[#d4d4d4] text-base tracking-wide">For Contractors</Link>
-            <Link to="/portfolio" className="nav-link text-[#d4d4d4] text-base tracking-wide">Portfolio</Link>
-            <Link to="/about" className="nav-link text-[#d4d4d4] text-base tracking-wide">About</Link>
-            <a href="#contact" className="nav-button-premium px-7 py-3 bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white rounded-full text-base font-medium tracking-wide">
-              Let&apos;s Talk
-            </a>
-          </div>
-
-          <button className="lg:hidden absolute right-4 p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
-            {mobileMenuOpen ? <IconX className="w-6 h-6 text-[#06b6d4]" /> : <IconMenu2 className="w-6 h-6 text-[#06b6d4]" />}
-          </button>
-        </div>
-
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <m.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/[0.05] overflow-hidden"
-            >
-              <div className="px-4 py-5 flex flex-col items-center gap-3">
-                <Link to="/" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">Home</Link>
-                <Link to="/websites" onClick={handleNavClick} className="nav-link nav-link-active text-base py-2">Websites</Link>
-                <Link to="/contractors" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">For Contractors</Link>
-                <Link to="/portfolio" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">Portfolio</Link>
-                <Link to="/about" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">About</Link>
-                <a href="#contact" onClick={handleNavClick} className="nav-button-premium px-6 py-3 bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white rounded-full text-base font-medium text-center mt-2">
-                  Let&apos;s Talk
-                </a>
-              </div>
-            </m.div>
-          )}
-        </AnimatePresence>
-      </nav>
 
       {/* ==================== HERO ==================== */}
-      <section className="relative z-10 flex items-center overflow-hidden pt-32 md:pt-40 pb-16 md:pb-20">
-        <div className="max-w-4xl mx-auto px-6 w-full text-center">
-          <p className={`text-[#2563eb] text-xs sm:text-sm font-medium tracking-[0.25em] uppercase mb-5 transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Just need a website?
+      <section className="section-base relative pt-16 md:pt-24 pb-20 md:pb-28 px-6 lg:px-12">
+        <div className="max-w-[1600px] mx-auto">
+          <Eyebrow accent className="mb-8">Websites</Eyebrow>
+          <DisplayH1 className="max-w-6xl">
+            A site you own.
+            <br />
+            <span className="text-accent">Built to rank.</span>
+          </DisplayH1>
+          <p className="lede mt-12 max-w-2xl">
+            Live in <MonoNum>1</MonoNum> to <MonoNum>6</MonoNum> weeks. The site is yours — move it anywhere you want. No monthly fees.
           </p>
-          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-4 md:mb-5 text-center transition-all duration-700 delay-150 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="text-gradient">
-              You own the site I build.
-            </span>
-          </h1>
-
-          <p className={`text-lg sm:text-xl md:text-2xl text-[#a3a3a3] mb-8 md:mb-10 max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Every file, the domain, the logins — yours. Launched in 1–6 weeks. No retainer.
-          </p>
-
-          <div className={`flex flex-col items-center justify-center gap-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <a
-              href="#contact"
-              className="clickable-hover w-full sm:w-72 px-6 py-4 rounded-full text-[#d4d4d4] hover:text-white border border-white/[0.15] hover:border-transparent shadow-[0_0_20px_rgba(6,182,212,0.2)] hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:bg-gradient-to-r hover:from-[#2563eb] hover:to-[#06b6d4] transition-all duration-200 ease-out text-base tracking-wide text-center hover:-translate-y-0.5 active:scale-[0.97]"
-            >
-              Start your build
-            </a>
-            <a href="#pricing" className="text-[#06b6d4] hover:text-white text-sm tracking-wide transition-colors">
-              See pricing ↓
+          <div className="mt-12 flex flex-wrap items-center gap-8">
+            <a href="#contact" className="btn-primary">Start your build &rarr;</a>
+            <a href="#pricing" className="text-accent-light hover:text-ink text-sm tracking-wide underline underline-offset-4 decoration-accent-line hover:decoration-ink transition-colors">
+              See pricing &darr;
             </a>
           </div>
-
-          <p className={`text-[#808080] text-sm italic mt-8 transition-all duration-700 delay-[350ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            &mdash; Want me to handle marketing after launch? See the Marketing Bundle below. &mdash;
-          </p>
-
-          <p className={`text-[#a3a3a3] text-sm mt-6 transition-all duration-700 delay-[400ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <Link to="/portfolio" className="text-[#06b6d4] hover:text-white underline underline-offset-4 transition-colors">
-              See the work →
+          <p className="mt-10">
+            <Link to="/portfolio" className="link text-sm">
+              See more work I&apos;ve shipped &rarr;
             </Link>
           </p>
         </div>
       </section>
 
       {/* ==================== PRICING ==================== */}
-      <section id="pricing" className="py-24 px-6 relative z-10 scroll-mt-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <ScrollReveal direction="up">
-              <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">What it costs</p>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                Pick what fits.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6 mb-6" />
-              <p className="text-[#d4d4d4] text-lg max-w-2xl mx-auto">
-                Same build quality on every tier &mdash; fast, mobile-friendly, built to rank, and yours to keep. The only thing that changes is how many pages you get and how deep we go. Prices below are Spring 2026 launch pricing &mdash; locked through June 30, 2026.
-              </p>
-            </ScrollReveal>
+      <section id="pricing" className="section-raised py-24 md:py-32 px-6 lg:px-12 border-t border-line scroll-mt-20">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="mb-12 max-w-3xl">
+            <Eyebrow accent className="mb-8">What it costs</Eyebrow>
+            <DisplayH2 className="mb-8">Pick what fits.</DisplayH2>
+            <p className="lede">
+              Same build on every tier. The more pages, the more services people can find you for.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Tier 1 — STARTER SITE */}
-            <ScrollReveal direction="up" delay={0.1}>
-              <SpotlightGlow>
-                <div className="p-8 md:p-10 h-full flex flex-col">
-                  <p className="text-[#06b6d4] text-xs font-medium tracking-[0.25em] uppercase mb-3">Starter Site</p>
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$750</span>
-                    <span className="text-base text-[#606060] line-through">$1,200</span>
-                  </div>
-                  <p className="text-[#a3a3a3] text-sm italic mb-6">For a small business that needs a real site, built right, owned in full.</p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {[
-                      <>5 pages &mdash; <strong className="text-white font-semibold">home, about, services, contact, plus one more (gallery or FAQ)</strong></>,
-                      <>Fast loading, no template &mdash; <strong className="text-white font-semibold">no monthly platform fee, ever</strong></>,
-                      <>Contact form, click-to-call, map embed on every page &mdash; <strong className="text-white font-semibold">3 ways to reach you from anywhere on the site</strong></>,
-                      <>Built to rank &mdash; <strong className="text-white font-semibold">Google has the structure to start showing your pages when people search for your services</strong></>,
-                      <>Tracking installed &mdash; <strong className="text-white font-semibold">you see where visitors came from and what they did on the site</strong></>,
-                      <>2 rounds of revisions before launch &mdash; <strong className="text-white font-semibold">catch what you want changed, no hourly clock running</strong></>,
-                      <>Every file, the domain, and the logins &mdash; <strong className="text-white font-semibold">yours, day one</strong></>,
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[#d4d4d4] text-sm leading-relaxed">
-                        <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a href="#contact" className="block w-full text-center px-6 py-3.5 rounded-full text-[#d4d4d4] hover:text-white border border-white/[0.15] hover:border-transparent hover:bg-gradient-to-r hover:from-[#2563eb] hover:to-[#06b6d4] transition-all duration-200 text-sm tracking-wide">
-                    Start a Starter Site →
-                  </a>
-                </div>
-              </SpotlightGlow>
-            </ScrollReveal>
+          <p className="font-mono text-[11px] tracking-widest uppercase text-accent mb-8">
+            Spring 2026 launch pricing — locked through June 30, 2026
+          </p>
 
-            {/* Tier 2 — FULL SITE (Most Common) */}
-            <ScrollReveal direction="up" delay={0.2}>
-              <div className="relative h-full">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <span className="px-4 py-1 rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white text-xs font-semibold tracking-widest uppercase shadow-[0_0_20px_rgba(6,182,212,0.5)]">
-                    Most Common
-                  </span>
-                </div>
-                <div className="relative h-full rounded-2xl border-2 border-[#06b6d4]/40 bg-[#111111] shadow-[0_0_40px_rgba(6,182,212,0.15)]">
-                  <div className="p-8 md:p-10 h-full flex flex-col">
-                    <p className="text-[#06b6d4] text-xs font-medium tracking-[0.25em] uppercase mb-3">Full Site</p>
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$1,200</span>
-                      <span className="text-base text-[#606060] line-through">$1,800</span>
-                    </div>
-                    <p className="text-[#a3a3a3] text-sm italic mb-6">For a business with multiple services, locations, or audiences to cover.</p>
-                    <p className="text-[#06b6d4] text-xs tracking-wide uppercase font-semibold mb-3">Everything in Starter Site, plus:</p>
-                    <ul className="space-y-3 mb-8 flex-1">
-                      {[
-                        <>7&ndash;8 pages &mdash; <strong className="text-white font-semibold">2&ndash;3 more pages so you show up for more of the searches your customers run</strong></>,
-                        <>Expanded copywriting on every page &mdash; <strong className="text-white font-semibold">written to convert visitors, not just fill space</strong></>,
-                        <>More design depth on every page &mdash; <strong className="text-white font-semibold">testimonials, FAQs, custom sections that earn the visitor&apos;s trust</strong></>,
-                        <>3 rounds of revisions &mdash; <strong className="text-white font-semibold">more time to dial it in before launch</strong></>,
-                      ].map((item, i) => (
-                        <li key={i} className="flex items-start gap-3 text-[#d4d4d4] text-sm leading-relaxed">
-                          <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <a href="#contact" className="block w-full text-center px-6 py-3.5 rounded-full text-white bg-gradient-to-r from-[#2563eb] to-[#06b6d4] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-all duration-200 text-sm tracking-wide font-medium">
-                      Start a Full Site →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Tier 3 — AUTHORITY SITE */}
-            <ScrollReveal direction="up" delay={0.3}>
-              <SpotlightGlow>
-                <div className="p-8 md:p-10 h-full flex flex-col">
-                  <p className="text-[#06b6d4] text-xs font-medium tracking-[0.25em] uppercase mb-3">Authority Site</p>
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$1,800</span>
-                    <span className="text-base text-[#606060] line-through">$2,300</span>
-                  </div>
-                  <p className="text-[#a3a3a3] text-sm italic mb-6">For a business with a deep service catalog, multiple locations, or both.</p>
-                  <p className="text-[#06b6d4] text-xs tracking-wide uppercase font-semibold mb-3">Everything in Full Site, plus:</p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {[
-                      <>10+ pages &mdash; <strong className="text-white font-semibold">each service or location gets its own page, built for the search that matches it</strong></>,
-                      <>Page-by-page plan up front &mdash; <strong className="text-white font-semibold">I map out which 10+ pages earn their keep before building any of them</strong></>,
-                      <>More design depth &mdash; <strong className="text-white font-semibold">custom layouts on each page, no two pages feel the same</strong></>,
-                      <>4 rounds of revisions &mdash; <strong className="text-white font-semibold">the biggest scope deserves the most refinement before launch</strong></>,
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[#d4d4d4] text-sm leading-relaxed">
-                        <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a href="#contact" className="block w-full text-center px-6 py-3.5 rounded-full text-[#d4d4d4] hover:text-white border border-white/[0.15] hover:border-transparent hover:bg-gradient-to-r hover:from-[#2563eb] hover:to-[#06b6d4] transition-all duration-200 text-sm tracking-wide">
-                    Start an Authority Site →
-                  </a>
-                </div>
-              </SpotlightGlow>
-            </ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Tier
+              name="Starter Site"
+              price="$750"
+              was="$1,200"
+              blurb="For a small business that needs a real site, built right, owned in full."
+              features={[
+                <>5 pages — <strong className="text-ink font-semibold">home, about, services, contact, plus one more (gallery or FAQ)</strong></>,
+                <>Fast loading. <strong className="text-ink font-semibold">No template, no monthly platform fee.</strong></>,
+                <>Contact form, click-to-call, map on every page — <strong className="text-ink font-semibold">three ways to reach you.</strong></>,
+                <>Built to rank — <strong className="text-ink font-semibold">pages structured to show up when people search for your services.</strong></>,
+                <>Tracking installed — <strong className="text-ink font-semibold">you see where visitors came from and what they did on the site</strong></>,
+                <>2 rounds of revisions — <strong className="text-ink font-semibold">change what you want, no hourly billing.</strong></>,
+                <>Site, domain, and logins — <strong className="text-ink font-semibold">yours, day one.</strong></>,
+              ]}
+              ctaLabel="Start a Starter Site →"
+            />
+            <Tier
+              name="Full Site"
+              price="$1,200"
+              was="$1,800"
+              blurb="For a business with multiple services, locations, or audiences to cover."
+              inheritsFrom="Starter Site"
+              featured
+              features={[
+                <>7–8 pages — <strong className="text-ink font-semibold">2–3 more pages so you show up for more of the searches your customers run</strong></>,
+                <>Expanded copywriting on every page — <strong className="text-ink font-semibold">written to convert visitors, not just fill space</strong></>,
+                <>More design depth on every page — <strong className="text-ink font-semibold">testimonials, FAQs, custom sections that earn the visitor&apos;s trust</strong></>,
+                <>3 rounds of revisions — <strong className="text-ink font-semibold">more time to dial it in before launch</strong></>,
+              ]}
+              ctaLabel="Start a Full Site →"
+            />
+            <Tier
+              name="Authority Site"
+              price="$1,800"
+              was="$2,300"
+              blurb="For a business with a deep service catalog, multiple locations, or both."
+              inheritsFrom="Full Site"
+              features={[
+                <>10+ pages — <strong className="text-ink font-semibold">each service or location gets its own page, built for the search that matches it</strong></>,
+                <>Page-by-page plan up front — <strong className="text-ink font-semibold">I map out which pages earn their keep before building.</strong></>,
+                <>More design depth — <strong className="text-ink font-semibold">custom layouts on each page, no two pages feel the same</strong></>,
+                <>4 rounds of revisions — <strong className="text-ink font-semibold">the biggest scope deserves the most refinement before launch</strong></>,
+              ]}
+              ctaLabel="Start an Authority Site →"
+            />
           </div>
 
-          {/* Landing inline mention — also available */}
-          <ScrollReveal direction="up" delay={0.35}>
-            <div className="mt-12 max-w-2xl mx-auto text-center">
-              <p className="text-[#d4d4d4] text-base leading-relaxed">
-                <span className="text-white font-semibold">Just need a single page?</span>{" "}
-                Landing pages start at <span className="text-white font-semibold">$300</span>{" "}
-                (<span className="line-through text-[#606060]">$750</span> after June 30, 2026).{" "}
-                One page, built around the single thing you want a visitor to do &mdash; call, fill out the form, sign up, book.
-              </p>
-            </div>
-          </ScrollReveal>
+          <p className="mt-8 font-mono text-[11px] tracking-widest uppercase text-accent">
+            Need just one page? Landing pages from $300 (was $750).
+          </p>
 
-          {/* Marketing Bundle section intro */}
-          <ScrollReveal direction="up" delay={0.4}>
-            <div className="mt-20 max-w-3xl mx-auto text-center">
-              <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed">
-                Already know you want ongoing marketing? The Marketing Bundle is the bridge &mdash; the site plus the foundation that makes a monthly tier work.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Marketing Bundle callout */}
-          <ScrollReveal direction="up" delay={0.45}>
-            <div className="max-w-3xl mx-auto mt-8 p-6 md:p-8 rounded-2xl bg-[#0d0d0d] border border-white/[0.06]">
-              <p className="text-[#06b6d4] text-xs font-medium tracking-[0.25em] uppercase mb-3">Marketing Bundle</p>
-              <div className="flex items-baseline gap-3 mb-4 flex-wrap">
-                <span className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$1,699</span>
-                <span className="text-base text-[#606060] line-through">$2,400</span>
-                <span className="text-[#808080] text-sm italic">after June 30, 2026</span>
+          {/* Marketing Bundle */}
+          <div className="mt-24">
+            <div className="ed-card max-w-3xl">
+              <Eyebrow accent className="mb-4">Marketing Bundle</Eyebrow>
+              <div className="flex items-baseline gap-3 mb-8 flex-wrap">
+                <span className="display-h2 text-5xl md:text-6xl text-ink">$1,699</span>
+                <span className="font-mono text-sm text-ink-faint line-through">$2,400</span>
+                <span className="text-ink-quiet text-sm italic">after June 30, 2026</span>
               </div>
-              <ul className="space-y-3 mt-5">
+              <ul className="space-y-3">
                 {[
-                  <>Full Site (7&ndash;8 pages) &mdash; <strong className="text-white font-semibold">fast, mobile, built to rank</strong></>,
-                  <>Google Business Profile set up &mdash; <strong className="text-white font-semibold">you show up on the map for your services and area</strong></>,
-                  <>Tracking installed &mdash; <strong className="text-white font-semibold">you see where every call and click is coming from</strong></>,
-                  <>Listed where it counts for local search &mdash; <strong className="text-white font-semibold">so customers find you when they look, not just when they Google</strong></>,
-                  <>First SEO pages built and submitted to Google from day one &mdash; <strong className="text-white font-semibold">the foundation Google needs to start ranking you for the searches you care about</strong></>,
-                  <>Dashboard set up at yourdomain.com/admin &mdash; <strong className="text-white font-semibold">edit anything yourself, anytime</strong></>,
+                  <>Full Site (7–8 pages) — <strong className="text-ink font-semibold">fast, mobile, built to rank</strong></>,
+                  <>Google Business Profile set up — <strong className="text-ink font-semibold">you show up on the map for your services and area</strong></>,
+                  <>Tracking installed — <strong className="text-ink font-semibold">you see where every call and click is coming from</strong></>,
+                  <>Listed where it counts for local search — <strong className="text-ink font-semibold">so customers find you when they&apos;re looking nearby.</strong></>,
+                  <>First SEO pages built and submitted to Google from day one — <strong className="text-ink font-semibold">the foundation that gets you found for the services you offer.</strong></>,
+                  <>Dashboard set up at yourdomain.com/admin — <strong className="text-ink font-semibold">edit anything yourself, anytime</strong></>,
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
-                    <IconCheck className="w-4 h-4 text-[#06b6d4] flex-shrink-0 mt-0.5" />
-                    <span className="text-[#d4d4d4] text-sm leading-relaxed">{item}</span>
+                    <IconCheck className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                    <span className="text-ink-muted text-sm leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-[#a3a3a3] text-sm italic">
+              <p className="mt-8 text-ink-quiet text-sm italic">
                 Build + setup paid Day 1, non-refundable. Day 31, your monthly tier kicks in.
               </p>
-              <Link to="/contractors" className="block w-full text-center mt-6 px-6 py-3.5 rounded-full text-white bg-gradient-to-r from-[#2563eb] to-[#06b6d4] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-all duration-200 text-sm tracking-wide font-medium">
+              <Link to="/contractors" className="btn-primary text-sm mt-8">
                 See marketing tiers &rarr;
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
 
-          {/* Terms strip */}
-          <ScrollReveal direction="up" delay={0.5}>
-            <div className="max-w-3xl mx-auto mt-16">
-              <SpotlightGlow>
-                <div className="p-8 md:p-10">
-                  <h3 className="text-xl md:text-2xl font-semibold text-white mb-6 text-center" style={{ fontFamily: "'Cinzel', serif" }}>
-                    The terms, plain.
-                  </h3>
-                  <div className="space-y-5 text-[#d4d4d4] text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                    <p>
-                      <span className="text-white font-semibold">Site-only build (Starter, Full, or Authority Site).</span>{" "}
-                      50% paid Day 1 to start the build, 50% on launch. Site goes live in 1 to 6 weeks. One-time project &mdash; no retainer, no cancellation fee.
-                    </p>
-                    <p>
-                      <span className="text-white font-semibold">Marketing Bundle.</span>{" "}
-                      Build + setup paid Day 1, non-refundable &mdash; that&apos;s what covers the 30-day foundation work. Day 31, your monthly marketing tier kicks in. Then month-to-month &mdash; cancel any month with 72 hours notice before your next bill.
-                    </p>
-                    <p>
-                      <span className="text-white font-semibold">Either way.</span>{" "}
-                      Every file, the domain, and the logins are yours at launch. Optional dashboard ($59/mo, further down) is month-to-month &mdash; cancel any month with 72 hours notice before your next bill.
-                    </p>
-                  </div>
-                </div>
-              </SpotlightGlow>
+          <div className="max-w-3xl mt-24 pt-16 border-t border-line">
+            <DisplayH2 className="text-3xl md:text-4xl mb-8">The terms, plain.</DisplayH2>
+            <div className="space-y-6 text-ink-muted text-base md:text-lg leading-relaxed">
+              <p>
+                <span className="text-ink font-semibold">Site-only build (Starter, Full, or Authority Site).</span>{" "}
+                50% paid Day 1 to start the build, 50% on launch. Live in 1 to 6 weeks. One-time project — no monthly fee, no cancellation fee.
+              </p>
+              <p>
+                <span className="text-ink font-semibold">Marketing Bundle.</span>{" "}
+                Build + setup paid Day 1, non-refundable — that covers the 30-day foundation work. Day 31, your monthly tier kicks in. Then month-to-month — cancel any month with 72 hours notice before your next bill.
+              </p>
+              <p>
+                <span className="text-ink font-semibold">Either way.</span>{" "}
+                The site is yours at launch. <strong className="text-accent-light font-semibold">Optional</strong> dashboard ($59/mo, further down) is month-to-month — cancel any month with 72 hours notice before your next bill.
+              </p>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
       {/* ==================== WHAT'S NOT INCLUDED ==================== */}
-      <section className="py-24 px-6 relative z-10">
+      <section className="section-base py-24 md:py-32 px-6 lg:px-12 border-t border-line">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <ScrollReveal direction="up">
-              <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">Honest scope</p>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                What I don&apos;t do — on purpose.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6 mb-6" />
-              <p className="text-[#d4d4d4] text-lg max-w-2xl mx-auto">
-                What&apos;s on your tier&apos;s list is what I build. Everything else is a separate conversation — priced up front, no surprise invoices.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="space-y-6">
-            <ScrollReveal direction="up" delay={0.05}>
-              <div className="p-6 md:p-8 rounded-xl border border-white/[0.08] bg-[#111111]/60">
-                <h3 className="text-xl font-semibold text-white mb-3">1. Ongoing marketing.</h3>
-                <p className="text-[#d4d4d4] leading-relaxed">
-                  No SEO maintenance, no Google Ads, no social media, no Google Business Profile management. I build the site. I don&apos;t run your marketing. If you want that handled every month,{" "}
-                  <Link to="/contractors" className="text-[#06b6d4] hover:text-white underline underline-offset-4 not-italic">
-                    see the monthly tiers →
-                  </Link>
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal direction="up" delay={0.1}>
-              <div className="p-6 md:p-8 rounded-xl border border-white/[0.08] bg-[#111111]/60">
-                <h3 className="text-xl font-semibold text-white mb-3">2. Photos and brand assets.</h3>
-                <p className="text-[#d4d4d4] leading-relaxed">
-                  I&apos;ll write the copy — just tell me anything specific you want included and I&apos;ll draft the rest. Photos, logos, and existing brand materials are on you. If you don&apos;t have a logo yet and need something basic to get started, let me know when you reach out — I can help with that separately.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal direction="up" delay={0.15}>
-              <div className="p-6 md:p-8 rounded-xl border border-white/[0.08] bg-[#111111]/60">
-                <h3 className="text-xl font-semibold text-white mb-3">3. Post-launch edits.</h3>
-                <p className="text-[#d4d4d4] leading-relaxed">
-                  Once the site goes live, it&apos;s yours. Ongoing edits aren&apos;t part of the one-time build — but the optional dashboard (more below) lets you update anything yourself in a few clicks.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal direction="up" delay={0.2}>
-              <div className="p-6 md:p-8 rounded-xl border border-white/[0.08] bg-[#111111]/60">
-                <h3 className="text-xl font-semibold text-white mb-3">4. Custom systems.</h3>
-                <p className="text-[#d4d4d4] leading-relaxed">
-                  Custom systems aren&apos;t part of the base tiers — things like e-commerce backends, booking systems, membership logins, and payment processors. But if you already use something like Stripe, Booksy, or Calendly, I can embed the link on your site for free — quick to set up. Need a custom system built from scratch? Tell me upfront and I&apos;ll quote it as its own project.
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== WHY CUSTOM CODE ==================== */}
-      <section className="py-24 px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <ScrollReveal direction="up">
-              <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">Why custom code</p>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                Why every site is built from scratch.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6 mb-6" />
-              <p className="text-[#d4d4d4] text-lg max-w-2xl mx-auto">
-                You get more control, faster pages, and no platform lock-in.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="space-y-8">
-            <ScrollReveal direction="up" delay={0.05}>
-              <div className="flex gap-5">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-bold">1</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">It&apos;s faster where it matters.</h3>
-                  <p className="text-[#d4d4d4] leading-relaxed">
-                    Template builders load a mountain of code your site doesn&apos;t actually need. Custom-built sites only load what&apos;s used — which shows up in Google&apos;s Core Web Vitals, the speed scores Google uses to rank search results.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.1}>
-              <div className="flex gap-5">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-bold">2</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">Your SEO, not the platform&apos;s.</h3>
-                  <p className="text-[#d4d4d4] leading-relaxed">
-                    Template platforms decide what you can tune — URLs, schema, how pages load. With custom code, I decide. Every page gets built to rank for the exact search you&apos;re trying to win — not the generic version every other user on the platform gets.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.15}>
-              <div className="flex gap-5">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-bold">3</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">You actually own it — platforms don&apos;t let you leave.</h3>
-                  <p className="text-[#d4d4d4] leading-relaxed mb-3">
-                    Wix&apos;s own support docs say a Wix site can only run on Wix — you can&apos;t take it anywhere else. Squarespace exports are partial — most content won&apos;t transfer. GoDaddy has no way to export your site&apos;s pages, content, or design. Webflow lets you export HTML/CSS but not your content database. If you leave any of them, you&apos;re rebuilding from scratch.
-                  </p>
-                  <p className="text-[#d4d4d4] leading-relaxed">
-                    When I build you a custom site, every file is yours — text, images, code, structure. You can leave anytime, take it to any developer, or host it anywhere you want.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal direction="up" delay={0.25}>
-            <p className="text-center text-white text-lg md:text-xl italic mt-16 max-w-2xl mx-auto leading-relaxed">
-              Most of your competitors are locked into a platform like Wix or Squarespace. They can&apos;t leave without rebuilding from scratch. With a custom site, you don&apos;t have that problem.
+          <div className="mb-20 max-w-3xl">
+            <Eyebrow accent className="mb-8">Honest scope</Eyebrow>
+            <DisplayH2 className="mb-8">What I don&apos;t do — on purpose.</DisplayH2>
+            <p className="lede">
+              What&apos;s on your tier&apos;s list is what I build. Everything else is a separate conversation — priced up front, no surprise invoices.
             </p>
-          </ScrollReveal>
+          </div>
+
+          <div className="border-t border-line">
+            {[
+              { num: "01", title: "Ongoing marketing.", body: <>No ongoing SEO, ads, social, or Google Business Profile management. I build the site. I don&apos;t run your marketing. Want that handled monthly? <Link to="/contractors" className="link">See the monthly tiers &rarr;</Link></> },
+              { num: "02", title: "Photos and brand assets.", body: <>I&apos;ll write the copy — just tell me anything specific you want included and I&apos;ll draft the rest. Photos, logos, and existing brand materials are on you. If you don&apos;t have a logo yet and need something basic to get started, let me know when you reach out — I can help with that separately.</> },
+              { num: "03", title: "Post-launch edits.", body: <>Once the site goes live, it&apos;s yours. Ongoing edits aren&apos;t part of the one-time build — but the optional dashboard (more below) lets you update anything yourself in a few clicks.</> },
+              { num: "04", title: "Custom systems.", body: <>Custom systems aren&apos;t part of the base tiers — things like e-commerce backends, booking systems, membership logins, and payment processors. But if you already use something like Stripe, Booksy, or Calendly, I can embed the link on your site for free — quick to set up. Need a custom system built from scratch? Tell me upfront and I&apos;ll quote it as its own project.</> },
+            ].map((item) => (
+              <div key={item.num} className="grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-14 gap-y-3 py-12 border-b border-line">
+                <p className="font-mono text-sm text-accent tracking-widest pt-2">{item.num}</p>
+                <h3 className="display-h2 text-2xl md:text-3xl text-ink">{item.title}</h3>
+                <div className="col-start-2 text-ink-muted leading-relaxed text-base md:text-lg">{item.body}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ==================== DASHBOARD ==================== */}
-      <section className="py-24 px-6 relative z-10">
+      {/* ==================== ON PLATFORMS ==================== */}
+      <section className="section-deep py-24 md:py-32 px-6 lg:px-12 border-t border-line">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <ScrollReveal direction="up">
-              <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">Prefer to edit your website yourself?</p>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                I&apos;ll build you a dashboard.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6 mb-6" />
-              <p className="text-[#d4d4d4] text-lg max-w-2xl mx-auto">
-                Make every change to your site yourself — text, photos, hours, prices, blog posts, anything. No code, no HTML, no tech background needed. Click what you want to update, make the change, hit save. Works on your phone — update hours, prices, and photos from the jobsite.
-              </p>
-            </ScrollReveal>
+          <div className="mb-20 max-w-3xl">
+            <Eyebrow accent className="mb-8">On platforms</Eyebrow>
+            <DisplayH2 className="mb-8">Why I won&apos;t build you a Wix site.</DisplayH2>
+            <p className="lede">
+              Faster pages, real ownership, no lock-in.
+            </p>
           </div>
 
-          <ScrollReveal direction="up" delay={0.1}>
-            <SpotlightGlow>
-              <div className="p-8 md:p-10 space-y-6">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-3xl md:text-4xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>$59</span>
-                  <span className="text-[#a3a3a3]">/month</span>
-                  <span className="text-[#808080] text-sm italic ml-2">Completely optional. Month-to-month — cancel any month with 72 hours notice before your next bill.</span>
-                </div>
-
-                <div className="border-l-2 border-[#06b6d4]/60 pl-5">
-                  <p className="text-white font-semibold mb-2">The important part — and why this isn&apos;t a Wix subscription:</p>
-                  <p className="text-[#d4d4d4] leading-relaxed">
-                    If you cancel the dashboard, your site keeps running. The code is still yours, the site is still live — the only thing that goes away is the edit interface. You&apos;d just text me (or any developer) for changes after that.
-                  </p>
-                  <p className="text-[#d4d4d4] leading-relaxed mt-3">
-                    Cancel Wix or Squarespace? Your site disappears the same day. Here, canceling only turns off the edit tool — the site stays up either way.
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-[#a3a3a3] leading-relaxed">
-                    <span className="text-white font-semibold">Skip it if</span>{" "}
-                    <span>you set it up once and never plan to touch it. Most small business sites fall into this camp — hours don&apos;t change, services stay the same, you&apos;re not publishing weekly blog posts. If that&apos;s you, save the $59 and just text me when something needs updating.</span>
-                  </p>
-                </div>
+          <div className="border-t border-line">
+            {[
+              { num: "01", title: "Faster pages, ranked for YOUR services.", body: <>Template builders cram in code your site doesn&apos;t need. Custom sites load only what&apos;s used — they&apos;re faster, and the pages get built to rank for the searches that bring YOUR customers, not the generic version every Wix user gets.</> },
+              { num: "02", title: "You can't actually own a platform site.", body: <><span>Wix&apos;s own support docs say a Wix site can only run on Wix — you can&apos;t take it anywhere else. Squarespace exports are partial — most content won&apos;t transfer. GoDaddy has no way to export your site&apos;s pages, content, or design. Webflow lets you export HTML/CSS but not your content database.</span><span className="block mt-3">When I build you a custom site, every file is yours — text, images, code, structure. You can leave anytime, take it to any developer, or host it anywhere.</span><span className="block mt-3">Most of your competitors are locked into a platform like Wix or Squarespace. They can&apos;t leave without rebuilding from scratch. With a custom site, you don&apos;t have that problem.</span></> },
+            ].map((item) => (
+              <div key={item.num} className="grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-14 gap-y-3 py-12 border-b border-line">
+                <p className="font-mono text-sm text-accent tracking-widest pt-2">{item.num}</p>
+                <h3 className="display-h2 text-2xl md:text-3xl text-ink">{item.title}</h3>
+                <div className="col-start-2 text-ink-muted leading-relaxed text-base md:text-lg">{item.body}</div>
               </div>
-            </SpotlightGlow>
-          </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== OPTIONAL DASHBOARD ==================== */}
+      <section className="section-raised py-24 md:py-32 px-6 lg:px-12 border-t border-line">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-20 max-w-3xl">
+            <Eyebrow accent className="mb-8">Optional dashboard</Eyebrow>
+            <DisplayH2 className="mb-8">Edit your site yourself.</DisplayH2>
+            <p className="lede">
+              Update text, photos, hours, prices — anything — from any device. No code, no HTML, no tech background. Click, change, save.
+            </p>
+          </div>
+
+          <div className="ed-card space-y-8">
+            <div className="flex items-baseline gap-3 flex-wrap">
+              <span className="display-h2 text-5xl md:text-6xl text-ink">$59</span>
+              <span className="text-ink-muted">/month</span>
+              <span className="text-ink-quiet text-sm italic ml-2">
+                <strong className="text-accent-light font-semibold not-italic">Optional.</strong>{" "}
+                Month-to-month — cancel any month with 72 hours notice before your next bill.
+              </span>
+            </div>
+
+            <div className="border-l-2 border-accent pl-6">
+              <p className="text-ink font-semibold mb-2">What makes this different from a Wix subscription:</p>
+              <p className="text-ink-muted leading-relaxed">
+                Cancel the dashboard, your site keeps running. The site is still yours, still live — only the edit tool goes away. After that, just text me for changes.
+              </p>
+              <p className="text-ink-muted leading-relaxed mt-3">
+                Cancel Wix or Squarespace? Your site disappears the same day.
+              </p>
+            </div>
+
+            <p className="text-ink-quiet leading-relaxed">
+              <span className="text-ink font-semibold">Skip it if</span>{" "}
+              you set it up once and never touch it. Most small business sites fit that — hours don&apos;t change, services stay the same. Save the $59 and text me when something needs updating.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ==================== PROCESS ==================== */}
-      <section className="py-24 px-6 relative z-10">
+      <section className="section-base py-24 md:py-32 px-6 lg:px-12 border-t border-line">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <ScrollReveal direction="up">
-              <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">The process</p>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                From first call to live site, in four steps.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
-            </ScrollReveal>
+          <div className="mb-20 max-w-3xl">
+            <Eyebrow accent className="mb-8">The process</Eyebrow>
+            <DisplayH2>From first call to live site, in four steps.</DisplayH2>
           </div>
 
-          <div>
+          <div className="border-t border-line">
             {[
-              { n: 1, title: "Discovery — Day 1", body: "A quick call. Tell me about your business and what you need the site to do. No pitch, just questions.", arrow: "Clear picture of what I'm building." },
-              { n: 2, title: "Proposal — Within 48 hours", body: "Exact scope, timeline, and price. No surprises. You see exactly what you're paying for before I start. Once you approve, I'll send an intake form to collect everything I need to build — anything outside the tier, I'll quote separately.", arrow: "Locked plan and start date." },
-              { n: 3, title: "Build — 1 to 6 weeks", body: "You see progress along the way. I test everything before it goes live. Nothing hidden.", arrow: "Working site, tested and ready." },
-              { n: 4, title: "Launch — Day of", body: "I hand off the code and files. By launch, every account is in your name — domain, hosting, analytics. Add the dashboard if you want to edit your site yourself, bring in any developer, or just let it run.", arrow: "Your site, live and yours.", last: true },
+              { n: "01", title: "Discovery — Day 1", body: "A quick call. Tell me about your business and what you need the site to do. No pitch, just questions.", arrow: "Clear picture of what I'm building." },
+              { n: "02", title: "Proposal — Within 48 hours", body: "Exact scope, timeline, and price — no surprises. Once you approve, I send an intake form. Anything outside the tier, I'll quote separately.", arrow: "Locked plan and start date." },
+              { n: "03", title: "Build — 1 to 6 weeks", body: "You see progress along the way. I test everything before it goes live. Nothing hidden.", arrow: "Working site, tested and ready." },
+              { n: "04", title: "Launch — Day of", body: "I hand off the site. By launch, every account is in your name — domain, hosting, analytics.", arrow: "Your site, live and yours." },
             ].map((step) => (
-              <ScrollReveal key={step.n} direction="up" delay={0.05 * step.n}>
-                <div className="flex gap-5">
-                  <div className="flex flex-col items-center">
-                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-bold flex-shrink-0">
-                      {step.n}
-                    </div>
-                    {!step.last && <AnimatedUnderline vertical className="flex-1 min-h-[40px] my-2" />}
-                  </div>
-                  <div className="pb-10 pt-1 flex-1">
-                    <h3 className="text-lg md:text-xl font-semibold text-white mb-2">{step.title}</h3>
-                    <p className="text-[#d4d4d4] leading-relaxed">{step.body}</p>
-                    <p className="text-[#06b6d4] text-sm italic mt-2">→ {step.arrow}</p>
-                  </div>
+              <div key={step.n} className="grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-14 gap-y-3 py-12 border-b border-line">
+                <p className="font-mono text-sm text-accent tracking-widest pt-2">{step.n}</p>
+                <h3 className="display-h2 text-2xl md:text-3xl text-ink">{step.title}</h3>
+                <div className="col-start-2 text-ink-muted leading-relaxed text-base md:text-lg">
+                  <p>{step.body}</p>
+                  <p className="mt-3 font-mono text-xs uppercase tracking-widest text-accent">→ {step.arrow}</p>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
 
-          <ScrollReveal direction="up" delay={0.3}>
-            <div className="border-l-2 border-[#06b6d4]/60 pl-5 my-8 max-w-2xl mx-auto">
-              <p className="text-white italic leading-relaxed">
-                Prefer not to get on a call? Same process, just over text. I&apos;ll send you a form that covers everything I&apos;d ask on a call — fill it out on your own time, and we go from there. A lot of busy clients like it this way.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <p className="text-center text-[#a3a3a3] italic mt-8 max-w-2xl mx-auto">
-            Every build lands in 1 to 6 weeks. On a tighter deadline? Tell me when you reach out — I&apos;ll do what I can to fit you in.
-          </p>
+          <div className="border-l-2 border-accent pl-6 my-12 max-w-2xl">
+            <p className="text-ink italic leading-relaxed text-lg">
+              Prefer not to get on a call? Same process, just over text. I&apos;ll send you a form that covers everything I&apos;d ask on a call — fill it out on your own time, and we go from there.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ==================== FAQ ==================== */}
-      <section className="py-24 px-6 relative z-10">
+      <section className="section-deep py-24 md:py-32 px-6 lg:px-12 border-t border-line">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <ScrollReveal direction="up">
-              <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">Common questions</p>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                What people ask before we start working together.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
-            </ScrollReveal>
+          <div className="mb-20">
+            <Eyebrow accent className="mb-8">Common questions</Eyebrow>
+            <DisplayH2>What people ask before we start working together.</DisplayH2>
           </div>
 
-          <div className="space-y-3">
+          <div className="border-t border-line">
             {faqs.map((faq, i) => (
-              <div key={i} className="rounded-xl border border-white/[0.08] bg-[#111111]/60 overflow-hidden">
+              <div key={i} className="border-b border-line">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left cursor-pointer hover:bg-white/[0.02] transition-colors"
+                  className="w-full py-6 flex items-center justify-between gap-4 text-left cursor-pointer hover:text-accent transition-colors"
                 >
-                  <span className="text-white font-medium text-base md:text-lg">{faq.q}</span>
+                  <span className="text-ink font-medium text-lg md:text-xl">{faq.q}</span>
                   <IconChevronDown
-                    className={`w-5 h-5 text-[#06b6d4] flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`}
+                    className={`w-5 h-5 text-accent flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
                   />
                 </button>
                 <AnimatePresence initial={false}>
@@ -666,7 +420,7 @@ export default function WebsitesPage() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-5 text-[#d4d4d4] leading-relaxed">{faq.a}</p>
+                      <p className="pb-6 text-ink-muted leading-relaxed text-base md:text-lg">{faq.a}</p>
                     </m.div>
                   )}
                 </AnimatePresence>
@@ -677,70 +431,61 @@ export default function WebsitesPage() {
       </section>
 
       {/* ==================== CONTACT ==================== */}
-      <section id="contact" className="py-24 px-6 relative z-10 scroll-mt-20">
-        <div className="max-w-3xl mx-auto relative">
-          <div className="text-center mb-12">
-            <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">Ready to build?</p>
-            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-              Let&apos;s start your site.
-            </h2>
-            <p className="text-[#d4d4d4] text-lg max-w-xl mx-auto">
-              Tell me about your business. I can have a proposal to you — scope, timeline, price — within 48 hours.
+      <section id="contact" className="section-base py-24 md:py-32 px-6 lg:px-12 border-t border-line scroll-mt-20">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="mb-20 max-w-3xl">
+            <Eyebrow accent className="mb-8">Ready to build?</Eyebrow>
+            <DisplayH2 className="mb-8">Let&apos;s start your site.</DisplayH2>
+            <p className="lede">
+              Tell me about your business. I&apos;ll send a proposal — scope, timeline, price — within 48 hours.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-10">
-            <div className="lg:col-span-2 space-y-8 flex flex-col items-center lg:items-start">
+          <div className="grid lg:grid-cols-5 gap-16">
+            <div className="lg:col-span-2 space-y-12">
               <div className="space-y-6">
                 <a href="tel:8472208550" className="flex items-start gap-4 group">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2563eb]/10 to-[#06b6d4]/10 border border-[#2563eb]/30 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors flex-shrink-0">
-                    <IconPhone className="w-4 h-4 text-[#2563eb]" />
+                  <div className="w-12 h-12 border border-line flex items-center justify-center flex-shrink-0 group-hover:border-accent transition-colors">
+                    <IconPhone className="w-4 h-4 text-accent" />
                   </div>
                   <div className="flex flex-col pt-1">
-                    <span className="text-[#2563eb] text-sm font-medium">Call or Text</span>
-                    <span className="text-[#d0d0d0] group-hover:text-white transition-colors">(847) 220-8550</span>
+                    <span className="eyebrow eyebrow-accent">Call or Text</span>
+                    <span className="text-ink mt-1.5 text-lg group-hover:text-accent transition-colors"><MonoNum>(847) 220-8550</MonoNum></span>
                   </div>
                 </a>
                 <a href="mailto:omair@thekhan.io" className="flex items-start gap-4 group">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2563eb]/10 to-[#06b6d4]/10 border border-[#2563eb]/30 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors flex-shrink-0">
-                    <IconMail className="w-4 h-4 text-[#2563eb]" />
+                  <div className="w-12 h-12 border border-line flex items-center justify-center flex-shrink-0 group-hover:border-accent transition-colors">
+                    <IconMail className="w-4 h-4 text-accent" />
                   </div>
                   <div className="flex flex-col pt-1">
-                    <span className="text-[#2563eb] text-sm font-medium">Email</span>
-                    <span className="text-[#d0d0d0] group-hover:text-white transition-colors">Omair@TheKhan.io</span>
+                    <span className="eyebrow eyebrow-accent">Email</span>
+                    <span className="text-ink mt-1.5 text-lg group-hover:text-accent transition-colors">Omair@TheKhan.io</span>
                   </div>
                 </a>
               </div>
 
-              <div className="pt-2 border-t border-white/[0.06] w-full">
-                <p className="text-[#2563eb] text-sm font-medium uppercase tracking-widest mb-6 pt-6">What happens next</p>
-                <div>
+              <div className="pt-10 border-t border-line">
+                <Eyebrow accent className="mb-8">What happens next</Eyebrow>
+                <ol className="space-y-6">
                   {[
                     "I read your message myself — usually within a few hours.",
-                    "I'll reach back out by call or text — whatever works for you.",
+                    "I'll reach back out by call or text.",
                     "I send a proposal with scope, timeline, and price — usually within 48 hours.",
                     "If you approve, I send a one-page agreement and the intake form, then I start the build.",
-                  ].map((text, i, arr) => (
-                    <div className="flex gap-4" key={i}>
-                      <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
-                          {i + 1}
-                        </div>
-                        {i < arr.length - 1 && <AnimatedUnderline vertical className="flex-1 min-h-[28px] my-1.5" />}
-                      </div>
-                      <div className={`${i < arr.length - 1 ? 'pb-6' : ''} pt-1.5`}>
-                        <p className="text-[#d0d0d0] text-sm leading-relaxed">{text}</p>
-                      </div>
-                    </div>
+                  ].map((text, i) => (
+                    <li key={i} className="grid grid-cols-[auto_1fr] gap-5 items-start">
+                      <span className="font-mono text-xs text-accent pt-1.5">{String(i + 1).padStart(2, "0")}</span>
+                      <p className="text-ink-quiet text-base leading-relaxed">{text}</p>
+                    </li>
                   ))}
-                </div>
-                <p className="text-[#808080] text-xs italic mt-5 leading-relaxed">
-                  Prefer to skip the form? Text or call (847) 220-8550.
+                </ol>
+                <p className="text-ink-faint text-xs italic mt-8 leading-relaxed">
+                  Prefer to skip the form? Text or call <MonoNum>(847) 220-8550</MonoNum>.
                 </p>
               </div>
             </div>
             <div className="lg:col-span-3">
-              <div className="bg-[#111111] rounded-2xl p-8 border border-white/[0.08]">
+              <div className="ed-card-dark">
                 <ContactForm
                   source="websites-page"
                   subjectPrefix="[/websites] New build inquiry"
@@ -751,68 +496,11 @@ export default function WebsitesPage() {
             </div>
           </div>
 
-          <p className="text-center text-[#a3a3a3] text-sm italic mt-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-20 max-w-3xl text-ink-quiet text-base italic leading-relaxed">
             P.S. — If you only need a one-page site, I&apos;ll tell you. I&apos;m not going to talk you into more than you need.
           </p>
         </div>
       </section>
-
-      {/* ==================== FOOTER ==================== */}
-      <footer className="py-16 px-6 border-t border-white/[0.06] relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-            <div className="flex flex-col items-center text-center md:items-start md:text-left">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Contact</h3>
-              <div className="space-y-2 text-[#d4d4d4] text-sm leading-relaxed">
-                <p>655 Deerfield Rd</p>
-                <p>Suite 100, Unit 404</p>
-                <p>Deerfield, IL 60015</p>
-                <div className="border-t border-white/[0.06] my-4" />
-                <p><a href="mailto:omair@thekhan.io" className="hover:text-white transition-colors">Omair@TheKhan.io</a></p>
-                <p><a href="tel:8472208550" className="hover:text-white transition-colors">(847) 220-8550</a></p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center md:items-start md:text-left">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Pages</h3>
-              <div className="space-y-2 text-[#d4d4d4] text-sm">
-                <p><Link to="/" className="hover:text-white transition-colors">Home</Link></p>
-                <p><Link to="/websites" className="text-white transition-colors">Websites</Link></p>
-                <p><Link to="/contractors" className="hover:text-white transition-colors">For Contractors</Link></p>
-                <p><Link to="/portfolio" className="hover:text-white transition-colors">Portfolio</Link></p>
-                <p><Link to="/about" className="hover:text-white transition-colors">About</Link></p>
-                <p><a href="#contact" className="hover:text-white transition-colors">Contact</a></p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Follow Along</h3>
-              <div className="flex gap-3">
-                <a href="https://www.linkedin.com/company/thekhanio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandLinkedin className="w-4 h-4" />
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61584909881446" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandFacebook className="w-4 h-4" />
-                </a>
-                <a href="https://www.instagram.com/thekhanio" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandInstagram className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <Logo variant="white" size="md" className="mb-4" />
-              <p className="text-[#a3a3a3] text-sm leading-relaxed">
-                Your digital partner.
-              </p>
-              <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                For home service businesses and growing companies.
-              </p>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-white/[0.06] text-center">
-            <p className="text-[#606060] text-sm">&copy; {new Date().getFullYear()} TheKhan. All rights reserved.</p>
-            <p className="text-[#606060] text-sm mt-2 opacity-70">Designed and built by TheKhan</p>
-          </div>
-        </div>
-      </footer>
-    </main>
+    </Layout>
   );
 }

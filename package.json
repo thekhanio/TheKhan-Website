@@ -5,8 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:green": "VITE_ACCENT=green vite",
+    "dev:oxblood": "VITE_ACCENT=oxblood vite",
+    "dev:blue": "VITE_ACCENT=blue vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "build:green": "VITE_ACCENT=green tsc -b && VITE_ACCENT=green vite build",
+    "build:oxblood": "VITE_ACCENT=oxblood tsc -b && VITE_ACCENT=oxblood vite build",
+    "build:blue": "VITE_ACCENT=blue tsc -b && VITE_ACCENT=blue vite build",
+    "preview": "vite preview",
+    "deploy:dev-green": "bun run build:green && wrangler deploy --env dev-green",
+    "deploy:dev-oxblood": "bun run build:oxblood && wrangler deploy --env dev-oxblood",
+    "deploy:dev-blue": "bun run build:blue && wrangler deploy --env dev-blue"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.36.0",

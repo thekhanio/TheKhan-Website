@@ -13,5 +13,49 @@
   "routes": [
     { "pattern": "thekhan.io/*", "zone_name": "thekhan.io" },
     { "pattern": "www.thekhan.io/*", "zone_name": "thekhan.io" }
-  ]
+  ],
+  // Triple-accent dev deploys for redesign QA. Each env publishes to its
+  // own *.workers.dev URL so Omair can compare green / blue / oxblood
+  // side-by-side without touching production. Run with:
+  //   bun run deploy:dev-green     → thekhan-dev-green.<acct>.workers.dev
+  //   bun run deploy:dev-oxblood   → thekhan-dev-oxblood.<acct>.workers.dev
+  //   bun run deploy:dev-blue      → thekhan-dev-blue.<acct>.workers.dev
+  "env": {
+    "dev-green": {
+      "name": "thekhan-dev-green",
+      "workers_dev": true,
+      "routes": [],
+      "assets": {
+        "directory": "./dist",
+        "binding": "ASSETS",
+        "html_handling": "auto-trailing-slash",
+        "not_found_handling": "single-page-application",
+        "run_worker_first": true
+      }
+    },
+    "dev-oxblood": {
+      "name": "thekhan-dev-oxblood",
+      "workers_dev": true,
+      "routes": [],
+      "assets": {
+        "directory": "./dist",
+        "binding": "ASSETS",
+        "html_handling": "auto-trailing-slash",
+        "not_found_handling": "single-page-application",
+        "run_worker_first": true
+      }
+    },
+    "dev-blue": {
+      "name": "thekhan-dev-blue",
+      "workers_dev": true,
+      "routes": [],
+      "assets": {
+        "directory": "./dist",
+        "binding": "ASSETS",
+        "html_handling": "auto-trailing-slash",
+        "not_found_handling": "single-page-application",
+        "run_worker_first": true
+      }
+    }
+  }
 }

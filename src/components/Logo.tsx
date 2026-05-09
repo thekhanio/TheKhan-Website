@@ -33,6 +33,11 @@ export function Logo({ variant = "white", className, size = "md", type = "full" 
     imageSrc = variant === "white" ? "/portfolio/logo-white.png" : "/portfolio/logo-black.png";
   }
 
+  // The source PNGs are white-on-transparent. On the cream design system
+  // we invert at render time so the same asset renders ink on cream.
+  // variant="black" forces invert; default ("white") keeps original.
+  const invert = variant === "black";
+
   return (
     <div className={cn("relative", className)}>
       <img
@@ -40,7 +45,11 @@ export function Logo({ variant = "white", className, size = "md", type = "full" 
         alt="TheKhan"
         width={dimensions.width}
         height={dimensions.height}
-        style={{ width: `${dimensions.width}px`, height: 'auto' }}
+        style={{
+          width: `${dimensions.width}px`,
+          height: 'auto',
+          filter: invert ? 'invert(1)' : undefined,
+        }}
       />
     </div>
   );

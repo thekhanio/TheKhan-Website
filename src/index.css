@@ -1,472 +1,753 @@
 @import "tailwindcss";
 
+/* ============================================================
+   TheKhan v4 design system
+   Warm dark grey base, alternating raised emphasis, single
+   cream contrast inset per page. Sizes pulled back from v3.
+   Anton on H1, General Sans elsewhere.
+   ============================================================ */
+
 :root {
-  --background-top: #0a0a0a;
-  --background-bottom: #1a1a1a;
-  --foreground: #ffffff;
+  /* Layered surfaces */
+  --bg: #1F1B17;             /* primary — warm dark grey, not pitch */
+  --bg-deep: #16130F;        /* slight deepening for hairline contrast */
+  --bg-raised: #2A251F;      /* alternating section emphasis */
+  --bg-quiet: #221F1B;       /* form fields, quieter blocks */
+  --bg-cream: #F5F1EB;       /* cream contrast inset */
 
-  /* Text colors - brighter for readability */
-  --text-heading: #ffffff;
-  --text-body: #d4d4d4;
-  --text-muted: #a3a3a3;
+  --line: rgba(245, 241, 235, 0.08);
+  --line-strong: rgba(245, 241, 235, 0.16);
+  --line-dim: rgba(245, 241, 235, 0.04);
 
-  /* Blue to Cyan gradient accent */
-  --accent-blue: #2563eb;
-  --accent-cyan: #06b6d4;
+  /* Text */
+  --ink: #F5F1EB;
+  --ink-muted: #B8B3AC;
+  --ink-quiet: #8B8782;
+  --ink-faint: #5A5651;
 
-  --card-bg: #111111;
-  --card-border: rgba(255, 255, 255, 0.08);
+  /* Inverted text — for use inside the cream inset */
+  --ink-inv: #1A1410;
+  --ink-inv-muted: #4A433D;
+  --ink-inv-quiet: #6B6661;
 
-  /* Font variables */
-  --font-heading: 'Bodoni Moda', Georgia, serif;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-manrope: 'Manrope', sans-serif;
-  --font-sans: 'Manrope', system-ui, sans-serif;
+  /* Accent — two values.
+     --accent       (dark): button fills, CTA backgrounds, borders.
+                            Pairs with cream text on top.
+     --accent-light (light): text emphasis on dark backgrounds —
+                            eyebrows, highlighted phrases, accent words.
+     Aliases --accent-dark and --accent-text are provided for clarity
+     at call sites. Keep --accent-soft and --accent-line as the dark
+     value at low alpha (used for soft fills + hairline borders). */
+  --accent: #2D4A3E;
+  --accent-dark: #2D4A3E;
+  --accent-light: #9BC4A8;
+  --accent-soft: rgba(45, 74, 62, 0.18);
+  --accent-line: rgba(45, 74, 62, 0.55);
+
+  /* Type */
+  --font-display: 'Anton', 'General Sans', system-ui, sans-serif;
+  --font-h2: 'General Sans', 'Manrope', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-eyebrow: 'Anton', 'General Sans', system-ui, sans-serif;
+  --font-logo: 'Cinzel', serif;
+}
+
+:root[data-accent="oxblood"] {
+  --accent: #7C2D2D;
+  --accent-dark: #7C2D2D;
+  --accent-light: #D88B8B;
+  --accent-soft: rgba(124, 45, 45, 0.18);
+  --accent-line: rgba(124, 45, 45, 0.55);
+}
+
+:root[data-accent="blue"] {
+  /* Deep sapphire navy — deliberately NOT Tailwind indigo-500 #2563eb
+     (banned per design research as the AI-template fingerprint). */
+  --accent: #1E3A5F;
+  --accent-dark: #1E3A5F;
+  --accent-light: #94B5D9;
+  --accent-soft: rgba(30, 58, 95, 0.18);
+  --accent-line: rgba(30, 58, 95, 0.55);
+
+  /* Cool grey base — only when accent is sapphire blue. */
+  --bg: #1A1A20;
+  --bg-deep: #131319;
+  --bg-raised: #232330;
+  --bg-quiet: #1F1F26;
 }
 
 @theme inline {
-  --color-background: var(--background-top);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-manrope);
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-quiet: var(--ink-quiet);
+  --color-ink-faint: var(--ink-faint);
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-quiet: var(--bg-quiet);
+  --color-bg-cream: var(--bg-cream);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-dim: var(--line-dim);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-h2: var(--font-h2);
+  --font-mono: var(--font-mono);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; background: var(--bg); }
 
 body {
-  background: linear-gradient(180deg, var(--background-top) 0%, var(--background-bottom) 100%);
-  background-attachment: fixed;
-  color: var(--text-body);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::selection {
-  background: rgba(37, 99, 235, 0.4);
-  color: white;
+::selection { background: var(--accent); color: var(--ink); }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ============================================================
+   Type primitives — pulled back from v3.
+   H1 max ~80px desktop, H2 max ~48px desktop, stat max ~96px.
+   ============================================================ */
+
+.font-display { font-family: var(--font-display); }
+.font-h2 { font-family: var(--font-h2); }
+.font-mono { font-family: var(--font-mono); letter-spacing: 0; }
+.font-eyebrow { font-family: var(--font-eyebrow); letter-spacing: 0.15em; text-transform: uppercase; }
+.font-logo { font-family: var(--font-logo); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.eyebrow-accent { color: var(--accent-light); }
+
+/* Tailwind utility text-accent — overridden to map to the LIGHT
+   accent value globally. With cream insets removed (v9), accent text
+   appears only on dark surfaces and needs the light value for
+   legibility. Buttons, fills, and borders still use the dark accent
+   via .btn-primary / bg-accent / border-accent (those resolve to
+   --color-accent which stays dark). */
+.text-accent { color: var(--accent-light); }
+
+.display-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 0.95;
+  text-transform: uppercase;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+.display-h2 {
+  font-family: var(--font-h2);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.05;
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
+.display-stat {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 0.85;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-blue);
-}
-
-/* Blue to Cyan gradient text */
-.text-gradient {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-  -webkit-background-clip: text;
+/* Outlined ghost variant — paired with solid Anton for visual depth.
+   Uses -webkit-text-stroke + transparent fill. Used sparingly. */
+.display-ghost {
+  -webkit-text-stroke: 1px var(--ink);
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: transparent;
+}
+.display-ghost-accent {
+  -webkit-text-stroke: 1px var(--accent);
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.section-cream .display-ghost {
+  -webkit-text-stroke-color: var(--ink-inv);
 }
 
-/* Blue to Cyan gradient background */
-.bg-gradient-accent {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-}
-
-/* Premium hover effect */
-.premium-hover {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.premium-hover:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 20px 40px -15px rgba(0, 0, 0, 0.5),
-    0 0 40px -10px rgba(37, 99, 235, 0.2);
-}
-
-/* Premium divider with gradient */
-.premium-divider {
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--accent-blue) 30%,
-    var(--accent-cyan) 70%,
-    transparent 100%
-  );
-}
-
-/* Pulse glow animation for About button - idle state (cyan version) */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.6), 0 0 40px rgba(6, 182, 212, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 60px rgba(6, 182, 212, 0.5);
-  }
-}
-
-/* Pulse glow animation for About button - blue version */
-@keyframes pulse-glow-blue {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 40px rgba(37, 99, 235, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(37, 99, 235, 0.8), 0 0 60px rgba(37, 99, 235, 0.5);
-  }
-}
-
-/* Button bounce animation when closing dropdown (cyan version) */
-@keyframes button-bounce {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 60px rgba(6, 182, 212, 0.5);
-  }
-  30% {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px rgba(6, 182, 212, 0.9), 0 0 70px rgba(6, 182, 212, 0.6);
-  }
-  50% {
-    transform: scale(0.98);
-  }
-  70% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.6), 0 0 40px rgba(6, 182, 212, 0.3);
-  }
-}
-
-/* Button bounce animation when closing dropdown (blue version) */
-@keyframes button-bounce-blue {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 30px rgba(37, 99, 235, 0.8), 0 0 60px rgba(37, 99, 235, 0.5);
-  }
-  30% {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px rgba(37, 99, 235, 0.9), 0 0 70px rgba(37, 99, 235, 0.6);
-  }
-  50% {
-    transform: scale(0.98);
-  }
-  70% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 40px rgba(37, 99, 235, 0.3);
-  }
-}
-
-/* Universal clickable element hover/click effects */
-.clickable-hover {
-  transition: all 200ms ease;
-  box-shadow: 0 0 10px rgba(6, 182, 212, 0.1);
-}
-
-.clickable-hover:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(6, 182, 212, 0.15);
-}
-
-.clickable-hover:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.5), 0 0 60px rgba(6, 182, 212, 0.3);
-  transition: all 100ms ease;
-}
-
-/* Premium clickable with blue glow variant */
-.clickable-hover-blue {
-  transition: all 200ms ease;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.1);
-}
-
-.clickable-hover-blue:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3), 0 0 40px rgba(37, 99, 235, 0.15);
-}
-
-.clickable-hover-blue:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.5), 0 0 60px rgba(37, 99, 235, 0.3);
-  transition: all 100ms ease;
-}
-
-/* Badge pulse animation */
-@keyframes badge-pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* Navigation link hover effects */
-.nav-link {
-  position: relative;
-  transition: all 200ms ease;
-}
-
-.nav-link:hover {
-  transform: translateY(-2px);
-  color: #2563eb;
-}
-
-.nav-link:active {
-  transform: scale(0.98);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #2563eb, #06b6d4);
-  transition: width 200ms ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Active state — current page. Mirrors hover (blue + gradient underline)
-   permanently, minus the lift transform. */
-.nav-link-active {
-  color: #2563eb;
-}
-
-.nav-link-active::after {
-  width: 100%;
-}
-
-/* Premium nav button (Contact) */
-.nav-button-premium {
-  transition: all 200ms ease;
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
-}
-
-.nav-button-premium:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.4), 0 0 40px rgba(6, 182, 212, 0.2);
-}
-
-.nav-button-premium:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 35px rgba(6, 182, 212, 0.6), 0 0 60px rgba(6, 182, 212, 0.3);
-  transition: all 100ms ease;
+.lede {
+  color: var(--ink-muted);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
 }
 
 /* ============================================================
-   Proposal archive — print to PDF with full visual fidelity.
-   Preserves dark theme + gradients, defeats ScrollReveal/Framer
-   Motion hidden states, hides only site nav and CTAs.
-   Scoped to .proposal-archive so the monthly report page gets
-   its own (ink-friendly) print mode separately.
+   Section surfaces
+   ============================================================ */
+
+.section-base { background: var(--bg); color: var(--ink); }
+.section-deep { background: var(--bg-deep); color: var(--ink); }
+.section-raised { background: var(--bg-raised); color: var(--ink); }
+
+.section-cream {
+  background: var(--bg-cream);
+  color: var(--ink-inv);
+}
+.section-cream .text-ink { color: var(--ink-inv); }
+.section-cream .text-ink-muted { color: var(--ink-inv-muted); }
+.section-cream .text-ink-quiet { color: var(--ink-inv-quiet); }
+.section-cream .text-ink-faint { color: rgba(26, 20, 16, 0.45); }
+.section-cream .border-line { border-color: rgba(26, 20, 16, 0.10); }
+.section-cream .border-line-strong { border-color: rgba(26, 20, 16, 0.18); }
+.section-cream .eyebrow { color: var(--ink-inv-quiet); }
+.section-cream .eyebrow-accent { color: var(--accent); }
+.section-cream .lede { color: var(--ink-inv-quiet); }
+
+/* ============================================================
+   Hairlines + links
+   ============================================================ */
+
+.rule { height: 1px; background: var(--line-strong); border: 0; }
+.rule-accent { height: 1px; background: var(--accent); border: 0; }
+
+.link {
+  color: var(--accent-light);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--accent-line);
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+.link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+.section-cream .link:hover {
+  color: var(--ink-inv);
+  text-decoration-color: var(--ink-inv);
+}
+
+.nav-link {
+  color: var(--ink-quiet);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  transition: color 150ms ease;
+}
+.nav-link:hover { color: var(--ink); }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 200ms ease;
+}
+.nav-link:hover::after, .nav-link-active::after { width: 100%; }
+.nav-link-active { color: var(--ink); }
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.85rem;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+.btn-primary:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.85rem;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--ink);
+}
+
+/* Outlined sage variant — for secondary CTAs that must read as
+   sibling-equivalent to .btn-primary (same height, same padding,
+   matching weight) but visually distinct. */
+.btn-outline-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.85rem;
+  background: transparent;
+  color: var(--accent-light);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--accent-light);
+  border-radius: 0;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+.btn-outline-accent:hover {
+  background: var(--accent-light);
+  color: var(--bg);
+  border-color: var(--accent-light);
+}
+
+.section-cream .btn-primary {
+  background: var(--ink-inv);
+  color: var(--bg-cream);
+  border-color: var(--ink-inv);
+}
+.section-cream .btn-primary:hover {
+  background: var(--accent);
+  color: var(--ink);
+  border-color: var(--accent);
+}
+.section-cream .btn-ghost {
+  color: var(--ink-inv);
+  border-color: rgba(26, 20, 16, 0.20);
+}
+.section-cream .btn-ghost:hover {
+  background: var(--ink-inv);
+  color: var(--bg-cream);
+  border-color: var(--ink-inv);
+}
+
+/* ============================================================
+   Editorial card — universal hover-lift restored
+   ============================================================ */
+
+.ed-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  padding: 2rem;
+  transition: border-color 200ms ease, transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+.ed-card:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.55);
+}
+
+.section-deep .ed-card { background: var(--bg); }
+.section-raised .ed-card { background: var(--bg-deep); }
+.section-cream .ed-card {
+  background: var(--ink-inv);
+  color: var(--bg-cream);
+  border-color: rgba(26, 20, 16, 0.20);
+}
+.section-cream .ed-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px -20px rgba(26, 20, 16, 0.30);
+}
+
+/* Lift utility for non-card hoverable blocks (gallery cells, link cards) */
+.lift {
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.55);
+}
+.section-cream .lift:hover {
+  box-shadow: 0 18px 40px -20px rgba(26, 20, 16, 0.30);
+}
+
+/* Client trust strip — full-color, static, no hover.
+   Logos render in real brand colors at full opacity so the
+   row holds visual weight against the marquee directly above.
+   No hover effect — these aren't clickable. */
+.trust-logo .trust-logo-img {
+  opacity: 1;
+}
+
+/* Dark inverse contact form card */
+.ed-card-dark {
+  background: var(--bg-deep);
+  color: var(--ink);
+  padding: 2.5rem;
+  border: 1px solid var(--line);
+}
+.ed-card-dark label,
+.ed-card-dark .text-ink-muted {
+  color: rgba(245, 241, 235, 0.7) !important;
+}
+.ed-card-dark .text-ink { color: var(--ink) !important; }
+.ed-card-dark .text-ink-quiet,
+.ed-card-dark .text-ink-faint {
+  color: rgba(245, 241, 235, 0.5) !important;
+}
+.ed-card-dark input,
+.ed-card-dark textarea,
+.ed-card-dark select {
+  background: rgba(245, 241, 235, 0.04) !important;
+  color: var(--ink) !important;
+  border-color: rgba(245, 241, 235, 0.18) !important;
+}
+.ed-card-dark input::placeholder,
+.ed-card-dark textarea::placeholder {
+  color: rgba(245, 241, 235, 0.35) !important;
+}
+.ed-card-dark .btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+.ed-card-dark .btn-primary:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.ed-card-dark option { background: var(--bg-deep); color: var(--ink); }
+
+/* ============================================================
+   Service marquee — horizontal scrolling text strip
+   Two duplicated copies in one track, animated translateX 0 → -50%.
+   Decorative motion runs regardless of prefers-reduced-motion
+   (slow, non-flashing, non-vestibular).
+   ============================================================ */
+
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+/* Track holds two identical content copies side-by-side.
+   - linear timing (no easing → no slowdown at the loop point)
+   - translates 0 → -50% of the full track width
+   - gap MUST be 0 so -50% lands cleanly on copy 2's first frame
+   - no animation-fill-mode (defaults to none, restarts cleanly)
+   Trailing spacing must live INSIDE each item (e.g. padding-right
+   on .marquee-text), never on the track or as a flex gap. */
+.marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee-scroll 50s linear infinite;
+  animation-fill-mode: none;
+  will-change: transform;
+}
+
+.marquee-text {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 8vw, 5rem);
+  letter-spacing: -0.005em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink);
+  flex-shrink: 0;
+  padding-right: 2.5rem;
+}
+.marquee-text-ghost {
+  -webkit-text-stroke: 1px var(--ink);
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ============================================================
+   Gradient drift
+   ============================================================ */
+
+@keyframes gradient-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-drift {
+  position: absolute;
+  inset: 0;
+  /* v13.2: dialed back ~65% — atmospheric warmth only, not a colored
+     overlay. Hero base must read as warm dark grey #1F1B17 first; the
+     drift adds barely-perceptible motion under the type. */
+  background:
+    radial-gradient(ellipse 140% 80% at 25% 15%, rgba(245, 241, 235, 0.04), transparent 65%),
+    radial-gradient(ellipse 130% 110% at 75% 85%, rgba(155, 196, 168, 0.10), transparent 65%),
+    radial-gradient(ellipse 100% 90% at 50% 50%, rgba(155, 196, 168, 0.06), transparent 70%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 50%, var(--bg) 100%);
+  background-size: 220% 220%;
+  animation: gradient-drift 28s ease-in-out infinite;
+  pointer-events: none;
+}
+:root[data-accent="oxblood"] .gradient-drift {
+  background:
+    radial-gradient(ellipse 140% 80% at 25% 15%, rgba(245, 241, 235, 0.04), transparent 65%),
+    radial-gradient(ellipse 130% 110% at 75% 85%, rgba(216, 139, 139, 0.10), transparent 65%),
+    radial-gradient(ellipse 100% 90% at 50% 50%, rgba(216, 139, 139, 0.06), transparent 70%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 50%, var(--bg) 100%);
+  background-size: 220% 220%;
+}
+:root[data-accent="blue"] .gradient-drift {
+  background:
+    radial-gradient(ellipse 140% 80% at 25% 15%, rgba(245, 241, 235, 0.04), transparent 65%),
+    radial-gradient(ellipse 130% 110% at 75% 85%, rgba(148, 181, 217, 0.10), transparent 65%),
+    radial-gradient(ellipse 100% 90% at 50% 50%, rgba(148, 181, 217, 0.06), transparent 70%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 50%, var(--bg) 100%);
+  background-size: 220% 220%;
+}
+
+/* ============================================================
+   Custom hand-drawn waves (hero only) — v13 replacement for
+   BackgroundPaths. Each .wave-layer's child SVG is 200% wide
+   with two duplicated copies; we translate the SVG -50% over
+   .animationDuration so the loop is seamless.
+   ============================================================ */
+
+@keyframes wave-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.wave-layer {
+  animation-name: wave-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+/* ============================================================
+   Architect's grid — faint blueprint pattern, 5% opacity.
+   Applied via .grid-blueprint utility on a section background.
+   ============================================================ */
+
+.grid-blueprint {
+  position: relative;
+  isolation: isolate;
+}
+.grid-blueprint::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(245, 241, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 241, 235, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: -1;
+  /* Very subtle radial mask so edges fade out — feels intentional
+     not like a literal graph paper. */
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 100%);
+          mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 100%);
+}
+
+/* ============================================================
+   cta-orbit — orbiting accent border on the page-final CTA.
+   Uses a rotating conic-gradient pseudo-element behind the
+   button. Doesn't rely on @property --angle (which is gated
+   by prefers-reduced-motion in some browsers and triggers the
+   "static" bug). Pure CSS rotate works everywhere.
+   ============================================================ */
+
+@keyframes cta-orbit-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.cta-orbit {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 2.2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: var(--bg-deep);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 200ms ease-out;
+}
+/* Rotating ring */
+.cta-orbit::before {
+  content: '';
+  position: absolute;
+  /* Generous size so rotation never reveals an edge */
+  width: 200%;
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 60deg,
+      var(--accent) 130deg,
+      var(--ink) 165deg,
+      var(--accent) 200deg,
+      transparent 270deg,
+      transparent 360deg
+    );
+  animation: cta-orbit-rotate 4s linear infinite;
+  z-index: -2;
+  pointer-events: none;
+}
+/* Inner mask — hides the ring inside the button, leaving only a halo border */
+.cta-orbit::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--bg-deep);
+  z-index: -1;
+  pointer-events: none;
+}
+.cta-orbit:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   Word-by-word headline reveal — ONE instance only, on the
+   "Code beats template" homepage H2. Refined application of the
+   existing reveal-up family (slide-up + fade-in), staggered per
+   word. Triggered when the headline enters the viewport.
+   ============================================================ */
+
+@keyframes word-reveal {
+  from { opacity: 0; transform: translate3d(0, 0.6em, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.word-reveal-host .word-reveal-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 0.6em, 0);
+  will-change: opacity, transform;
+}
+.word-reveal-host.is-revealed .word-reveal-word {
+  animation: word-reveal 700ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+
+/* ============================================================
+   Reveal-on-scroll — restored, sparingly applied via .reveal class
+   Default visible if JS doesn't run or IO doesn't fire.
+   ============================================================ */
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.reveal {
+  /* Default state: visible. The .reveal-pending class is added by JS
+     only when the element is initially below the fold. */
+}
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.reveal-active {
+  animation: reveal-up 700ms ease-out forwards;
+}
+
+/* ============================================================
+   Print — preserved
    ============================================================ */
 @media print {
-  @page {
-    margin: 0.4in;
-  }
-
-  html,
-  body {
-    background: #0a0a0a !important;
+  @page { margin: 0.4in; }
+  html, body {
+    background: var(--bg) !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-
-  .proposal-archive {
-    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%) !important;
+  .proposal-archive, .report-page {
+    background: var(--bg) !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-
-  .proposal-archive *,
-  .proposal-archive *::before,
-  .proposal-archive *::after {
+  .proposal-archive *, .proposal-archive *::before, .proposal-archive *::after,
+  .report-page *, .report-page *::before, .report-page *::after {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    /* Defeat ScrollReveal inline opacity:0/transform + Framer animations */
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
     transition: none !important;
   }
-
-  /* Hide site chrome + decorative overlays.
-     `display: none` beats the universal `opacity: 1` above, which is
-     critical: SpotlightGlow's hover glows + AnimatedUnderline's animated
-     gradient layers are designed to be `opacity-0` on screen and would
-     otherwise be unhid by the universal rule and collide with text at
-     page breaks. */
   .proposal-archive nav,
   .proposal-archive [data-print-hide="true"],
   .proposal-archive [data-decoration="true"],
   .proposal-archive .pointer-events-none,
-  .proposal-archive svg[preserveAspectRatio] {
-    display: none !important;
+  .proposal-archive svg[preserveAspectRatio],
+  .report-page nav,
+  .report-page [data-print-hide="true"] { display: none !important; }
+  .proposal-archive section, .proposal-archive header, .proposal-archive footer,
+  .report-page section,
+  .report-page .report-month, .report-page .report-subsection,
+  .report-page .report-metric, .report-page .report-ad-box,
+  .report-page .report-bonus-card, .report-page .report-deliverable,
+  .report-page .report-seo-win, .report-page .report-ai-overview,
+  .report-page .report-lead-transparency, .report-page .report-headline-strip,
+  .report-page .report-next-step-card, .report-page .report-next-step-group,
+  .report-page .report-lead-source-card, .report-page .report-lead-sources-total,
+  .report-page .report-math-breakdown {
+    page-break-inside: avoid; break-inside: avoid;
   }
-
-  /* Keep major blocks intact across page breaks where possible */
-  .proposal-archive section,
-  .proposal-archive header,
-  .proposal-archive footer {
-    page-break-inside: avoid;
-    break-inside: avoid;
+  .proposal-archive h1, .proposal-archive h2, .proposal-archive h3,
+  .report-page h1, .report-page h2, .report-page h3 {
+    page-break-after: avoid; break-after: avoid;
   }
-
-  .proposal-archive h1,
-  .proposal-archive h2,
-  .proposal-archive h3 {
-    page-break-after: avoid;
-    break-after: avoid;
-  }
-
-  .proposal-archive p {
-    orphans: 3;
-    widows: 3;
-  }
-
-  /* Recover initial top padding the sticky nav was reserving */
-  .proposal-archive header {
-    padding-top: 1rem !important;
-  }
-
-  /* Chrome's print engine fails `background-clip: text` at page-break
-     boundaries — instead of clipping the gradient to glyph shapes, it
-     paints the whole element rect as a solid bar across the heading.
-     Force gradient-text elements to a solid cyan in print to dodge it. */
+  .proposal-archive p, .report-page p { orphans: 3; widows: 3; }
   .proposal-archive [class*="bg-clip-text"] {
     background: none !important;
     -webkit-background-clip: border-box !important;
     background-clip: border-box !important;
-    color: #06b6d4 !important;
-    -webkit-text-fill-color: #06b6d4 !important;
+    color: var(--accent) !important;
+    -webkit-text-fill-color: var(--accent) !important;
   }
+  .report-page .report-month-prior > *:not(summary) { display: none !important; }
+  .report-page .report-summary [aria-hidden="true"] { display: none !important; }
+  .proposal-archive header, .report-page .report-header { padding-top: 1rem !important; }
 }
 
-/* Client-logo print variant defaults to hidden on screen — only swaps
-   in during print. The default "screen" variant stays visible at all
-   times until print mode hides it (see @media print rules below). */
-.report-client-logo-print {
-  display: none;
-}
-
-/* ============================================================
-   Monthly report — print with full visual fidelity.
-   Preserves dark theme + brand colors so the saved PDF looks
-   like the on-screen page. Same philosophy as .proposal-archive.
-   ============================================================ */
-@media print {
-  @page {
-    margin: 0.4in;
-  }
-
-  /* Force the dark page bg to render edge-to-edge. */
-  html,
-  body {
-    background: #0a0a0a !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .report-page {
-    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%) !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .report-page *,
-  .report-page *::before,
-  .report-page *::after {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    /* Defeat any inline animations / transforms / transitions */
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-  }
-
-  /* Hide site chrome + any explicitly-marked CTA */
-  .report-page nav,
-  .report-page [data-print-hide="true"] {
-    display: none !important;
-  }
-
-  /* Logo: keep the screen variant (designed for dark bg) since the
-     print bg is now also dark. Hide the brightness-shifted print
-     variant — it was for the old white-bg print mode. */
-  .report-page .report-client-logo-print {
-    display: none !important;
-  }
-
-  .report-page .report-client-logo-screen {
-    display: block !important;
-  }
-
-  /* Headings stay with their content across breaks */
-  .report-page h1,
-  .report-page h2,
-  .report-page h3 {
-    page-break-after: avoid;
-    break-after: avoid;
-  }
-
-  /* Major blocks + each card type avoid mid-card splits */
-  .report-page section,
-  .report-page .report-month,
-  .report-page .report-subsection,
-  .report-page .report-metric,
-  .report-page .report-ad-box,
-  .report-page .report-bonus-card,
-  .report-page .report-deliverable,
-  .report-page .report-seo-win,
-  .report-page .report-ai-overview,
-  .report-page .report-lead-transparency,
-  .report-page .report-headline-strip,
-  .report-page .report-next-step-card,
-  .report-page .report-next-step-group,
-  .report-page .report-lead-source-card,
-  .report-page .report-lead-sources-total,
-  .report-page .report-math-breakdown {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-
-  .report-page p {
-    orphans: 3;
-    widows: 3;
-  }
-
-  /* Prior months: collapse in print regardless of UI open state.
-     The PDF should be the current month only. */
-  .report-page .report-month-prior > *:not(summary) {
-    display: none !important;
-  }
-
-  .report-page .report-summary [aria-hidden="true"] {
-    display: none !important;
-  }
-
-  /* Recover top padding the sticky nav was reserving */
-  .report-page .report-header {
-    padding-top: 1rem !important;
-  }
-}
-
-
+.report-client-logo-print { display: none; }

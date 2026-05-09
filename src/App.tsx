@@ -10,13 +10,14 @@ import AboutPage from "./pages/AboutPage";
 const QuestionnairePage = lazy(() => import("./pages/QuestionnairePage"));
 const SteveReportPage = lazy(() => import("./pages/SteveReportPage"));
 const MarioReportPage = lazy(() => import("./pages/MarioReportPage"));
+const CalvinProposalPage = lazy(() => import("./pages/CalvinProposalPage"));
 
 function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
-      <h1 className="text-5xl font-bold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>404</h1>
-      <p className="text-[#a3a3a3] text-lg mb-8">This page doesn't exist.</p>
-      <a href="/" className="px-7 py-3 bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white rounded-full text-base font-medium tracking-wide">Back to Home</a>
+    <div className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-bg">
+      <p className="font-mono text-xs text-accent tracking-widest uppercase mb-6">404</p>
+      <h1 className="display-h1 text-5xl md:text-6xl text-ink mb-4">This page doesn&apos;t exist.</h1>
+      <a href="/" className="btn-primary mt-6">Back to home</a>
     </div>
   );
 }
@@ -45,6 +46,8 @@ export default function App() {
           <Route path="/premier" element={<SteveReportPage />} />
           <Route path="/premierpartners" element={<SteveReportPage />} />
           <Route path="/marioscape" element={<MarioReportPage />} />
+          <Route path="/crystalclear" element={<CalvinProposalPage />} />
+          <Route path="/calvin" element={<CalvinProposalPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -180,7 +180,7 @@ const ROUTE_SCHEMAS = {
         { "@type": "BreadcrumbList", "@id": "https://thekhan.io/about#breadcrumb", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://thekhan.io" }, { "@type": "ListItem", position: 2, name: "About", item: "https://thekhan.io/about" }] },
         { "@type": "AboutPage", "@id": "https://thekhan.io/about#aboutpage", url: "https://thekhan.io/about", name: "About Omair Khan — Founder of TheKhan", description: "The founder story behind TheKhan — how Omair Khan built and scaled his own home service company before pivoting to help other contractors and small businesses grow.", isPartOf: { "@id": "https://thekhan.io/#website" }, mainEntity: { "@id": "https://thekhan.io/about#omair" } },
         {
-          "@type": "Person", "@id": "https://thekhan.io/about#omair", name: "Omair Khan", url: "https://thekhan.io/about", image: "https://thekhan.io/omair-headshot.webp", jobTitle: "Founder",
+          "@type": "Person", "@id": "https://thekhan.io/about#omair", name: "Omair Khan", url: "https://thekhan.io/about", image: "https://thekhan.io/omair-portrait.webp", jobTitle: "Founder",
           description: "Founder of TheKhan, an independent web design and digital marketing studio in Deerfield, Illinois. Before TheKhan, Omair built and scaled his own home service company to 84 clients before pivoting to help other contractors and small businesses grow.",
           worksFor: { "@id": "https://thekhan.io/#localbusiness" },
           address: { "@type": "PostalAddress", addressLocality: "Deerfield", addressRegion: "IL", addressCountry: "US" },

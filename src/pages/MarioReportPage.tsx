@@ -5,7 +5,7 @@ const marioReport: ReportConfig = {
   clientLogo: {
     src: "/portfolio/marioscape-logo.png",
     alt: "MarioScape",
-    maxHeightClass: "max-h-32 md:max-h-44",
+    maxHeightClass: "max-h-48 md:max-h-64",
   },
   currentMonth: {
     month: "April 2026",

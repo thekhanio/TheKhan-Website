@@ -1,23 +1,9 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { m, AnimatePresence } from "framer-motion";
-import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
 import { SEO } from "@/components/SEO";
-import { BackgroundPaths } from "@/components/ui/background-paths";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { AnimatedUnderline } from "@/components/ui/animated-underline";
-import { SpotlightGlow } from "@/components/ui/spotlight-glow";
-import {
-  IconPhone,
-  IconMail,
-  IconBrandLinkedin,
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconMenu2,
-  IconX,
-  IconArrowUpRight,
-} from "@tabler/icons-react";
+import { Layout } from "@/components/Layout";
+import { Eyebrow, DisplayH2, MonoNum } from "@/components/editorial";
+import { IconPhone, IconMail, IconArrowUpRight } from "@tabler/icons-react";
 
 const PAGE_TITLE = "Portfolio — Custom Websites for Small Businesses | TheKhan";
 const PAGE_DESC = "I build custom websites and run the marketing for home service businesses across Chicago.";
@@ -45,45 +31,80 @@ const COLLECTION_PAGE_SCHEMA = {
   "mainEntity": {
     "@type": "ItemList",
     "itemListOrder": "https://schema.org/ItemListOrderAscending",
-    "numberOfItems": 5,
+    "numberOfItems": 10,
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "item": { "@type": "WebSite", "name": "Premier Partners", "url": "https://servicesfrompremier.com", "about": "Multi-brand home service company serving Cook County, Lake County, and McHenry County" } },
-      { "@type": "ListItem", "position": 2, "item": { "@type": "WebSite", "name": "MarioScape", "url": "https://marioscape.com", "about": "Landscaping and removal company serving Chicago's North Shore" } },
-      { "@type": "ListItem", "position": 3, "item": { "@type": "WebSite", "name": "Shifa Home Care", "url": "https://shifahomecareservices.com", "about": "Non-medical home care services serving Will County, Kane County, Cook County, and DuPage County" } },
-      { "@type": "ListItem", "position": 4, "item": { "@type": "WebSite", "name": "Nour's Barbershop", "url": "https://noursbarbershop.com", "about": "Local barbershop in Morton Grove, IL" } },
-      { "@type": "ListItem", "position": 5, "item": { "@type": "WebSite", "name": "WAF Chicago", "url": "https://wafchicago.org", "about": "Nonprofit serving Cook County, based in Des Plaines" } },
+      { "@type": "ListItem", "position": 1, "item": { "@type": "WebSite", "name": "Premier Partners", "url": "https://servicesfrompremier.com" } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "WebSite", "name": "Premier Power Washing", "url": "https://powerwashingfrompremier.com" } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "WebSite", "name": "Premier Holiday Lighting", "url": "https://lightingfrompremier.com" } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "WebSite", "name": "Premier Auto Spa", "url": "https://detailingfrompremier.com" } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "WebSite", "name": "Premier Plowing", "url": "https://plowingfrompremier.com" } },
+      { "@type": "ListItem", "position": 6, "item": { "@type": "WebSite", "name": "Premier Paver Restoration", "url": "https://paversfrompremier.com" } },
+      { "@type": "ListItem", "position": 7, "item": { "@type": "WebSite", "name": "MarioScape", "url": "https://marioscape.com" } },
+      { "@type": "ListItem", "position": 8, "item": { "@type": "WebSite", "name": "Shifa Home Care", "url": "https://shifahomecareservices.com" } },
+      { "@type": "ListItem", "position": 9, "item": { "@type": "WebSite", "name": "Nour's Barbershop", "url": "https://noursbarbershop.com" } },
+      { "@type": "ListItem", "position": 10, "item": { "@type": "WebSite", "name": "WAF Chicago", "url": "https://wafchicago.org" } },
     ],
   },
 };
 
-const PREMIER_SUBSITES = [
+interface PremierBrand {
+  name: string;
+  url: string;
+  display: string;
+  logo: string;
+}
+
+const PREMIER_BRANDS: PremierBrand[] = [
   { name: "Premier Partners", url: "https://servicesfrompremier.com", display: "servicesfrompremier.com", logo: "/portfolio/premier-partners-logo.png" },
-  { name: "Power Washing from Premier", url: "https://powerwashingfrompremier.com", display: "powerwashingfrompremier.com", logo: "/portfolio/premier-powerwashing-logo.png" },
-  { name: "Holiday Lighting from Premier", url: "https://lightingfrompremier.com", display: "lightingfrompremier.com", logo: "/portfolio/premier-lighting-logo.png" },
+  { name: "Premier Power Washing", url: "https://powerwashingfrompremier.com", display: "powerwashingfrompremier.com", logo: "/portfolio/premier-powerwashing-logo.png" },
+  { name: "Premier Holiday Lighting", url: "https://lightingfrompremier.com", display: "lightingfrompremier.com", logo: "/portfolio/premier-lighting-logo.png" },
   { name: "Premier Auto Spa", url: "https://detailingfrompremier.com", display: "detailingfrompremier.com", logo: "/portfolio/premier-detailing-logo.png" },
-  { name: "Plowing from Premier", url: "https://plowingfrompremier.com", display: "plowingfrompremier.com", logo: "/portfolio/premier-plowing-logo.png" },
-  { name: "Paver Restoration from Premier", url: "https://paversfrompremier.com", display: "paversfrompremier.com", logo: "/portfolio/premier-paver-logo.png" },
+  { name: "Premier Plowing", url: "https://plowingfrompremier.com", display: "plowingfrompremier.com", logo: "/portfolio/premier-plowing-logo.png" },
+  { name: "Premier Paver Restoration", url: "https://paversfrompremier.com", display: "paversfrompremier.com", logo: "/portfolio/premier-paver-logo.png" },
 ];
 
-const SMALL_CARDS = [
-  { name: "MarioScape", niche: "Landscaping and removal company serving Chicago's North Shore", url: "https://marioscape.com", display: "marioscape.com", screenshot: "/portfolio/marioscape-screenshot.jpg", alt: "MarioScape homepage — custom-built by TheKhan" },
-  { name: "Shifa Home Care", niche: "Non-medical home care services serving Will County, Kane County, Cook County, and DuPage County", url: "https://shifahomecareservices.com", display: "shifahomecareservices.com", screenshot: "/portfolio/shifa-screenshot.jpg", alt: "Shifa Home Care homepage — custom-built by TheKhan", paused: true },
-  { name: "Nour's Barbershop", niche: "Local barbershop in Morton Grove, IL", url: "https://noursbarbershop.com", display: "noursbarbershop.com", screenshot: "/portfolio/nours-screenshot.jpg", alt: "Nour's Barbershop homepage — custom-built by TheKhan" },
-  { name: "WAF Chicago", niche: "Nonprofit serving Cook County, based in Des Plaines", url: "https://wafchicago.org", display: "wafchicago.org", screenshot: "/portfolio/waf-screenshot.jpg", alt: "WAF Chicago homepage — custom-built by TheKhan" },
+interface ClientCard {
+  name: string;
+  area: string;
+  screenshot: string;
+  url?: string;
+  display?: string;
+  paused?: boolean;
+}
+
+const CLIENTS: ClientCard[] = [
+  {
+    name: "MarioScape",
+    area: "Landscaping and removal company serving Chicago's North Shore",
+    screenshot: "/portfolio/marioscape-screenshot.jpg",
+    url: "https://marioscape.com",
+    display: "marioscape.com",
+  },
+  {
+    name: "Shifa Home Care",
+    area: "Non-medical home care services serving Will County, Kane County, Cook County, and DuPage County",
+    screenshot: "/portfolio/shifa-screenshot.jpg",
+    paused: true,
+  },
+  {
+    name: "Nour's Barbershop",
+    area: "Local barbershop in Morton Grove, IL",
+    screenshot: "/portfolio/nours-screenshot.jpg",
+    url: "https://noursbarbershop.com",
+    display: "noursbarbershop.com",
+  },
+  {
+    name: "WAF Chicago",
+    area: "Nonprofit serving Cook County, based in Des Plaines",
+    screenshot: "/portfolio/waf-screenshot.jpg",
+    url: "https://wafchicago.org",
+    display: "wafchicago.org",
+  },
 ];
 
 export default function PortfolioPage() {
-  const [mounted, setMounted] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleNavClick = () => setMobileMenuOpen(false);
-
   return (
-    <main className="min-h-screen antialiased relative">
+    <Layout activePath="/portfolio" contactHref="#contact">
       <SEO
         title={PAGE_TITLE}
         description={PAGE_DESC}
@@ -92,274 +113,189 @@ export default function PortfolioPage() {
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
         schema={[BREADCRUMB_SCHEMA, COLLECTION_PAGE_SCHEMA]}
       />
-      <BackgroundPaths />
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/[0.05]" style={{ position: 'fixed' }}>
-        <div className="max-w-7xl mx-auto px-4 lg:px-6 py-4 lg:py-4 flex items-center justify-center lg:justify-between relative">
-          <Link to="/" className="flex flex-col cursor-pointer overflow-visible">
-            <div className="scale-[0.85] lg:scale-100 origin-center">
-              <Logo variant="white" size="sm" type="full" />
-            </div>
-          </Link>
-
-          <div className="hidden lg:flex items-center gap-12">
-            <Link to="/" className="nav-link text-[#d4d4d4] text-base tracking-wide">Home</Link>
-            <Link to="/websites" className="nav-link text-[#d4d4d4] text-base tracking-wide">Websites</Link>
-            <Link to="/contractors" className="nav-link text-[#d4d4d4] text-base tracking-wide">For Contractors</Link>
-            <Link to="/portfolio" className="nav-link nav-link-active text-base tracking-wide">Portfolio</Link>
-            <Link to="/about" className="nav-link text-[#d4d4d4] text-base tracking-wide">About</Link>
-            <a href="#contact" className="nav-button-premium px-7 py-3 bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white rounded-full text-base font-medium tracking-wide">
-              Let&apos;s Talk
-            </a>
-          </div>
-
-          <button className="lg:hidden absolute right-4 p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
-            {mobileMenuOpen ? <IconX className="w-6 h-6 text-[#06b6d4]" /> : <IconMenu2 className="w-6 h-6 text-[#06b6d4]" />}
-          </button>
-        </div>
-
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <m.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/[0.05] overflow-hidden"
-            >
-              <div className="px-4 py-5 flex flex-col items-center gap-3">
-                <Link to="/" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">Home</Link>
-                <Link to="/websites" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">Websites</Link>
-                <Link to="/contractors" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">For Contractors</Link>
-                <Link to="/portfolio" onClick={handleNavClick} className="nav-link nav-link-active text-base py-2">Portfolio</Link>
-                <Link to="/about" onClick={handleNavClick} className="nav-link text-[#d4d4d4] text-base py-2">About</Link>
-                <a href="#contact" onClick={handleNavClick} className="nav-button-premium px-6 py-3 bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-white rounded-full text-base font-medium text-center mt-2">
-                  Let&apos;s Talk
-                </a>
-              </div>
-            </m.div>
-          )}
-        </AnimatePresence>
-      </nav>
 
       {/* ==================== HERO ==================== */}
-      <section className="relative z-10 flex items-center overflow-hidden pt-32 md:pt-40 pb-16 md:pb-20">
-        <div className="max-w-4xl mx-auto px-6 w-full text-center">
-          <h1
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-5 md:mb-6 text-center transition-all duration-700 delay-150 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            <span className="text-gradient">
-              Who I&apos;ve built for.
-            </span>
+      <section className="section-base relative pt-16 md:pt-24 pb-12 md:pb-16 px-6 md:px-12 lg:px-16">
+        <div className="max-w-[1400px] mx-auto">
+          <Eyebrow accent className="mb-6">The work</Eyebrow>
+          <h1 className="display-h1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink max-w-5xl">
+            Who I&apos;ve <span className="text-accent">built for.</span>
           </h1>
-
-          <p className={`text-lg sm:text-xl md:text-2xl text-[#a3a3a3] max-w-2xl mx-auto text-center transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Ten sites, all live right now. <span className="text-[#06b6d4] font-semibold">Click any of them</span> to see for yourself.
+          <p className="lede mt-8 max-w-2xl">
+            <MonoNum>10</MonoNum> sites, all live right now. Click any of them to see for yourself.
           </p>
         </div>
       </section>
 
-      {/* ==================== PROOF GRID ==================== */}
-      <section className="py-16 md:py-20 px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14 md:mb-16">
-            <ScrollReveal direction="up">
-              <h2 className="text-2xl md:text-4xl font-semibold text-white tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-                The work.
-              </h2>
-              <AnimatedUnderline className="w-48 md:w-64 mx-auto mt-6" />
-            </ScrollReveal>
+      {/* ==================== PREMIER PARTNERS — 6-brand grid ==================== */}
+      <section className="section-deep border-t border-line py-20 md:py-28 px-6 md:px-12 lg:px-16">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-12 md:mb-16">
+            <h2 className="display-h2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ink mb-4">
+              Premier Partners
+            </h2>
+            <p className="text-accent-light text-base md:text-lg leading-relaxed max-w-3xl">
+              Multi-brand home service company serving Cook County, Lake County, and McHenry County
+            </p>
           </div>
 
-          {/* Premier anchor card */}
-          <ScrollReveal direction="up" delay={0.1}>
-            <div className="mb-10 md:mb-12">
-              <SpotlightGlow>
-                <div className="overflow-hidden">
-                  <a href="https://servicesfrompremier.com" target="_blank" rel="noopener noreferrer" className="block group">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {PREMIER_BRANDS.map((brand) => (
+              <a
+                key={brand.url}
+                href={brand.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group lift relative flex flex-col bg-bg-raised border border-line hover:border-accent transition-colors"
+                aria-label={`${brand.name} — ${brand.display}`}
+              >
+                <IconArrowUpRight className="absolute top-4 right-4 w-5 h-5 text-accent opacity-60 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center justify-center h-40 md:h-44 px-8 py-10">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="max-h-full max-w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="border-t border-line px-6 py-4">
+                  <p className="font-mono text-[11px] md:text-xs tracking-widest text-ink-quiet group-hover:text-accent transition-colors text-center">
+                    {brand.display}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== OTHER CLIENTS — 2×2 grid ==================== */}
+      <section className="section-base border-t border-line py-20 md:py-28 px-6 md:px-12 lg:px-16">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+            {CLIENTS.map((c) => {
+              const CardInner = (
+                <>
+                  <div className="relative aspect-[16/10] bg-bg-raised border-b border-line overflow-hidden">
                     <img
-                      src="/portfolio/premier-hub-screenshot.jpg"
-                      alt="Premier Partners hub site — servicesfrompremier.com, custom-built by TheKhan"
-                      className="w-full h-auto object-cover border-b border-white/[0.06] group-hover:opacity-90 transition-opacity duration-300"
+                      src={c.screenshot}
+                      alt={`${c.name} website`}
+                      className={`w-full h-full object-cover object-top transition-opacity ${c.paused ? "opacity-40" : "opacity-100"}`}
                       loading="lazy"
                     />
-                  </a>
-                  <div className="p-6 md:p-10">
-                    <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2" style={{ fontFamily: "'Cinzel', serif" }}>
-                      Premier Partners
-                    </h3>
-                    <p className="text-[#06b6d4] text-sm md:text-base mb-8">
-                      Multi-brand home service company serving Cook County, Lake County, and McHenry County
-                    </p>
-
-                    {/* 6 sub-brand tiles — logo card + domain caption beneath, whole thing clickable */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 md:gap-6">
-                      {PREMIER_SUBSITES.map((sub) => (
-                        <a
-                          key={sub.url}
-                          href={sub.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group flex flex-col items-center min-w-0"
-                          aria-label={`${sub.display} — ${sub.name}`}
-                          title={sub.name}
-                        >
-                          <div className="relative w-full flex items-center justify-center h-24 md:h-28 lg:h-32 px-4 md:px-6 py-4 rounded-xl bg-[#0a0a0a]/60 border border-white/[0.18] group-hover:border-[#06b6d4]/60 group-hover:bg-[#06b6d4]/[0.06] group-hover:-translate-y-0.5 group-hover:shadow-[0_6px_24px_rgba(6,182,212,0.2)] transition-all duration-300">
-                            <img
-                              src={sub.logo}
-                              alt={sub.name}
-                              className="max-h-full max-w-full object-contain group-hover:scale-[1.04] transition-all duration-300"
-                              loading="lazy"
-                            />
-                            <IconArrowUpRight className="absolute top-2.5 right-2.5 w-4 h-4 text-[#06b6d4] opacity-80 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
-                          </div>
-                          <span className="mt-3 text-[11px] md:text-sm text-[#a3a3a3] group-hover:text-white text-center tracking-wide truncate w-full px-1 transition-colors duration-200">
-                            {sub.display}
-                          </span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </SpotlightGlow>
-            </div>
-          </ScrollReveal>
-
-          {/* 4 smaller cards — 2x2 grid on desktop, stacked on mobile */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {SMALL_CARDS.map((card, i) => (
-              <ScrollReveal key={card.url} direction="up" delay={0.1 + i * 0.05}>
-                {card.paused ? (
-                  <div className="block bg-[#141414] rounded-2xl border border-white/[0.1] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
-                    <div className="overflow-hidden border-b border-white/[0.06] relative">
-                      <img
-                        src={card.screenshot}
-                        alt={card.alt}
-                        className="w-full h-auto object-cover blur-sm grayscale opacity-40"
-                        loading="lazy"
-                      />
+                    {c.paused && (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="px-5 py-2 bg-[#0a0a0a]/95 border border-[#06b6d4]/40 rounded-full text-[#06b6d4] text-xs tracking-[0.2em] uppercase font-semibold">
+                        <span className="px-5 py-2 bg-bg/85 border border-accent text-accent font-mono text-[11px] tracking-[0.2em] uppercase">
                           Currently Paused
                         </span>
                       </div>
-                    </div>
-                    <div className="p-6 md:p-7">
-                      <h3 className="text-xl md:text-2xl font-semibold text-white mb-1.5" style={{ fontFamily: "'Cinzel', serif" }}>
-                        {card.name}
-                      </h3>
-                      <p className="text-[#06b6d4] text-sm mb-5">{card.niche}</p>
-                      <div className="flex items-center gap-1.5 text-[#808080] text-sm italic tracking-wide">
-                        <span>Site temporarily offline</span>
-                      </div>
-                    </div>
+                    )}
                   </div>
-                ) : (
-                  <a
-                    href={card.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block bg-[#141414] rounded-2xl border border-white/[0.18] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.35)] hover:border-[#06b6d4]/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(6,182,212,0.25)]"
-                  >
-                    <div className="overflow-hidden border-b border-white/[0.06]">
-                      <img
-                        src={card.screenshot}
-                        alt={card.alt}
-                        className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-6 md:p-7">
-                      <h3 className="text-xl md:text-2xl font-semibold text-white mb-1.5" style={{ fontFamily: "'Cinzel', serif" }}>
-                        {card.name}
-                      </h3>
-                      <p className="text-[#06b6d4] text-sm mb-5">{card.niche}</p>
-                      <div className="flex items-center gap-1.5 text-[#d4d4d4] group-hover:text-white text-sm tracking-wide transition-colors">
-                        <span>Visit {card.display}</span>
-                        <IconArrowUpRight className="w-4 h-4 text-[#06b6d4] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                      </div>
-                    </div>
-                  </a>
-                )}
-              </ScrollReveal>
-            ))}
-          </div>
+                  <div className="p-7 md:p-8">
+                    <h3 className="display-h2 text-2xl md:text-3xl lg:text-4xl text-ink mb-3">
+                      {c.name}
+                    </h3>
+                    <p className="text-ink-muted text-sm md:text-base leading-relaxed mb-5">
+                      {c.area}
+                    </p>
+                    {c.paused ? (
+                      <p className="font-mono text-xs text-ink-quiet italic tracking-wide">
+                        Site temporarily offline
+                      </p>
+                    ) : (
+                      <span className="inline-flex items-center gap-2 text-ink group-hover:text-accent transition-colors">
+                        <span className="font-mono text-xs md:text-sm tracking-wide">Visit {c.display}</span>
+                        <IconArrowUpRight className="w-4 h-4 text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                    )}
+                  </div>
+                </>
+              );
 
-          <div className="text-center mt-12">
-            <ScrollReveal direction="up">
-              <Link to="/about" className="text-[#06b6d4] hover:text-white text-sm tracking-wide underline underline-offset-4 transition-colors">
-                About me &rarr;
-              </Link>
-            </ScrollReveal>
+              if (c.paused || !c.url) {
+                return (
+                  <div
+                    key={c.name}
+                    className="flex flex-col bg-bg-raised border border-line"
+                    aria-label={`${c.name} — currently paused`}
+                  >
+                    {CardInner}
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={c.name}
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group lift flex flex-col bg-bg-raised border border-line hover:border-accent transition-colors"
+                  aria-label={`${c.name} — ${c.display}`}
+                >
+                  {CardInner}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ==================== CONTACT ==================== */}
-      <section id="contact" className="py-24 px-6 relative z-10 scroll-mt-20">
-        <div className="max-w-3xl mx-auto relative">
-          <div className="text-center mb-12">
-            <p className="text-[#a3a3a3] text-sm tracking-widest uppercase mb-6">Like what you see?</p>
-            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 tracking-[0.15em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
-              Let&apos;s talk.
-            </h2>
-            <p className="text-[#d4d4d4] text-lg max-w-xl mx-auto">
+      <section id="contact" className="section-raised py-24 md:py-32 px-6 scroll-mt-20 border-t border-line">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 max-w-3xl">
+            <Eyebrow accent className="mb-5">Like what you see?</Eyebrow>
+            <DisplayH2 className="mb-6">Let&apos;s talk.</DisplayH2>
+            <p className="lede">
               Tell me about your project. I&apos;ll get back to you personally.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-10">
-            <div className="lg:col-span-2 space-y-8 flex flex-col items-center lg:items-start">
-              <div className="space-y-6">
+          <div className="grid lg:grid-cols-5 gap-12">
+            <div className="lg:col-span-2 space-y-8">
+              <div className="space-y-5">
                 <a href="tel:8472208550" className="flex items-start gap-4 group">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2563eb]/10 to-[#06b6d4]/10 border border-[#2563eb]/30 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors flex-shrink-0">
-                    <IconPhone className="w-4 h-4 text-[#2563eb]" />
+                  <div className="w-11 h-11 border border-line flex items-center justify-center flex-shrink-0 group-hover:border-accent transition-colors">
+                    <IconPhone className="w-4 h-4 text-accent" />
                   </div>
                   <div className="flex flex-col pt-1">
-                    <span className="text-[#2563eb] text-sm font-medium">Call or Text</span>
-                    <span className="text-[#d0d0d0] group-hover:text-white transition-colors">(847) 220-8550</span>
+                    <span className="eyebrow eyebrow-accent">Call or Text</span>
+                    <span className="text-ink mt-1 group-hover:text-accent transition-colors"><MonoNum>(847) 220-8550</MonoNum></span>
                   </div>
                 </a>
                 <a href="mailto:omair@thekhan.io" className="flex items-start gap-4 group">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#2563eb]/10 to-[#06b6d4]/10 border border-[#2563eb]/30 flex items-center justify-center group-hover:border-[#2563eb]/50 transition-colors flex-shrink-0">
-                    <IconMail className="w-4 h-4 text-[#2563eb]" />
+                  <div className="w-11 h-11 border border-line flex items-center justify-center flex-shrink-0 group-hover:border-accent transition-colors">
+                    <IconMail className="w-4 h-4 text-accent" />
                   </div>
                   <div className="flex flex-col pt-1">
-                    <span className="text-[#2563eb] text-sm font-medium">Email</span>
-                    <span className="text-[#d0d0d0] group-hover:text-white transition-colors">Omair@TheKhan.io</span>
+                    <span className="eyebrow eyebrow-accent">Email</span>
+                    <span className="text-ink mt-1 group-hover:text-accent transition-colors">Omair@TheKhan.io</span>
                   </div>
                 </a>
               </div>
 
-              <div className="pt-2 border-t border-white/[0.06] w-full">
-                <p className="text-[#2563eb] text-sm font-medium uppercase tracking-widest mb-6 pt-6">What happens next</p>
-                <div>
+              <div className="pt-8 border-t border-line">
+                <Eyebrow accent className="mb-6">What happens next</Eyebrow>
+                <ol className="space-y-5">
                   {[
                     "I read your message myself — usually within a few hours.",
-                    "I'll reach back out by call or text — whatever works for you.",
-                    "From there, if a longer call makes sense, we'll book one so I can quote it right.",
-                  ].map((text, i, arr) => (
-                    <div className="flex gap-4" key={i}>
-                      <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#2563eb] to-[#06b6d4] flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
-                          {i + 1}
-                        </div>
-                        {i < arr.length - 1 && <AnimatedUnderline vertical className="flex-1 min-h-[28px] my-1.5" />}
-                      </div>
-                      <div className={`${i < arr.length - 1 ? 'pb-6' : ''} pt-1.5`}>
-                        <p className="text-[#d0d0d0] text-sm leading-relaxed">{text}</p>
-                      </div>
-                    </div>
+                    "I'll reach back out by call or text.",
+                    "If a longer call makes sense, we'll book one so I can quote it right.",
+                  ].map((text, i) => (
+                    <li key={i} className="grid grid-cols-[auto_1fr] gap-4 items-start">
+                      <span className="font-mono text-xs text-accent pt-1">{String(i + 1).padStart(2, "0")}</span>
+                      <p className="text-ink-muted text-sm leading-relaxed">{text}</p>
+                    </li>
                   ))}
-                </div>
-                <p className="text-[#808080] text-xs italic mt-5 leading-relaxed">
-                  Prefer to skip the form? Text or call (847) 220-8550.
+                </ol>
+                <p className="text-ink-quiet text-xs italic mt-6 leading-relaxed">
+                  Prefer to skip the form? Text or call <MonoNum>(847) 220-8550</MonoNum>.
                 </p>
               </div>
             </div>
             <div className="lg:col-span-3">
-              <div className="bg-[#111111] rounded-2xl p-8 border border-white/[0.08]">
+              <div className="ed-card-dark">
                 <ContactForm
                   source="portfolio-page"
                   subjectPrefix="[Portfolio form]"
@@ -370,65 +306,12 @@ export default function PortfolioPage() {
               </div>
             </div>
           </div>
+
+          <p className="text-center mt-16">
+            <Link to="/about" className="link text-base">About me &rarr;</Link>
+          </p>
         </div>
       </section>
-
-      {/* ==================== FOOTER ==================== */}
-      <footer className="py-16 px-6 border-t border-white/[0.06] relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-            <div className="flex flex-col items-center text-center md:items-start md:text-left">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Contact</h3>
-              <div className="space-y-2 text-[#d4d4d4] text-sm leading-relaxed">
-                <p>655 Deerfield Rd</p>
-                <p>Suite 100, Unit 404</p>
-                <p>Deerfield, IL 60015</p>
-                <div className="border-t border-white/[0.06] my-4" />
-                <p><a href="mailto:omair@thekhan.io" className="hover:text-white transition-colors">Omair@TheKhan.io</a></p>
-                <p><a href="tel:8472208550" className="hover:text-white transition-colors">(847) 220-8550</a></p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center md:items-start md:text-left">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Pages</h3>
-              <div className="space-y-2 text-[#d4d4d4] text-sm">
-                <p><Link to="/" className="hover:text-white transition-colors">Home</Link></p>
-                <p><Link to="/websites" className="hover:text-white transition-colors">Websites</Link></p>
-                <p><Link to="/contractors" className="hover:text-white transition-colors">For Contractors</Link></p>
-                <p><Link to="/portfolio" className="text-white transition-colors">Portfolio</Link></p>
-                <p><Link to="/about" className="hover:text-white transition-colors">About</Link></p>
-                <p><a href="#contact" className="hover:text-white transition-colors">Contact</a></p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-sm font-medium text-[#a3a3a3] uppercase tracking-widest mb-5">Follow Along</h3>
-              <div className="flex gap-3">
-                <a href="https://www.linkedin.com/company/thekhanio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandLinkedin className="w-4 h-4" />
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61584909881446" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandFacebook className="w-4 h-4" />
-                </a>
-                <a href="https://www.instagram.com/thekhanio" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-11 h-11 rounded-full bg-[#111111] border border-white/[0.08] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:border-[#2563eb]/50 hover:bg-[#2563eb]/10 hover:scale-125 hover:-translate-y-1.5 hover:shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all duration-300">
-                  <IconBrandInstagram className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <Logo variant="white" size="md" className="mb-4" />
-              <p className="text-[#a3a3a3] text-sm leading-relaxed">
-                Your digital partner.
-              </p>
-              <p className="text-[#606060] text-xs leading-relaxed mt-1">
-                For home service businesses and growing companies.
-              </p>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-white/[0.06] text-center">
-            <p className="text-[#606060] text-sm">&copy; {new Date().getFullYear()} TheKhan. All rights reserved.</p>
-            <p className="text-[#606060] text-sm mt-2 opacity-70">Designed and built by TheKhan</p>
-          </div>
-        </div>
-      </footer>
-    </main>
+    </Layout>
   );
 }
