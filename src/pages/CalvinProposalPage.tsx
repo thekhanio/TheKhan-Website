@@ -60,9 +60,9 @@ export default function CalvinProposalPage() {
 
         {/* Section 1 — Two Design Directions */}
         <section className="px-6 pb-20 max-w-4xl mx-auto">
-          <SectionHeading>Two design directions</SectionHeading>
+          <SectionHeading>Two demos to look at</SectionHeading>
           <p className="text-[#F5F1EB] text-lg md:text-xl leading-relaxed font-[family-name:var(--font-body)] mb-8 max-w-3xl">
-            Both directions are built on what works for commercial cleaning and procurement-led buyers like yours. You can edit anything here, mix them, or pick one as-is. A completely different direction is possible &mdash; just a bigger lift.
+            Both demos are built on what works for commercial cleaning and procurement-led buyers like yours. You can edit anything here, mix them, or pick one as-is. A completely different design direction is possible &mdash; just a bigger lift.
           </p>
           <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-4 sm:gap-5">
             <a
@@ -71,7 +71,7 @@ export default function CalvinProposalPage() {
               rel="noopener noreferrer"
               className="btn-outline-accent text-base md:text-lg"
             >
-              View Direction A &rarr;
+              View Demo A &rarr;
             </a>
             <a
               href="https://crystal-clear-demo-b.thekhan.workers.dev/"
@@ -79,7 +79,7 @@ export default function CalvinProposalPage() {
               rel="noopener noreferrer"
               className="btn-outline-accent text-base md:text-lg"
             >
-              View Direction B &rarr;
+              View Demo B &rarr;
             </a>
           </div>
         </section>
