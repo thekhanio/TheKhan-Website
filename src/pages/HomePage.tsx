@@ -119,10 +119,10 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-5">
               <Link to="/websites" className="btn-primary">I need a website &rarr;</Link>
               <Link to="/home-services" className="btn-outline-accent text-ink-muted">
-                I want to grow my <span className="text-accent-light font-semibold uppercase tracking-wide">home service</span> business &rarr;
+                <span>I want to grow my <span className="text-accent-light font-semibold uppercase tracking-wide">home service</span> business &rarr;</span>
               </Link>
               <Link to="/local-services" className="btn-outline-accent text-ink-muted">
-                I want to grow my <span className="text-accent-light font-semibold uppercase tracking-wide">local service</span> business &rarr;
+                <span>I want to grow my <span className="text-accent-light font-semibold uppercase tracking-wide">local service</span> business &rarr;</span>
               </Link>
             </div>
             <div className="mt-6">
