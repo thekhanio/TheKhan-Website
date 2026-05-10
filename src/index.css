@@ -553,16 +553,6 @@ body {
 }
 
 /* ============================================================
-   Sticky pull-quote — used on /websites. Holds while user scrolls
-   past it within its parent <section>.
-   ============================================================ */
-.sticky-pullquote {
-  position: sticky;
-  top: 120px;
-  z-index: 1;
-}
-
-/* ============================================================
    Sticky timeline date — left-margin pin for /about origin arc.
    Date label stays anchored while reader scrolls through the body.
    ============================================================ */

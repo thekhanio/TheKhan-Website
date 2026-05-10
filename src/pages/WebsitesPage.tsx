@@ -4,7 +4,7 @@ import { m, AnimatePresence } from "framer-motion";
 import { ContactForm } from "@/components/ContactForm";
 import { SEO } from "@/components/SEO";
 import { Layout } from "@/components/Layout";
-import { Eyebrow, DisplayH1, DisplayH2, MonoNum, PullQuote } from "@/components/editorial";
+import { Eyebrow, DisplayH1, DisplayH2, MonoNum } from "@/components/editorial";
 import { TldrStrip } from "@/components/ui/tldr-strip";
 import { TextMarquee } from "@/components/ui/text-marquee";
 import { ClipReveal } from "@/components/ui/clip-reveal";
@@ -425,34 +425,6 @@ export default function WebsitesPage() {
                 <div className="col-start-2 text-ink-muted leading-relaxed text-base md:text-lg">{item.body}</div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== STICKY PULL-QUOTE — anchors trust between scope & FAQ ==================== */}
-      <section className="section-raised py-24 md:py-32 px-6 lg:px-12 border-t border-line">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 min-h-[60vh]">
-          <div className="md:col-span-7 md:col-start-1">
-            <div className="sticky-pullquote">
-              <Eyebrow accent className="mb-6">What clients say</Eyebrow>
-              <PullQuote attribution="Mario Reyes · MarioScape Landscaping">
-                Code beats a template. The site loads fast, ranks fast, and the calls keep coming in.
-              </PullQuote>
-            </div>
-          </div>
-          <div className="md:col-span-5 md:pt-2 space-y-7 text-ink-muted leading-relaxed text-base md:text-lg max-w-xl">
-            <p>
-              Every site I ship is built from scratch — written by hand, line by line, for the business in front of me.
-            </p>
-            <p>
-              That&apos;s why the pages load faster than templated sites. It&apos;s why Google ranks them. It&apos;s why your competitors can&apos;t copy them.
-            </p>
-            <p>
-              And when launch day comes, every file is yours.
-            </p>
-            <p>
-              <Link to="/portfolio" className="link">See the work &rarr;</Link>
-            </p>
           </div>
         </div>
       </section>
