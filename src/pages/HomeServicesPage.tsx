@@ -250,13 +250,13 @@ export default function HomeServicesPage() {
           variant="solid"
           durationSec={110}
           items={[
+            "Cleaning",
+            "Janitorial",
             "Power Washing",
             "Window Washing",
             "Gutter Cleaning",
             "Landscaping",
             "Snow Removal",
-            "Cleaning",
-            "Janitorial",
             "Lighting Installation",
             "Junk Removal",
             "Painting",

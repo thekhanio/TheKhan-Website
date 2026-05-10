@@ -248,32 +248,31 @@ export default function LocalServicesPage() {
           variant="solid"
           durationSec={110}
           items={[
-            "Healthcare",
-            "Dental",
             "Real Estate",
-            "Financial Planning",
-            "Tax Services",
+            "Personal Services",
             "Beauty & Wellness",
             "Pet Services",
-            "Personal Services",
+            "Healthcare",
+            "Dental",
+            "Financial Planning",
+            "Tax Services",
           ]}
         />
         <TextMarquee
           variant="outlined"
           durationSec={130}
           items={[
-            "Dentists",
-            "Lawyers",
             "Real Estate Agents",
-            "Salons",
-            "Barbers",
-            "Chiropractors",
             "Personal Trainers",
-            "Vets",
-            "Tutors",
+            "Barbers",
+            "Salons",
             "Pet Groomers",
-            "Locksmiths",
             "Movers",
+            "Locksmiths",
+            "Tutors",
+            "Dentists",
+            "Chiropractors",
+            "Vets",
           ]}
         />
       </section>
