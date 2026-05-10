@@ -25,7 +25,7 @@ const ROUTE_META = {
   },
   "/websites": {
     title: "Custom Web Design — Deerfield, IL | Sites You Own",
-    description: "Custom websites built from scratch in 1–6 weeks. You own every file, the domain, the logins. No retainer, no lock-in. Deerfield, IL.",
+    description: "Custom websites built from scratch in about 30 days. You own every file, the domain, the logins. No retainer, no lock-in. Deerfield, IL.",
     canonical: "https://thekhan.io/websites",
     ogImage: "https://thekhan.io/websites-og.jpg",
     ogType: "website",
