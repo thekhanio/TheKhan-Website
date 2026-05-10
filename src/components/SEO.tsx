@@ -20,7 +20,7 @@ type Props = {
   schema?: object | object[];
 };
 
-const DEFAULT_OG_IMAGE = "https://thekhan.io/og-image.jpg";
+const DEFAULT_OG_IMAGE = "https://thekhan.io/og-image.png";
 
 export function SEO({
   title,

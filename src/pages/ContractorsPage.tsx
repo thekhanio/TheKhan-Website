@@ -98,7 +98,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "How much does marketing for home service contractors cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three monthly tiers: Starter ($599/mo), Engine ($1,260/mo — most common), and Partnership ($2,200/mo). Build + setup is a one-time $1,699 (Spring 2026 launch pricing through June 30, 2026; $2,400 after). Your monthly tier kicks in Day 31. Month-to-month — cancel any month with 72 hours notice before your next bill.",
+        "text": "Three monthly tiers: Foundation ($600/mo), Engine ($1,260/mo — most common), and Partnership ($2,200/mo). Build + setup is a one-time $1,699 (Spring 2026 launch pricing through June 30, 2026; $2,400 after). Your monthly tier kicks in Day 31. Month-to-month — cancel any month with 72 hours notice before your next bill.",
       },
     },
     {
@@ -138,7 +138,7 @@ const CONTRACTORS_FAQ_SCHEMA = {
       "name": "Do you offer exclusive territory protection?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, on the Partnership tier. You lock up to 8 cities of your choice — I won't take a competitor of yours in any of those cities. Beyond 8 cities is +$100/mo per city. At Starter and Engine, I won't double up on competitors in the same service area either — that's just how I run. But Partnership is the only tier where exclusivity is locked in writing. If a competitor of yours ever tries to sign me on for your locked cities, the answer is no.",
+        "text": "Yes, on the Partnership tier. You lock up to 8 cities of your choice — I won't take a competitor of yours in any of those cities. Beyond 8 cities is +$100/mo per city. At Foundation and Engine, I won't double up on competitors in the same service area either — that's just how I run. But Partnership is the only tier where exclusivity is locked in writing. If a competitor of yours ever tries to sign me on for your locked cities, the answer is no.",
       },
     },
     {
@@ -184,7 +184,7 @@ export default function ContractorsPage() {
         title="Marketing for Home Service Contractors in Chicago | TheKhan"
         description="Websites, Google Ads, and SEO for Chicago home service contractors. Get your phone ringing every week. You do the work. I make sure people find you."
         canonical="https://thekhan.io/contractors"
-        ogImage="https://thekhan.io/contractors-og.jpg"
+        ogImage="https://thekhan.io/contractors-og.png"
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
         schema={[BREADCRUMB_SCHEMA, CONTRACTORS_SCHEMA, CONTRACTORS_FAQ_SCHEMA]}
       />
@@ -213,7 +213,7 @@ export default function ContractorsPage() {
             <TldrStrip
               bullets={[
                 <>Site, SEO, ads, reviews, reports &mdash; I run all of it</>,
-                <>3 tiers: <MonoNum>$599</MonoNum>, <MonoNum>$1,260</MonoNum>, or <MonoNum>$2,200</MonoNum>/mo</>,
+                <>3 tiers: <MonoNum>$600</MonoNum>, <MonoNum>$1,260</MonoNum>, or <MonoNum>$2,200</MonoNum>/mo</>,
                 <>Month-to-month &mdash; cancel any month with 72 hours notice</>,
               ]}
               links={[
@@ -332,14 +332,14 @@ export default function ContractorsPage() {
 
           {/* Tier cards */}
           <div className="grid md:grid-cols-3 gap-6 md:items-stretch mb-16 md:mb-24">
-            {/* Starter */}
+            {/* Foundation */}
             <ScrollReveal direction="up" delay={0.05}>
-              <a href="#contact" aria-label="See if Starter is a fit — go to contact form" className="lift md:mt-8 h-full bg-bg-raised rounded-2xl border border-line p-8 flex flex-col cursor-pointer hover:border-accent-line transition-colors">
+              <a href="#contact" aria-label="See if Foundation is a fit — go to contact form" className="lift md:mt-8 h-full bg-bg-raised rounded-2xl border border-line p-8 flex flex-col cursor-pointer hover:border-accent-line transition-colors">
                 <h3 className="text-sm tracking-[0.25em] uppercase text-ink-muted font-semibold mb-3">
-                  Starter
+                  Foundation
                 </h3>
                 <p className="text-3xl md:text-4xl font-bold text-ink mb-1">
-                  $599<span className="text-base font-medium text-ink-quiet">/mo</span>
+                  $600<span className="text-base font-medium text-ink-quiet">/mo</span>
                 </p>
                 <p className="text-sm text-ink-quiet mb-5">$20 a day</p>
                 <p className="text-ink font-semibold text-lg leading-snug mb-4">
@@ -387,7 +387,7 @@ export default function ContractorsPage() {
                   For contractors who want jobs coming in every week &mdash; not just busy season.
                 </p>
                 <p className="text-accent text-xs tracking-wide uppercase font-semibold mb-3">
-                  Everything in Starter, plus:
+                  Everything in Foundation, plus:
                 </p>
                 <ul className="space-y-3 mt-auto">
                   {[
@@ -488,7 +488,7 @@ export default function ContractorsPage() {
                     <span className="text-ink font-semibold">Ad management</span> &mdash; Add-on at any tier.
                   </p>
                   <ul className="space-y-2 pl-5 list-disc marker:text-accent">
-                    <li>Bundled (Google Search + LSA) &mdash; <strong className="text-ink font-semibold">$599/mo</strong></li>
+                    <li>Bundled (Google Search + LSA) &mdash; <strong className="text-ink font-semibold">$600/mo</strong></li>
                     <li>Google only &mdash; <strong className="text-ink font-semibold">$500/mo</strong></li>
                     <li>LSA only &mdash; <strong className="text-ink font-semibold">$150/mo</strong></li>
                     <li>Partnership rate (bundled + first landing page included) &mdash; <strong className="text-ink font-semibold">$500/mo</strong></li>
@@ -496,7 +496,7 @@ export default function ContractorsPage() {
                   </ul>
                 </div>
                 <p className="text-ink-quiet text-sm italic">
-                  Engine is the best place to run ads &mdash; the ongoing optimization makes spend compound faster. Starter + ads still works, just slower organically alongside.
+                  Engine is the best place to run ads &mdash; the ongoing optimization makes spend compound faster. Foundation + ads still works, just slower organically alongside.
                 </p>
                 <p>
                   <span className="text-ink font-semibold">Custom landing pages</span> &mdash; $300 each (<span className="line-through text-ink-faint">$750</span> &mdash; Spring 2026 launch pricing through June 30, 2026). Partnership ads bundle includes the first one free; add&apos;l pages run $250 each (<span className="line-through text-ink-faint">$500</span> after June 30) at the Partnership rate.
@@ -656,7 +656,7 @@ export default function ContractorsPage() {
                 </p>
                 <ul className="space-y-5">
                   {[
-                    "Your budget is under $599/mo.",
+                    "Your budget is under $600/mo.",
                     "You want me to promise you a specific number of leads.",
                     "You're starting from zero — no past customers, no online presence — and need jobs this week.",
                     "You expect SEO to be driving calls inside 30 days. Google just doesn't work that way — trust takes 3 to 6 months to build. Wish it were faster.",

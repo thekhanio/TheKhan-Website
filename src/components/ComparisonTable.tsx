@@ -33,7 +33,7 @@ const ROWS: Row[] = [
   {
     label: "Monthly retainer",
     cells: [
-      "$599–$2,200",
+      "$600–$2,200",
       { neutral: "$300–$1,000+" },
       { neutral: "Custom quote" },
       { neutral: "$3K–$10K+" },

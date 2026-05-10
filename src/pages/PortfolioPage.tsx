@@ -11,7 +11,7 @@ import { IconPhone, IconMail, IconArrowUpRight, IconArrowRight } from "@tabler/i
 const PAGE_TITLE = "Portfolio — Custom Websites for Small Businesses | TheKhan";
 const PAGE_DESC = "I build custom websites and run the marketing for home service businesses across Chicago.";
 const PAGE_URL = "https://thekhan.io/portfolio";
-const OG_IMAGE = "https://thekhan.io/portfolio-og.jpg";
+const OG_IMAGE = "https://thekhan.io/portfolio-og.png";
 
 const BREADCRUMB_SCHEMA = {
   "@context": "https://schema.org",

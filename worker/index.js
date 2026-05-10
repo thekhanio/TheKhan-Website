@@ -13,7 +13,7 @@
 // Crawlers: get real meta tags + structured data in the initial HTML.
 // Private routes: get noindex,nofollow injected.
 
-const DEFAULT_OG_IMAGE = "https://thekhan.io/og-image.jpg";
+const DEFAULT_OG_IMAGE = "https://thekhan.io/og-image.png";
 
 const ROUTE_META = {
   "/": {
@@ -27,28 +27,28 @@ const ROUTE_META = {
     title: "Custom Web Design — Deerfield, IL | Sites You Own",
     description: "Custom websites built from scratch in about 30 days. You own every file, the domain, the logins. No retainer, no lock-in. Deerfield, IL.",
     canonical: "https://thekhan.io/websites",
-    ogImage: "https://thekhan.io/websites-og.jpg",
+    ogImage: "https://thekhan.io/websites-og.png",
     ogType: "website",
   },
   "/contractors": {
     title: "Marketing for Home Service Contractors in Chicago | TheKhan",
     description: "Websites, Google Ads, and SEO for Chicago home service contractors. Get your phone ringing every week. You do the work. I make people find you.",
     canonical: "https://thekhan.io/contractors",
-    ogImage: "https://thekhan.io/contractors-og.jpg",
+    ogImage: "https://thekhan.io/contractors-og.png",
     ogType: "website",
   },
   "/portfolio": {
     title: "Portfolio — Custom Websites for Small Businesses | TheKhan",
     description: "Omair is an independent web designer at TheKhan who builds custom-coded websites for home service businesses across the Chicago area.",
     canonical: "https://thekhan.io/portfolio",
-    ogImage: "https://thekhan.io/portfolio-og.jpg",
+    ogImage: "https://thekhan.io/portfolio-og.png",
     ogType: "website",
   },
   "/about": {
     title: "About Omair Khan — Founder of TheKhan | Web Design & Marketing",
     description: "One-man shop. Before this I built my own home service company to 84 clients. Now I build websites and run marketing for others.",
     canonical: "https://thekhan.io/about",
-    ogImage: "https://thekhan.io/about-og.jpg",
+    ogImage: "https://thekhan.io/about-og.png",
     ogType: "profile",
   },
 };
@@ -75,7 +75,7 @@ const ROUTE_SCHEMAS = {
           description: "TheKhan is an independent web design and digital marketing studio founded by Omair Khan in Deerfield, Illinois. Serving home service businesses and growing companies across Chicagoland and remote clients nationwide, TheKhan builds custom websites and runs the marketing that drives real leads.",
           url: "https://thekhan.io",
           logo: "https://thekhan.io/portfolio/logo-white.png",
-          image: "https://thekhan.io/og-image.jpg",
+          image: "https://thekhan.io/og-image.png",
           telephone: "+18472208550",
           email: "omair@thekhan.io",
           priceRange: "$$",
@@ -145,7 +145,7 @@ const ROUTE_SCHEMAS = {
     {
       "@context": "https://schema.org", "@type": "FAQPage", "@id": "https://thekhan.io/contractors#faq",
       mainEntity: [
-        { "@type": "Question", name: "How much does marketing for home service contractors cost?", acceptedAnswer: { "@type": "Answer", text: "Three monthly tiers: Foundation ($550/mo), Engine ($1,050/mo — most common), and Machine ($1,500/mo). Monthly starts the day your site goes live. The website build is $750 upfront. Month-to-month, no long-term lock-ins. Cancel any month with 72 hours notice before your next bill." } },
+        { "@type": "Question", name: "How much does marketing for home service contractors cost?", acceptedAnswer: { "@type": "Answer", text: "Three monthly tiers: Foundation ($600/mo), Engine ($1,260/mo — most common), and Partnership ($2,200/mo). Build + setup is a one-time $1,699 (Spring 2026 launch pricing through June 30, 2026; $2,400 after). Your monthly tier kicks in Day 31. Month-to-month — cancel any month with 72 hours notice before your next bill." } },
         { "@type": "Question", name: "How long before I see more phone calls?", acceptedAnswer: { "@type": "Answer", text: "Google Ads can start driving calls within days of launch. Local SEO compounds — it doesn't work day one. Organic rankings take 3 to 6 months to show up meaningfully, which is why most contractors run both: ads bridge the gap while SEO builds. I'll tell you which channel fits your timeline and budget before we start, not after." } },
         { "@type": "Question", name: "Do I own my Google Ads account, or do you?", acceptedAnswer: { "@type": "Answer", text: "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, you keep the account, the history, and the data. No agency-owned account hostage situations." } },
         { "@type": "Question", name: "What happens if the marketing doesn't work?", acceptedAnswer: { "@type": "Answer", text: "Month-to-month means you're never locked in. Cancel any month with 72 hours notice before your next bill. I cap myself at a handful of clients per year specifically so I can pay attention to each one — if something isn't working, I find out fast and fix it, not 90 days later when your next invoice hits. Everything stays in your name, so canceling doesn't cost you what we've built." } },

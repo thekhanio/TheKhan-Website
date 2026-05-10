@@ -18,13 +18,16 @@
     "deploy:dev-blue": "bun run build:blue && wrangler deploy --env dev-blue"
   },
   "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tabler/icons-react": "^3.36.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.26",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.0",
-    "tailwind-merge": "^3.4.0"
+    "satori": "^0.26.0",
+    "tailwind-merge": "^3.4.0",
+    "wawoff2": "^2.0.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",

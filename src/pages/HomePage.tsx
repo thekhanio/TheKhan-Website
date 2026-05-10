@@ -29,7 +29,7 @@ const HOME_SCHEMA = {
       "description": "TheKhan is an independent web design and digital marketing studio founded by Omair Khan in Deerfield, Illinois.",
       "url": "https://thekhan.io",
       "logo": "https://thekhan.io/portfolio/logo-white.png",
-      "image": "https://thekhan.io/og-image.jpg",
+      "image": "https://thekhan.io/og-image.png",
       "telephone": "+18472208550",
       "email": "omair@thekhan.io",
       "priceRange": "$$",

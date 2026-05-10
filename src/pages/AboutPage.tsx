@@ -80,7 +80,7 @@ export default function AboutPage() {
         title="About Omair Khan — Founder of TheKhan | Web Design & Marketing"
         description="One-man shop. Before this I built my own home service company to 84 clients. Now I build websites and run marketing for others."
         canonical="https://thekhan.io/about"
-        ogImage="https://thekhan.io/about-og.jpg"
+        ogImage="https://thekhan.io/about-og.png"
         ogType="profile"
         geo={{ region: "US-IL", placename: "Deerfield", position: "42.1711;-87.8445" }}
         schema={ABOUT_SCHEMA}
