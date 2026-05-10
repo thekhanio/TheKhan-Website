@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { to: "/", label: "Home" },
   { to: "/websites", label: "Websites" },
   { to: "/contractors", label: "For Contractors" },
+  { to: "/local-services", label: "For Local Services" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/about", label: "About" },
 ];

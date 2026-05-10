@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
 import HomePage from "./pages/HomePage";
 import ContractorsPage from "./pages/ContractorsPage";
+import LocalServicesPage from "./pages/LocalServicesPage";
 import WebsitesPage from "./pages/WebsitesPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import AboutPage from "./pages/AboutPage";
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/form" element={<QuestionnairePage />} />
           <Route path="/contractors" element={<ContractorsPage />} />
+          <Route path="/local-services" element={<LocalServicesPage />} />
           <Route path="/websites" element={<WebsitesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/about" element={<AboutPage />} />

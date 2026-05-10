@@ -118,7 +118,8 @@ export default function HomePage() {
 
             <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-5">
               <Link to="/websites" className="btn-primary">I need a website &rarr;</Link>
-              <Link to="/contractors" className="btn-outline-accent">I want to grow my business &rarr;</Link>
+              <Link to="/contractors" className="btn-outline-accent">Grow my contracting business &rarr;</Link>
+              <Link to="/local-services" className="btn-outline-accent">Grow my local services business &rarr;</Link>
             </div>
             <div className="mt-6">
               <Link to="/portfolio" className="text-ink-quiet hover:text-ink text-sm tracking-wide underline underline-offset-4 decoration-line-strong hover:decoration-ink transition-colors">

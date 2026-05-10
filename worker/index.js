@@ -37,6 +37,13 @@ const ROUTE_META = {
     ogImage: "https://thekhan.io/contractors-og.png",
     ogType: "website",
   },
+  "/local-services": {
+    title: "Marketing for Local Services Businesses | TheKhan",
+    description: "Local services marketing that brings in real business. Healthcare, dental, real estate, financial, beauty & wellness, pet services. Month-to-month, no contracts.",
+    canonical: "https://thekhan.io/local-services",
+    ogImage: "https://thekhan.io/local-services-og.png",
+    ogType: "website",
+  },
   "/portfolio": {
     title: "Portfolio — Custom Websites for Small Businesses | TheKhan",
     description: "Omair is an independent web designer at TheKhan who builds custom-coded websites for home service businesses across the Chicago area.",
@@ -150,6 +157,28 @@ const ROUTE_SCHEMAS = {
         { "@type": "Question", name: "Do I own my Google Ads account, or do you?", acceptedAnswer: { "@type": "Answer", text: "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, you keep the account, the history, and the data. No agency-owned account hostage situations." } },
         { "@type": "Question", name: "What happens if the marketing doesn't work?", acceptedAnswer: { "@type": "Answer", text: "Month-to-month means you're never locked in. Cancel any month with 72 hours notice before your next bill. I cap myself at a handful of clients per year specifically so I can pay attention to each one — if something isn't working, I find out fast and fix it, not 90 days later when your next invoice hits. Everything stays in your name, so canceling doesn't cost you what we've built." } },
         { "@type": "Question", name: "What Chicago suburbs do you serve?", acceptedAnswer: { "@type": "Answer", text: "I work with contractors across the North Shore and Chicagoland — Deerfield, Highland Park, Lake Forest, Northbrook, Glencoe, Winnetka, Bannockburn, Evanston, and the broader Chicago metro area. Remote clients anywhere in the US welcome if the project fits." } },
+      ],
+    },
+  ],
+  "/local-services": [
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "@id": "https://thekhan.io/local-services#breadcrumb", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://thekhan.io" }, { "@type": "ListItem", position: 2, name: "Local Services", item: "https://thekhan.io/local-services" }] },
+    {
+      "@context": "https://schema.org", "@type": "Service", "@id": "https://thekhan.io/local-services#service",
+      name: "Local Services Business Marketing",
+      description: "Websites, Google Ads, and SEO for local services businesses in Chicago — healthcare, dental, real estate, financial, beauty & wellness, pet services, and personal services.",
+      provider: { "@id": "https://thekhan.io/#localbusiness" },
+      serviceType: ["Local Services Business Marketing", "Website Design", "Google Ads Management", "Local SEO", "Marketing for Healthcare", "Marketing for Dental Offices", "Marketing for Real Estate Agents", "Marketing for Financial Planners", "Marketing for Tax Preparers", "Marketing for Beauty & Wellness", "Marketing for Pet Services", "Marketing for Personal Services"],
+    },
+    {
+      "@context": "https://schema.org", "@type": "FAQPage", "@id": "https://thekhan.io/local-services#faq",
+      mainEntity: [
+        { "@type": "Question", name: "How much does marketing for local services businesses cost?", acceptedAnswer: { "@type": "Answer", text: "Three monthly tiers: Foundation ($600/mo), Engine ($1,260/mo — most common), and Partnership ($2,200/mo). Build + setup is a one-time $1,699 (Spring 2026 launch pricing through June 30, 2026; $2,400 after). Your monthly tier kicks in Day 31. Month-to-month — cancel any month with 72 hours notice before your next bill." } },
+        { "@type": "Question", name: "How long before I see more clients?", acceptedAnswer: { "@type": "Answer", text: "Google Ads can start driving calls and inquiries shortly after launch. Local SEO is the long game — it compounds over time. You'll usually start seeing some results around 3 months, real movement on the needle by 6 months, and the full payoff around the 1-year mark. That's why most local services businesses run both: ads bring inquiries right away while SEO builds for the long haul. If you want results now, ads is the play. If you want the long-term win, SEO. Both gets you both. I'll tell you which fits your timeline and budget before we start, not after." } },
+        { "@type": "Question", name: "What kinds of local services businesses do you work with?", acceptedAnswer: { "@type": "Answer", text: "Healthcare practices, dental offices, real estate agents, financial planners, tax preparers, beauty & wellness, pet services, and personal services — independent local businesses where someone Googles the service in their area and picks one. If your business is LSA-eligible (Local Services Ads through Google) or shows up in the local map pack, the playbook fits." } },
+        { "@type": "Question", name: "Do I own my Google Ads account, or do you?", acceptedAnswer: { "@type": "Answer", text: "You own it. Always. I run your ads under your own Google Ads account with your card on file. If we ever part ways, everything stays with you. Nothing of yours is locked behind me." } },
+        { "@type": "Question", name: "What happens if the marketing doesn't work?", acceptedAnswer: { "@type": "Answer", text: "Month-to-month means you're never locked in. Cancel any month with 72 hours notice before your next bill. I cap myself at a handful of clients per year specifically so I can pay attention to each one — if something isn't working, I find out fast and fix it, not 90 days later when your next invoice hits. Everything stays in your name, so canceling doesn't cost you what we've built." } },
+        { "@type": "Question", name: "What Chicago suburbs do you serve?", acceptedAnswer: { "@type": "Answer", text: "I work with local services businesses across the North Shore and Chicagoland — Deerfield, Highland Park, Lake Forest, Northbrook, Glencoe, Winnetka, Bannockburn, Evanston, and the broader Chicago metro area. Remote clients anywhere in the US welcome if the project fits." } },
+        { "@type": "Question", name: "Do you work with franchise locations?", acceptedAnswer: { "@type": "Answer", text: "No. I work with independents — local services businesses where the owner makes the marketing call. If your franchise has corporate-mandated marketing or HQ approval rules, the playbook won't fit. Independents only." } },
       ],
     },
   ],

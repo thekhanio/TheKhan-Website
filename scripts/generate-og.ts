@@ -64,6 +64,13 @@ const PAGES = [
     line2: "The second one is all I do now.",
     subhead: "Solo, based in Deerfield, IL.",
   },
+  {
+    out: "local-services-og.png",
+    preview: "06-local-services-og.png",
+    line1: "You do the work.",
+    line2: "I make sure people find you.",
+    subhead: "Local services marketing that brings in real business.",
+  },
 ] as const;
 
 async function fetchGoogleFont(
@@ -291,7 +298,7 @@ async function main() {
     console.log(`  ✓ ${page.out} (${(png.byteLength / 1024).toFixed(1)} KB)`);
   }
 
-  console.log("\nAll 5 OG images generated.");
+  console.log("\nAll 6 OG images generated.");
 }
 
 await main();
