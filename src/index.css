@@ -521,6 +521,7 @@ body {
   height: 110px;
   padding: 0 3rem;
   opacity: 0.78;
+  cursor: pointer;
   transition: opacity 220ms ease;
 }
 .logo-marquee-cell:hover { opacity: 1; }
@@ -531,6 +532,20 @@ body {
   height: auto;
   object-fit: contain;
   display: block;
+  transform-origin: center;
+  /* Hover-out — 200ms ease-in restores neutral state */
+  transition:
+    transform 200ms cubic-bezier(0.4, 0, 1, 1),
+    filter 200ms cubic-bezier(0.4, 0, 1, 1);
+  will-change: transform, filter;
+}
+.logo-marquee-cell:hover .logo-marquee-img {
+  /* Hover-in — 200ms ease-out delivers the pop */
+  transform: scale(1.10) translateY(-3px);
+  filter: drop-shadow(0 6px 18px rgba(155, 196, 168, 0.45));
+  transition:
+    transform 200ms cubic-bezier(0, 0, 0.2, 1),
+    filter 200ms cubic-bezier(0, 0, 0.2, 1);
 }
 @media (min-width: 768px) {
   .logo-marquee-cell { height: 140px; padding: 0 4rem; }

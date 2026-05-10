@@ -118,8 +118,8 @@ export default function HomePage() {
 
             <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-5">
               <Link to="/websites" className="btn-primary">I need a website &rarr;</Link>
-              <Link to="/contractors" className="btn-outline-accent">Grow my contracting business &rarr;</Link>
-              <Link to="/local-services" className="btn-outline-accent">Grow my local services business &rarr;</Link>
+              <Link to="/contractors" className="btn-outline-accent">I want to grow my contracting business &rarr;</Link>
+              <Link to="/local-services" className="btn-outline-accent">I want to grow my local services business &rarr;</Link>
             </div>
             <div className="mt-6">
               <Link to="/portfolio" className="text-ink-quiet hover:text-ink text-sm tracking-wide underline underline-offset-4 decoration-line-strong hover:decoration-ink transition-colors">
@@ -156,23 +156,31 @@ export default function HomePage() {
             <WordRevealHeadline
               as="h2"
               lines={[
-                { text: "Code beats a template." },
-                { text: "Every time.", muted: true },
+                { text: "A site that doesn’t just look good — it brings in real business." },
               ]}
-              ariaLabel="Code beats a template. Every time."
-              staggerMs={110}
-              className="display-h2 text-ink text-[2rem] sm:text-[2.25rem] md:text-[2.5rem] lg:text-[3rem]"
+              ariaLabel="A site that doesn't just look good — it brings in real business."
+              staggerMs={70}
+              className="display-h2 text-ink text-[1.75rem] sm:text-[2rem] md:text-[2.25rem] lg:text-[2.5rem]"
             />
+            <p className="mt-6 md:mt-8 text-accent-light text-lg md:text-xl leading-relaxed max-w-xl">
+              That&apos;s why I write the code from scratch, not stamp it from a template.
+            </p>
           </div>
-          <div className="md:col-span-7 md:pt-2 space-y-6 leading-relaxed text-base md:text-lg max-w-2xl opacity-85">
-            <p>
-              Loads fast, built to rank, and yours from day one. Take the files anywhere.
-            </p>
-            <p>
-              Month-to-month — 72 hours notice cancels the next bill. No annual
-              contracts, no platform lock.
-            </p>
-            <p>
+          <div className="md:col-span-7 md:pt-2 max-w-2xl">
+            <ul className="space-y-4 text-base md:text-lg leading-relaxed">
+              {[
+                "Built to load fast, rank on Google, and bring in calls",
+                <>Yours from day one &mdash; files, domain, logins, all under your name</>,
+                <>No platform locks &mdash; move it anywhere, anytime</>,
+                <>Month-to-month &mdash; cancel any month with 72 hours notice</>,
+              ].map((b, i) => (
+                <li key={i} className="flex items-start gap-3 opacity-85">
+                  <span className="text-accent-light mt-1.5 leading-none flex-shrink-0" aria-hidden="true">·</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-10">
               <Link to="/websites" className="link">See website tiers &rarr;</Link>
             </p>
           </div>
