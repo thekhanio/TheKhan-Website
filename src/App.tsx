@@ -8,7 +8,7 @@ import WebsitesPage from "./pages/WebsitesPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import AboutPage from "./pages/AboutPage";
 
-const QuestionnairePage = lazy(() => import("./pages/QuestionnairePage"));
+const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const SteveReportPage = lazy(() => import("./pages/SteveReportPage"));
 const MarioReportPage = lazy(() => import("./pages/MarioReportPage"));
 const CalvinProposalPage = lazy(() => import("./pages/CalvinProposalPage"));
@@ -40,7 +40,7 @@ export default function App() {
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/form" element={<QuestionnairePage />} />
+          <Route path="/start" element={<OnboardingPage />} />
           <Route path="/intake" element={<IntakePage />} />
           <Route path="/home-services" element={<HomeServicesPage />} />
           <Route path="/local-services" element={<LocalServicesPage />} />
