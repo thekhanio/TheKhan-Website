@@ -226,6 +226,9 @@ const NOINDEX_ROUTES = new Set([
   "/intake",
   "/premierpartners",
   "/marioscape",
+  "/crystalclear",
+  "/proposal-temp-multi",
+  "/proposal-temp-single",
 ]);
 
 function escapeHtml(str) {

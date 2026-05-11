@@ -12,7 +12,12 @@ const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const SteveReportPage = lazy(() => import("./pages/SteveReportPage"));
 const MarioReportPage = lazy(() => import("./pages/MarioReportPage"));
 const CalvinProposalPage = lazy(() => import("./pages/CalvinProposalPage"));
+const ProposalPage = lazy(() => import("./pages/ProposalPage"));
 const IntakePage = lazy(() => import("./pages/IntakePage"));
+
+// Proposal template previews. Real prospects get their own routes + data files.
+import { sampleTwoPathProposal } from "./data/proposals/sample-two-path";
+import { sampleSingleProposal } from "./data/proposals/sample-single";
 
 function NotFound() {
   return (
@@ -51,7 +56,8 @@ export default function App() {
           <Route path="/premierpartners" element={<SteveReportPage />} />
           <Route path="/marioscape" element={<MarioReportPage />} />
           <Route path="/crystalclear" element={<CalvinProposalPage />} />
-          <Route path="/calvin" element={<CalvinProposalPage />} />
+          <Route path="/proposal-temp-multi" element={<ProposalPage data={sampleTwoPathProposal} />} />
+          <Route path="/proposal-temp-single" element={<ProposalPage data={sampleSingleProposal} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
