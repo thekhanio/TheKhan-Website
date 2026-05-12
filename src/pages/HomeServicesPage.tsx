@@ -542,7 +542,7 @@ export default function HomeServicesPage() {
                   Your side
                 </p>
                 <p className="text-ink-muted text-base md:text-lg leading-relaxed">
-                  You handle the customer-facing side &mdash; photos from jobs you finish, asking happy customers for a Google review, and giving me your past customer list so I can text them for repeat work.
+                  You handle the customer-facing side &mdash; photos from jobs you finish, asking happy customers for a Google review, and reaching back out to past customers using scripts I write for you.
                 </p>
               </div>
             </div>

@@ -46,7 +46,7 @@ const ROUTE_META = {
   },
   "/portfolio": {
     title: "Portfolio — Custom Websites for Small Businesses | TheKhan",
-    description: "Omair is an independent web designer at TheKhan who builds custom-coded websites for home service businesses across the Chicago area.",
+    description: "Custom websites and marketing for small businesses across Chicago — home services and local services.",
     canonical: "https://thekhan.io/portfolio",
     ogImage: "https://thekhan.io/portfolio-og.png",
     ogType: "website",
@@ -187,7 +187,7 @@ const ROUTE_SCHEMAS = {
     {
       "@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://thekhan.io/portfolio#collectionpage",
       name: "Portfolio — Custom Websites for Small Businesses | TheKhan",
-      description: "Omair is an independent web designer at TheKhan who builds custom-coded websites for home service businesses across the Chicago area.",
+      description: "Custom websites and marketing for small businesses across Chicago — home services and local services.",
       url: "https://thekhan.io/portfolio",
       isPartOf: { "@id": "https://thekhan.io/#website" },
       mainEntity: {

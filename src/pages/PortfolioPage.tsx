@@ -9,7 +9,7 @@ import { Eyebrow, DisplayH2, MonoNum } from "@/components/editorial";
 import { IconPhone, IconMail, IconArrowUpRight, IconArrowRight } from "@tabler/icons-react";
 
 const PAGE_TITLE = "Portfolio — Custom Websites for Small Businesses | TheKhan";
-const PAGE_DESC = "I build custom websites and run the marketing for home service businesses across Chicago.";
+const PAGE_DESC = "Custom websites and marketing for small businesses across Chicago — home services and local services.";
 const PAGE_URL = "https://thekhan.io/portfolio";
 const OG_IMAGE = "https://thekhan.io/portfolio-og.png";
 
@@ -242,7 +242,7 @@ export default function PortfolioPage() {
               </a>
 
               <p className="text-ink-muted text-base md:text-lg leading-relaxed mb-10 md:mb-12">
-                My old company. Founded June 2024, scaled to 84 clients on the North Shore before I closed it March 2026. The phone still rings from the SEO work I did &mdash; and those calls now go to the contractors I work with.
+                My old company. Founded June 2024, scaled to 84 clients on the North Shore before I closed it March 2026. The phone still rings from the SEO work I did &mdash; and those calls now go to the home service businesses I work with.
               </p>
 
               {/* 3-stat editorial data block — Founded / Peak / Closed */}

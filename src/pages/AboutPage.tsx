@@ -14,7 +14,7 @@ const TIMELINE_NODES = [
   { date: "Jan '25", body: "I stopped doing the work myself. Started running everything through subcontractors — added landscaping, power washing, gutter cleaning, and lighting installs. Margins got tighter and the volume got higher. But the business side was finally the only thing on my plate." },
   { date: "Oct '25", body: "I registered TheKhan, built the first version of the site, took on my first clients, and started running marketing for them on the side. Still a side project — but I was spending more of my week on it than I should have been." },
   { date: "Late '25", body: "A couple of subcontractors fell through, so I brought the work back myself. I was out in the field again, running two routes that took me 15 to 20 hours straight to finish. The company hit 84 clients at peak — and between the workload and some old injuries, I knew the labor side wasn't my edge." },
-  { date: "Mar '26", body: "I closed Clean & Green Property Care and went all in on TheKhan. The phone still rings from the SEO work I did — and those calls now go to the contractors I work with." },
+  { date: "Mar '26", body: "I closed Clean & Green Property Care and went all in on TheKhan. The phone still rings from the SEO work I did — and those calls now go to the home service businesses I work with." },
 ];
 
 const NEXT_STEPS = [

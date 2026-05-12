@@ -205,7 +205,7 @@ export default function LocalServicesPage() {
             </ClipReveal>
 
             <p className="lede mt-10 max-w-2xl">
-              Local services marketing that brings in real business.
+              Local services marketing that keeps your calendar full.
             </p>
 
             <TldrStrip
@@ -403,7 +403,6 @@ export default function LocalServicesPage() {
                     <>Geographic rank tracking &mdash; <strong className="text-ink font-semibold">you see where you rank in every city you serve, every month</strong></>,
                     <>Directories kept clean &mdash; <strong className="text-ink font-semibold">no conflicting info hurting your rank</strong></>,
                     <>Fake reviews disputed &mdash; <strong className="text-ink font-semibold">when a competitor posts one, I take the case to Google.</strong></>,
-                    <>I send you overflow leads from my own pipeline &mdash; <strong className="text-ink font-semibold">calls coming in while yours warms up</strong></>,
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <IconCheck className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
@@ -425,7 +424,7 @@ export default function LocalServicesPage() {
                 </p>
                 <p className="text-sm text-ink-quiet mb-5">$73 a day</p>
                 <p className="text-ink font-semibold text-lg leading-snug mb-4">
-                  Turn jobs away.
+                  Booked weeks out.
                 </p>
                 <p className="text-ink-muted text-sm leading-relaxed mb-5">
                   For local services businesses ready to lock down their service area and pick which clients to take.
@@ -509,7 +508,7 @@ export default function LocalServicesPage() {
                   <span className="text-ink font-semibold">Custom landing pages</span> &mdash; $300 each through June 30, 2026 ($750 after). Partnership ads bundle includes the first one free; add&apos;l pages run $250 each through June 30, 2026 ($500 after) at the Partnership rate.
                 </p>
                 <p>
-                  <span className="text-ink font-semibold">Multiple service brands</span> &mdash; say you run paving, snow plowing, and holiday lighting as separate businesses. Each tier covers one brand. Each additional brand is +$649/mo. Build + setup quoted separately based on scope.
+                  <span className="text-ink font-semibold">Multiple service brands</span> &mdash; say you run a med spa, a wellness studio, and a barbershop as separate businesses. Each tier covers one brand. Each additional brand is +$649/mo. Build + setup quoted separately based on scope.
                 </p>
               </div>
             </div>
@@ -540,7 +539,7 @@ export default function LocalServicesPage() {
                   Your side
                 </p>
                 <p className="text-ink-muted text-base md:text-lg leading-relaxed">
-                  You handle the customer-facing side &mdash; photos from jobs you finish, asking happy customers for a Google review, and giving me your past customer list so I can text them for repeat work.
+                  You handle the customer-facing side &mdash; photos from your work, asking happy clients for a Google review, and reaching back out to past clients using scripts I write for you.
                 </p>
               </div>
             </div>
@@ -775,6 +774,7 @@ export default function LocalServicesPage() {
                   subjectPrefix="[Local Services form]"
                   showPhoneField
                   showTradeDropdown
+                  tradeDropdownVariant="local-services"
                 />
               </div>
             </div>
