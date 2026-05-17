@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
 
 interface ContactFormProps {
   source?: string;
@@ -50,12 +51,21 @@ export function ContactForm({ source, subjectPrefix, showProjectTypeDropdown, sh
     projectType: "",
     trade: "",
     tradeOther: "",
+    website_url: "", // honeypot
   });
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
+  const handleToken = useCallback((token: string) => setTurnstileToken(token), []);
+  const handleExpire = useCallback(() => setTurnstileToken(""), []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!turnstileToken) {
+      setSubmitStatus("error");
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -64,27 +74,32 @@ export function ContactForm({ source, subjectPrefix, showProjectTypeDropdown, sh
           ? formData.tradeOther || "Other"
           : formData.trade
         : "";
-      const messageWithTrade = showTradeDropdown && tradeValue
-        ? `Trade: ${tradeValue}\n\n${formData.message}`
-        : formData.message;
+      const referralSource =
+        formData.hearAboutUs === "Referral"
+          ? `Referral — ${formData.referralName || "No name given"}`
+          : formData.hearAboutUs === "Other"
+          ? formData.hearAboutUsOther || "Other"
+          : formData.hearAboutUs;
 
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://leads-api.thekhan.io/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "27068209-3ff0-4c82-a1ed-e67558c5ffa4",
-          from_name: "TheKhan Website",
+          client: "thekhan",
+          form_id: "thekhan-contact",
+          source: "seo",
+          "cf-turnstile-response": turnstileToken,
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          message: messageWithTrade,
-          referral_source: formData.hearAboutUs === "Referral" ? `Referral — ${formData.referralName || "No name given"}` : formData.hearAboutUs === "Other" ? formData.hearAboutUsOther || "Other" : formData.hearAboutUs,
+          message: formData.message,
+          service: "Inquiry",
+          referral_source: referralSource,
           ...(showProjectTypeDropdown && { project_type: formData.projectType }),
           ...(showTradeDropdown && tradeValue && { trade: tradeValue }),
-          ...(source && { source }),
-          subject: subjectPrefix ? `${subjectPrefix} — ${formData.name}` : `New Inquiry from ${formData.name}`,
+          ...(source && { page_source: source }),
+          ...(subjectPrefix && { page_form: subjectPrefix }),
+          website_url: formData.website_url, // honeypot
         }),
       });
 
@@ -101,6 +116,7 @@ export function ContactForm({ source, subjectPrefix, showProjectTypeDropdown, sh
           projectType: "",
           trade: "",
           tradeOther: "",
+          website_url: "",
         });
       } else {
         setSubmitStatus("error");
@@ -176,11 +192,12 @@ export function ContactForm({ source, subjectPrefix, showProjectTypeDropdown, sh
 
       {showPhoneField && (
         <div>
-          <label htmlFor="contact-phone" className="block text-sm text-ink-muted mb-2">Phone <span className="text-ink-quiet text-xs font-normal">(optional)</span></label>
+          <label htmlFor="contact-phone" className="block text-sm text-ink-muted mb-2">Phone *</label>
           <input
             id="contact-phone"
             name="phone"
             type="tel"
+            required
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className={inputClasses}
@@ -188,6 +205,18 @@ export function ContactForm({ source, subjectPrefix, showProjectTypeDropdown, sh
           />
         </div>
       )}
+
+      {/* Honeypot — hidden from humans, bots fill it */}
+      <input
+        type="text"
+        name="website_url"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={formData.website_url}
+        onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
+        className="absolute left-[-9999px] w-px h-px opacity-0"
+      />
 
       {showProjectTypeDropdown && (
         <div>
@@ -298,6 +327,8 @@ export function ContactForm({ source, subjectPrefix, showProjectTypeDropdown, sh
         )}
       </div>
 
+      <TurnstileWidget onToken={handleToken} onExpire={handleExpire} />
+
       {submitStatus === "error" && (
         <p className="text-red-400 text-sm">
           Something went wrong. Please try again or email me directly.
@@ -306,7 +337,7 @@ export function ContactForm({ source, subjectPrefix, showProjectTypeDropdown, sh
 
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !turnstileToken}
         className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
       >
         {isSubmitting ? "Sending..." : submitText}

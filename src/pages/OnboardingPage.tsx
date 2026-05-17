@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { SEO } from "@/components/SEO";
 import { Logo } from "@/components/Logo";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
 import {
   IconArrowLeft,
   IconArrowRight,
@@ -139,7 +140,6 @@ const LOGIN_SYSTEMS_BY_SCOPE: Record<Exclude<Scope, "">, Array<{ key: string; la
 };
 
 const STORAGE_KEY = "thekhan-onboarding-draft-v1";
-const ACCESS_KEY = "27068209-3ff0-4c82-a1ed-e67558c5ffa4";
 
 // Required fields per section — work-blockers only.
 const REQUIRED: Record<"common" | "website" | "marketing", Array<keyof FormState>> = {
@@ -254,7 +254,11 @@ export default function OnboardingPage() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [resumeDecision, setResumeDecision] = useState<"pending" | "resume" | "fresh">("pending");
   const [errors, setErrors] = useState<Set<string>>(new Set());
+  const [turnstileToken, setTurnstileToken] = useState("");
   const hasMounted = useRef(false);
+
+  const handleToken = useCallback((token: string) => setTurnstileToken(token), []);
+  const handleExpire = useCallback(() => setTurnstileToken(""), []);
 
   // Wrappers that clear the error for a field as soon as the user starts typing.
   const setField = (field: keyof FormState, value: unknown) => {
@@ -424,6 +428,10 @@ export default function OnboardingPage() {
   const handleSubmit = async () => {
     if (state.honey) return;
     if (!allDone) return;
+    if (!turnstileToken) {
+      setSubmitStatus("error");
+      return;
+    }
     setSubmitStatus("submitting");
     try {
       const hoursPretty = DAYS.map(({ key, label }) => {
@@ -435,17 +443,27 @@ export default function OnboardingPage() {
         .map((s) => `${s.label}: ${state.logins[s.key] || "—"}`)
         .join("\n");
 
+      const displayName = state.dba || state.legalName || "Onboarding";
+
       const payload: Record<string, string> = {
-        access_key: ACCESS_KEY,
-        from_name: "TheKhan Onboarding",
-        subject: `Onboarding intake — ${state.dba || state.legalName || "unnamed"}`,
+        // routing
+        client: "thekhan",
+        form_id: "thekhan-start",
+        source: "manual",
+        "cf-turnstile-response": turnstileToken,
+        // standard lead fields
+        name: displayName,
+        email: state.email || "",
+        phone: state.phone || "",
+        service: "Onboarding",
+        message: `Onboarding intake — see Project Details for full payload.`,
+        // honeypot
+        website_url: state.honey,
+        // custom fields → render under "Project Details" in the email
         scope: state.scope || "—",
-        // Common
         legal_name: state.legalName || "—",
         dba: state.dba || "—",
         address: state.address || "—",
-        phone: state.phone || "—",
-        email: state.email || "—",
         hours: hoursPretty,
         services: state.services || "—",
         service_area: state.serviceArea || "—",
@@ -489,7 +507,7 @@ export default function OnboardingPage() {
 
       payload.logins_inventory = loginsList;
 
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("https://leads-api.thekhan.io/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -706,10 +724,15 @@ export default function OnboardingPage() {
                         .
                       </m.div>
                     )}
+                    {allDone && (
+                      <div className="mb-5">
+                        <TurnstileWidget onToken={handleToken} onExpire={handleExpire} />
+                      </div>
+                    )}
                     <m.button
                       type="button"
                       onClick={handleSubmit}
-                      disabled={!allDone || submitStatus === "submitting"}
+                      disabled={!allDone || submitStatus === "submitting" || !turnstileToken}
                       whileHover={!reduce && allDone ? { y: -1 } : undefined}
                       whileTap={!reduce && allDone ? { scale: 0.985 } : undefined}
                       transition={{ duration: 0.15 }}

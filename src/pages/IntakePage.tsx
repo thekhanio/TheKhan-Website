@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { SEO } from "@/components/SEO";
 import { Logo } from "@/components/Logo";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
 import {
   IconArrowLeft,
   IconArrowRight,
@@ -25,13 +26,14 @@ const SERVICE_OPTIONS: Array<{
   { value: "Not sure", Icon: IconHelpCircle, subtitle: "Want to talk it through first." },
 ];
 
-const ACCESS_KEY = "27068209-3ff0-4c82-a1ed-e67558c5ffa4";
-
 export default function IntakePage() {
   const reduce = useReducedMotion();
   const radioGroupRef = useRef<HTMLDivElement>(null);
 
   const [data, setData] = useState({
+    fullName: "",
+    contactEmail: "",
+    contactPhone: "",
     businessName: "",
     businessType: "",
     website: "",
@@ -41,12 +43,16 @@ export default function IntakePage() {
     anythingElse: "",
     honey: "",
   });
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error" | "missing"
   >("idle");
 
   const set = <K extends keyof typeof data>(k: K, v: (typeof data)[K]) =>
     setData((d) => ({ ...d, [k]: v }));
+
+  const handleToken = useCallback((token: string) => setTurnstileToken(token), []);
+  const handleExpire = useCallback(() => setTurnstileToken(""), []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,16 +63,27 @@ export default function IntakePage() {
       radioGroupRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
+    if (!turnstileToken) {
+      setStatus("error");
+      return;
+    }
 
     setStatus("submitting");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("https://leads-api.thekhan.io/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          from_name: "TheKhan Intake",
-          subject: `New intake — ${data.businessName.trim() || "unnamed"}`,
+          client: "thekhan",
+          form_id: "thekhan-intake",
+          source: "direct-call",
+          "cf-turnstile-response": turnstileToken,
+          name: data.fullName.trim(),
+          email: data.contactEmail.trim(),
+          phone: data.contactPhone.trim(),
+          service: "Pre-call intake",
+          message: data.biggestIssue.trim() || "(no biggest-issue text provided)",
+          // custom fields → Project Details in the email
           business_name: data.businessName.trim() || "—",
           business_type: data.businessType.trim() || "—",
           website: data.website.trim() || "—",
@@ -74,7 +91,7 @@ export default function IntakePage() {
           biggest_issue: data.biggestIssue.trim() || "—",
           prior_agencies: data.priorAgencies.trim() || "—",
           anything_else: data.anythingElse.trim() || "—",
-          source: "intake-form",
+          website_url: data.honey, // honeypot
         }),
       });
       setStatus(res.ok ? "success" : "error");
@@ -185,16 +202,73 @@ export default function IntakePage() {
                       className="absolute left-[-9999px] w-px h-px opacity-0"
                     />
 
+                    {/* Row: full name + email */}
+                    <m.div variants={item} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field
+                        label="Your name"
+                        required
+                        htmlFor="intake-name"
+                      >
+                        <input
+                          id="intake-name"
+                          type="text"
+                          required
+                          autoComplete="name"
+                          value={data.fullName}
+                          onChange={(e) => set("fullName", e.target.value)}
+                          className={inputBase}
+                          placeholder="First & last"
+                        />
+                      </Field>
+                      <Field
+                        label="Email"
+                        required
+                        htmlFor="intake-email"
+                      >
+                        <input
+                          id="intake-email"
+                          type="email"
+                          required
+                          autoComplete="email"
+                          value={data.contactEmail}
+                          onChange={(e) => set("contactEmail", e.target.value)}
+                          className={inputBase}
+                          placeholder="you@example.com"
+                        />
+                      </Field>
+                    </m.div>
+
+                    {/* Phone */}
+                    <m.div variants={item}>
+                      <Field
+                        label="Phone"
+                        required
+                        htmlFor="intake-phone"
+                      >
+                        <input
+                          id="intake-phone"
+                          type="tel"
+                          required
+                          autoComplete="tel"
+                          value={data.contactPhone}
+                          onChange={(e) => set("contactPhone", e.target.value)}
+                          className={inputBase}
+                          placeholder="(555) 123-4567"
+                        />
+                      </Field>
+                    </m.div>
+
                     {/* Row: business name + business type */}
                     <m.div variants={item} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Field
                         label="Business name"
-                        optional
+                        required
                         htmlFor="intake-business"
                       >
                         <input
                           id="intake-business"
                           type="text"
+                          required
                           autoComplete="organization"
                           value={data.businessName}
                           onChange={(e) => set("businessName", e.target.value)}
@@ -222,13 +296,13 @@ export default function IntakePage() {
                     <m.div variants={item}>
                       <Field
                         label="Website"
-                        optional
+                        required
                         htmlFor="intake-website"
-                        hint="If you have one"
                       >
                         <input
                           id="intake-website"
                           type="url"
+                          required
                           inputMode="url"
                           autoComplete="url"
                           value={data.website}
@@ -342,6 +416,11 @@ export default function IntakePage() {
                       </Field>
                     </m.div>
 
+                    {/* Turnstile */}
+                    <m.div variants={item}>
+                      <TurnstileWidget onToken={handleToken} onExpire={handleExpire} />
+                    </m.div>
+
                     {/* Error fallback */}
                     <AnimatePresence>
                       {status === "error" && (
@@ -368,7 +447,7 @@ export default function IntakePage() {
                     <m.div variants={item} className="pt-2">
                       <m.button
                         type="submit"
-                        disabled={status === "submitting"}
+                        disabled={status === "submitting" || !turnstileToken}
                         whileHover={reduce ? undefined : { y: -1 }}
                         whileTap={reduce ? undefined : { scale: 0.985 }}
                         transition={{ duration: 0.15 }}
@@ -414,12 +493,14 @@ export default function IntakePage() {
 function Field({
   label,
   optional,
+  required,
   htmlFor,
   hint,
   children,
 }: {
   label: string;
   optional?: boolean;
+  required?: boolean;
   htmlFor: string;
   hint?: string;
   children: React.ReactNode;
@@ -428,6 +509,7 @@ function Field({
     <div>
       <label htmlFor={htmlFor} className="block text-sm text-ink-muted mb-2">
         {label}
+        {required && <span className="text-accent-light ml-0.5">*</span>}
         {optional && (
           <span className="text-ink-quiet text-xs font-normal ml-1.5">
             {hint ? `(${hint})` : "(optional)"}
